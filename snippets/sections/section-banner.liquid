@@ -1,0 +1,61 @@
+{% assign selected_product = all_products[section.settings.selected_product] %}
+{% if selected_product == blank %}
+  {% assign selected_product = all_products['tedroka-c-fly-drone-met-gps-4k-camera-vliegtijd-van-52-minuten-fpv-borstelloze-drone-professionele-drone-4k-uhd-video-inclusief-2-batterijen-powerbank-10-000-mah-draagbaretas-en-64-gb-sd-kaart'] %}
+{% endif %}
+<section class="bg-gray-50">
+  <div class="max-w-screen-xl px-4 py-32 mx-auto lg:flex lg:h-screen lg:items-center">
+    <div class="max-w-xl mx-auto text-center">
+      <h1 class="text-3xl font-extrabold sm:text-5xl">
+        {{ section.settings.title }}
+        <strong class="font-extrabold text-red-700 sm:block"> {{ section.settings.subtitle }} </strong>
+      </h1>
+
+      <p class="mt-4 sm:text-xl/relaxed">{{ section.settings.description }}</p>
+
+      {% render 'buy-now-read-more-form', product: selected_product %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Vlieg Erboven."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "subtitle",
+      "default": "En Verder."
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Ontdek de vrijheid en innovatie met de C-Fly Drone."
+    },
+    {
+      "type": "product",
+      "id": "selected_product",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Get Started"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Promotional",
+      "name": "Banner"
+    }
+  ]
+}
+{% endschema %}

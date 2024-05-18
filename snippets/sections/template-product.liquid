@@ -1,0 +1,199 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<style>
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: red !important;
+    top: auto !important;
+    height: 10px !important;
+  }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 20px !important;
+  }
+
+  .swiper-pagination {
+    color: black;
+    position: absolute !important;
+    bottom: 0 !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    color: black !important;
+  }
+
+  .product--information {
+    height: fit-content;
+  }
+</style>
+
+<article class="max-w-6xl mx-auto my-8">
+  <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
+    {% comment %} MEDIA CONTENT {% endcomment %}
+    <article class="product--medias">
+      <div class="hidden md:block">
+        {% for media in product.media %}
+          <div class="p-2 overflow-hidden">
+            {% render 'product-media', media: media %}
+          </div>
+        {% endfor %}
+      </div>
+
+      {% comment %} product media for when mobile {% endcomment %}
+      <div class="md:hidden">
+        <div class="relative swiper h-94">
+          <div class="swiper-wrapper">
+            {% for media in product.media %}
+              <div class="swiper-slide">
+                <div class="p-2 overflow-hidden">
+                  {% render 'product-media', media: media %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="absolute swiper-pagination"></div>
+
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </article>
+
+    {% comment %} PRODUCT INFORMATION CONTENT {% endcomment %}
+    <article class="sticky p-2 product--information top-5">
+      {% form 'product', product %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <div class="my-3">
+          <span class="text-xs text-gray-500 uppercase">{{ product.vendor }} &#x00AE;</span>
+        </div>
+
+        <div class="my-3">
+          <h1 class="text-3xl text-gray-900">{{ product.title }}</h1>
+        </div>
+
+        <div class="my-3">
+          {% assign product_price = product.selected_or_first_available_variant %}
+          <span class="text-base text-gray-500 line-through uppercase">
+            {{- product_price.compare_at_price | money -}}
+          </span>
+          <span class="text-lg text-gray-900 uppercase">{{ product_price.price | money }}</span>
+          {% if product_price.price < product_price.compare_at_price %}
+            <span class="px-5 py-1 mx-4 text-sm font-bold text-white rounded-full bg-secondary">Sale</span>
+          {% endif %}
+        </div>
+
+        {% comment %} VARIANTS {% endcomment %}
+        <div class="my-3">
+          {% unless product.has_only_default_variant %}
+            <div data-url="{{ product.url }}" data-section="{{ section.id }}">
+              {% for option in product.options_with_values %}
+                <label for="Option-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
+
+                <div class="my-2">
+                  <select
+                    name="options[{{ option.name | escape }}]"
+                    id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                    class="w-full px-3 py-3 border"
+                  >
+                    {% for value in option.values %}
+                      <option
+                        value="{{ value | escape }}"
+                        {% if option.selected_value == value %}
+                          selected="selected"
+                        {% endif %}
+                      >
+                        {{ value }}
+                      </option>
+                    {% endfor %}
+                  </select>
+                </div>
+              {% endfor %}
+            </div>
+          {% endunless %}
+        </div>
+
+        {% comment %} AMOUNT {% endcomment %}
+
+        <div class="flex items-center gap-4">
+          <div class="my-3">
+            <label for="Quantity--{{ section.id }}" class="font-bold uppercase">Aantal</label>
+
+            <div class="my-3">
+              <input
+                class="w-full p-2 border"
+                type="number"
+                name="quantity"
+                id="Quantity-{{ section.id }}"
+                value="1"
+                min="1"
+              >
+            </div>
+          </div>
+
+          {% assign selected_product = product.selected_or_first_available_variant %}
+          <div class="self-center my-3 translate-y-[22%]">
+            <button
+              type="submit"
+              name="add"
+              class="{% if selected_product.available == true %} w-full p-3 text-white uppercase transition-all duration-300 ease-in-out rounded-full shadow-sm  active:shadow-sm hover:shadow-xl bg-secondary hover:bg-red-400 {% else %} w-full p-3 text-white uppercase transition-all duration-300 ease-in-out rounded-full shadow-sm bg-gray-400 cursor-not-allowed {% endif %}"
+              {% if selected_product.available == false %}
+                disabled="disabled"
+              {% endif %}
+            >
+              {% if selected_product.available == false %}
+                Sold Out
+              {% else %}
+                Koop Nu
+              {% endif %}
+            </button>
+          </div>
+        </div>
+        {% comment %} DESCRIPTION {% endcomment %}
+
+        <div class="my-3">
+          <p class="text-gray-700">{{ product.description }}</p>
+        </div>
+
+        {% comment %} ADD TO CART {% endcomment %}
+        {% assign selected_product = product.selected_or_first_available_variant %}
+        <div class="my-3">
+          <button
+            type="submit"
+            name="add"
+            class="{% if selected_product.available == true %} w-full p-3 text-white uppercase transition-all duration-300 ease-in-out rounded-full shadow-sm  active:shadow-sm hover:shadow-xl bg-secondary hover:bg-red-400 {% else %} w-full p-3 text-white uppercase transition-all duration-300 ease-in-out rounded-full shadow-sm bg-gray-400 cursor-not-allowed {% endif %}"
+            {% if selected_product.available == false %}
+              disabled="disabled"
+            {% endif %}
+          >
+            {% if selected_product.available == false %}
+              Sold Out
+            {% else %}
+              Toevoegen aan winkelmandje
+            {% endif %}
+          </button>
+        </div>
+      {% endform %}
+    </article>
+  </div>
+</article>
+
+<script>
+  const swiper = new Swiper('.swiper', {
+    direction: 'horizontal',
+
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>

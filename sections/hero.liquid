@@ -1,0 +1,66 @@
+<!--
+  Heads up! 👋
+
+  This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
+-->
+
+{% assign default_product = all_products['tedroka-c-fly-drone-met-gps-4k-camera-vliegtijd-van-52-minuten-fpv-borstelloze-drone-professionele-drone-4k-uhd-video-inclusief-2-batterijen-powerbank-10-000-mah-draagbaretas-en-64-gb-sd-kaart'] %}
+{% assign product = all_products[section.settings.product_highlight] %}
+{% if product == null %}
+  {% assign product = default_product %}
+{% endif %}
+<section
+  class="relative hero-section bg-cover bg-center bg-no-repeat"
+  style="background-image: url({{ 'Heading_Image.png' | file_url }})"
+>
+  <div
+    class="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8"
+  >
+    <div class="grid grid-cols-1 md:grid-cols-2">
+      <div class=" max-w-xl text-center sm:text-left">
+        <h1 class="text-3xl text-white uppercase font-extrabold sm:text-5xl">
+          Tedroka &reg;
+          <strong class="block font-extrabold text-secondary">C-FLY-DRONE</strong>
+        </h1>
+
+        <p class="mt-4 max-w-lg uppercase sm:text-xl/relaxed text-white">
+          {{ product.title }}
+        </p>
+
+        <figure class="md:hidden">
+          <img
+            src="{{ product.images | last | img_url: 'large'}}"
+            alt=""
+            height="476"
+            width="780"
+            class=""
+          >
+        </figure>
+        <div class="mt-8 flex flex-wrap gap-4 text-center">
+          {% render 'buy-now-read-more-form', product: product %}
+        </div>
+      </div>
+      <figure class="hidden md:block">
+        <img
+          src="{{ product.images | last | img_url: 'large'}}"
+          alt=""
+          height="476"
+          width="780"
+          class=""
+        >
+      </figure>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product_highlight",
+      "label": "Hero"
+    }
+  ]
+}
+{% endschema %}

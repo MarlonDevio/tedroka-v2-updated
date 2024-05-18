@@ -1,0 +1,63 @@
+<section
+  class="relative  overflow-hidden bg-primary pb-12 pt-20 before:absolute before:inset-0 before:w-full before:bg-black before:opacity-60 lg:pb-[90px] lg:pt-[120px]"
+  style="background-image: url(https://readymadeui.com/dark-bg-image.webp); background-size: cover; background-repeat: no-repeat"
+>
+  {% assign highlighted_product_handle = all_products['c-fly-mini-drone-met-gps-4k-camera'] %}
+  <article class="body-font relative z-10 grid grid-cols-2">
+    <div class="container mx-auto flex flex-wrap px-5 py-24">
+      <div class="mb-10 flex w-full flex-col items-center overflow-hidden rounded-lg lg:mb-0 lg:w-1/2">
+        <figure class="text-center">{% render 'logo' %}</figure>
+        <figure class="rounded-3xl p-10">
+          <img
+            alt="feature"
+            class="h-full w-full rounded-xl object-cover object-center"
+            src="{{ highlighted_product_handle.featured_image | img_url: 'large' }}"
+          >
+        </figure>
+      </div>
+      <div>
+        <h2 class="text-center text-3xl font-medium">Vlieg Erboven En Verder.</h2>
+        {% render 'buy-now-btn', product: highlighted_product_handle %}
+      </div>
+    </div>
+    {% comment %} Right col {% endcomment %}
+  </article>
+</section>
+
+<!-- ========== END FOOTER ========== -->
+{% schema %}
+{
+  "name": "Highlighted product",
+  "settings": [
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": "Featured product"
+    },
+    {
+      "type": "text",
+      "id": "bullet_point_1",
+      "label": "Bullet point 1",
+      "default": "4k esc dubbele camera"
+    },
+    {
+      "type": "text",
+      "id": "bullet_point_2",
+      "label": "Bullet point 2",
+      "default": "gps terugkeer"
+    },
+    {
+      "type": "text",
+      "id": "bullet_point_3",
+      "label": "Bullet point 3",
+      "default": "schoonheidsschot"
+    },
+    {
+      "type": "text",
+      "id": "bullet_point_4",
+      "label": "Bullet point 4",
+      "default": "eid stabilisatie"
+    }
+  ]
+}
+{% endschema %}

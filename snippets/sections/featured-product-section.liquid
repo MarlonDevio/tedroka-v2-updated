@@ -1,0 +1,60 @@
+{% assign featured_product_handle = all_products['tedroka-c-fly-drone-met-gps-4k-camera-vliegtijd-van-52-minuten-fpv-borstelloze-drone-professionele-drone-4k-uhd-video-inclusief-2-batterijen-powerbank-10-000-mah-draagbaretas-en-64-gb-sd-kaart'] %}
+<section class="py-[100px]">
+  <h2 class="text-3xl font-bold uppercase">eindeloze mogelijkheden</h2>
+  <div class="mx-auto py-[50px] flex gap-4 ">
+    <div class="basis-1/2">{% render 'featured-product' %}</div>
+    <div class="basis-1/2">
+      <h3 class="font-bold uppercase ">{{ featured_product_handle.title }}</h3>
+      <div class="flex flex-col">
+        <div class="flex gap-4 mt-4">
+          {% render '4k-icons' %}
+          <p class="uppercase">{{ section.settings.bullet_point_1 }}</p>
+        </div>
+        <div class="flex gap-4 mt-4">
+          {% render 'gps-icon' %}
+          <p class="uppercase">{{ section.settings.bullet_point_2 }}</p>
+        </div>
+        <div class="flex gap-4 mt-4">
+          {% render 'camera-icon' %}
+          <p class="uppercase">{{ section.settings.bullet_point_3 }}</p>
+        </div>
+        <div class="flex gap-4 mt-4">
+          {% render 'stability-icon' %}
+          <p class="uppercase">{{ section.settings.bullet_point_4 }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured product section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "bullet_point_1",
+      "label": "Bullet point 1",
+      "default": "4k esc dubbele camera"
+    },
+    {
+      "type": "text",
+      "id": "bullet_point_2",
+      "label": "Bullet point 2",
+      "default": "gps terugkeer"
+    },
+    {
+      "type": "text",
+      "id": "bullet_point_3",
+      "label": "Bullet point 3",
+      "default": "schoonheidsschot"
+    },
+    {
+      "type": "text",
+      "id": "bullet_point_4",
+      "label": "Bullet point 4",
+      "default": "eid stabilisatie"
+    }
+  ]
+}
+{% endschema %}
