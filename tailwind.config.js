@@ -64,5 +64,5 @@ module.exports = {
       94: "22rem",
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };

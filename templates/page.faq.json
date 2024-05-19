@@ -2,7 +2,10 @@
   "sections": {
     "faq": {
       "type": "faq"
+    },
+    "section-footer": {
+      "type": "section-footer"
     }
   },
-  "order": ["faq"]
+  "order": ["faq", "section-footer"]
 }

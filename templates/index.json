@@ -39,8 +39,8 @@
       }
     },
     "section-footer": {
+      "type": "section-footer",
       "settings": {
-        "type": "section-footer",
         "footer_facebook_url": "https://facebook.com/yourcompany",
         "footer_instagram_url": "https://instagram.com/yourcompany",
         "footer_twitter_url": "https://twitter.com/yourcompany",

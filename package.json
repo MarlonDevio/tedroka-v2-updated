@@ -3,15 +3,15 @@
   "version": "1.1.0",
   "description": "[![Generic badge](https://img.shields.io/badge/course%20available%3F-yes-green.svg)](https://shields.io/)",
   "main": "index.js",
-
   "author": "Marlon Hamaekers",
   "license": "ISC",
   "devDependencies": {
+    "@shopify/prettier-plugin-liquid": "^1.4.4",
+    "@tailwindcss/forms": "^0.5.7",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.3",
     "prettier-plugin-tailwindcss": "^0.5.14",
-    "@shopify/prettier-plugin-liquid": "^1.4.4"
+    "tailwindcss": "^3.4.3"
   },
   "scripts": {
     "dev": "shopify theme dev --store tedroka",
