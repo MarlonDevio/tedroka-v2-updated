@@ -1,0 +1,8 @@
+{
+  "sections": {
+    "faq": {
+      "type": "faq"
+    }
+  },
+  "order": ["faq"]
+}
