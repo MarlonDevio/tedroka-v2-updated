@@ -1,0 +1,36 @@
+{% assign main_menu_navigation_links = linklists['main-menu-navigation-links'].links %}
+
+<header class="relative px-2 py-4 bg-primary md:px-5 md:py-3">
+  <div class="items-center justify-between hidden mx-auto laptop:flex max-w-7xl">
+    {% render 'navigation-container', links: main_menu_navigation_links, classes: 'text-white list-none' %}
+
+    {% render 'logo' %}
+    {% comment %}Second block{% endcomment %}
+    <ul class="flex gap-2 nav-links-container justify-self-end">
+      <li class="flex items-center px-2">
+        <a
+          class="main-menu-link flex p-1.5 text-white"
+          href="{{ routes.cart_url }}"
+        >
+          {%- render 'cart-svg' -%}
+        </a>
+      </li>
+      <li class="flex items-center px-2">
+        <a
+          class="main-menu-link flex p-1.5 text-white"
+          href="{{ routes.search_url }}"
+        >
+          {%- render 'search-svg' -%}
+        </a>
+      </li>
+      <li class="flex items-center px-2">
+        <a
+          class="main-menu-link flex p-1.5 text-white"
+          href="https://tedroka.nl/apps/parcelpanel"
+        >
+          {% render 'track-order-svg' %}
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>

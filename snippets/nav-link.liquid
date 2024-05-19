@@ -1,0 +1,30 @@
+<li class="px-4 py-1 font-bold uppercase transition-all duration-300 ease-in-out rounded-md md:py-2 hover:text-primary hover:bg-white">
+  <a class="flex" href="{{ link.url }}">
+    {{ link.title }}
+    {% if link.type == 'collection_link' %}
+      {% render 'chevron-svg' %}
+    {% endif -%}
+  </a>
+  {% if link.type == 'collection_link' %}
+    {% assign collection_handle = link.url | split: '/' | last %}
+    {% assign collection = collections[collection_handle] %}
+
+    <ul class="absolute left-0 z-10 hidden w-full text-white h-min-screen">
+      {% render 'navigation-product-dropdown', product_handle: collection.title %}
+    </ul>
+  {% endif %}
+</li>
+
+<script>
+  document.querySelectorAll('li').forEach(function (li) {
+    var dropdown = li.querySelector('ul');
+    if (dropdown) {
+      li.addEventListener('mouseover', function () {
+        dropdown.style.display = 'block';
+      });
+      li.addEventListener('mouseout', function () {
+        dropdown.style.display = 'none';
+      });
+    }
+  });
+</script>

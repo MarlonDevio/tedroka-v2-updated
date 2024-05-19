@@ -1,0 +1,40 @@
+{% comment %} Product card {% endcomment %}
+<div class="flex w-full flex-col px-3 py-6 transition-all duration-300 ease-in-out hover:translate-y-[-0.25rem]">
+  {% comment %} Start card {% endcomment %}
+  <div
+    style="background-color: {{ background_colour }}"
+    class="flex flex-col overflow-hidden transition-all duration-300 ease-in-out border rounded-lg shadow-lg grow hover:shadow-2xl"
+  >
+    <a href="{{ product.url }}">
+      {% if product.featured_image %}
+        <div class="overflow-hidden h-80 hover:cursor-pointer">
+          <img
+            src="{{ product.featured_image | image_url }}"
+            height="450"
+            width="450"
+            alt="{{ product.title }}"
+            class="object-contain w-full h-full p-4 transition-all duration-300 ease-in-out hover:scale-105 hover:transform hover:cursor-pointer"
+          >
+        </div>
+
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'w-full h-full object-contain' }}
+      {% endif %}
+    </a>
+    {% comment %} Card Description {% endcomment %}
+    <div class="flex flex-col gap-4 p-4 grow">
+      <span class="text-sm uppercase text-gray-light">{{ product.vendor }}®</span>
+
+      <a href="{{ product.url }}" class="text-sm font-medium uppercase text-gray-dark hover:cursor-pointer">
+        {{ product.title | remove: 'Tedroka' | remove: '®' }}
+      </a>
+
+      <div class="flex items-center justify-between mt-auto">
+        <p class="p-1 mt-auto text-xl font-bold border rounded-full shadow-md border-md border-secondary text-gray-darker">
+          {{ product.price | money }}
+        </p>
+        {% render 'buy-now-read-more-form', product: product %}
+      </div>
+    </div>
+  </div>
+</div>
