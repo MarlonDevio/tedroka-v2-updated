@@ -1,0 +1,8 @@
+{
+  "sections": {
+    "template-shipment-policy": {
+      "type": "template-shipment-policy"
+    }
+  },
+  "order": ["template-shipment-policy"]
+}

@@ -1,0 +1,8 @@
+{
+  "sections": {
+    "template-conditions-policy": {
+      "type": "template-conditions-policy"
+    }
+  },
+  "order": ["template-conditions-policy"]
+}
