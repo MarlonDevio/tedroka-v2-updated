@@ -5,66 +5,67 @@
   {% assign highlighted_product_handle = all_products['c-fly-mini-drone-met-gps-4k-camera'] %}
   {% assign highlighted_product = all_products[highlighted_product_handle] %}
 
-  <div class="relative z-50 mx-auto ml-4 space-y-6">
-    {% render 'logo' %}
-  </div>
-  <div class="container relative z-50 flex items-center justify-center px-4 py-12 mx-auto sm:px-6 2xl:px-0">
-    <div class="flex flex-col items-center justify-center space-y-6 lg:flex-row lg:space-y-0">
-      <div class="flex flex-col items-start justify-start w-80 sm:w-auto">
-        <div>
-          <p class="text-3xl font-semibold leading-9 text-white xl:text-4xl dark:text-white">
-            Vlieg Erboven. En <span class="text-secondary">Erover.</span>
-          </p>
-        </div>
-        <div class="mt-4 lg:w-4/5 xl:w-3/5">
-          <p class="text-base leading-6 text-white dark:text-white">
-            De Drone van de toekomst. Met 4k esc dubbele camera, gps terugkeer, schoonheidsschot en eid stabilisatie.
-          </p>
-        </div>
-        <div class="flex items-start w-full mt-16">
-          {% render 'buy-now-btn', product: highlighted_product %}
-        </div>
-      </div>
-
-      <div class="flex flex-col items-center space-y-4 sm:flex-row jusitfy-center sm:space-x-5 xl:space-x-8 sm:space-y-0">
-        <div class="">
-          <img
-            class="hidden lg:block"
-            src="{{ highlighted_product_handle.featured_image | img_url: 'large' }}"
-            alt="sofa"
-          >
-        </div>
-        <div class="flex flex-col items-center justify-center space-y-4 sm:space-y-0 sm:space-y-5 lg:space-y-5 xl:space-y-8">
+  <div class="mx-auto max-w-7xl">
+    <div class="relative z-50 mx-auto ml-4 space-y-6">
+      {% render 'logo' %}
+    </div>
+    <div class="container relative z-50 flex items-center justify-center px-4 py-12 mx-auto sm:px-6 2xl:px-0">
+      <div class="flex flex-col items-center justify-center space-y-6 lg:flex-row lg:space-y-0">
+        <div class="flex flex-col items-start justify-start w-80 sm:w-auto">
           <div>
+            <p class="text-3xl font-semibold leading-9 text-white xl:text-4xl dark:text-white">
+              Vlieg Erboven. En <span class="text-secondary">Erover.</span>
+            </p>
+          </div>
+          <div class="mt-4 lg:w-4/5 xl:w-3/5">
+            <p class="text-base leading-6 text-white dark:text-white">
+              De Drone van de toekomst. Met 4k esc dubbele camera, gps terugkeer, schoonheidsschot en eid stabilisatie.
+            </p>
+          </div>
+          <div class="flex items-start w-full mt-16">
+            {% render 'buy-now-btn', product: highlighted_product %}
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center space-y-4 sm:flex-row jusitfy-center sm:space-x-5 xl:space-x-8 sm:space-y-0">
+          <div class="">
             <img
               class="hidden lg:block"
-              src="{{ highlighted_product_handle.images[5] | img_url: 'medium' }}"
-              alt="chairs"
-            >
-            <img
-              class="w-80 sm:w-auto lg:hidden"
-              src="{{ highlighted_product_handle.images[6] | img_url: 'medium' }}"
-              alt="chairs"
+              src="{{ highlighted_product_handle.featured_image | img_url: 'large' }}"
+              alt="sofa"
             >
           </div>
-          <div>
-            <img
-              class="hidden lg:block"
-              src="{{ highlighted_product_handle.images[7] | img_url: 'medium' }}"
-              alt="chairs"
-            >
-            <img
-              class="w-80 sm:w-auto lg:hidden"
-              src="{{ highlighted_product_handle.images[3] | img_url: 'medium' }}"
-              alt="chairs"
-            >
+          <div class="flex flex-col items-center justify-center space-y-4 sm:space-y-0 sm:space-y-5 lg:space-y-5 xl:space-y-8">
+            <div>
+              <img
+                class="hidden lg:block"
+                src="{{ highlighted_product_handle.images[5] | img_url: 'medium' }}"
+                alt="chairs"
+              >
+              <img
+                class="w-80 sm:w-auto lg:hidden"
+                src="{{ highlighted_product_handle.images[6] | img_url: 'medium' }}"
+                alt="chairs"
+              >
+            </div>
+            <div>
+              <img
+                class="hidden lg:block"
+                src="{{ highlighted_product_handle.images[7] | img_url: 'medium' }}"
+                alt="chairs"
+              >
+              <img
+                class="w-80 sm:w-auto lg:hidden"
+                src="{{ highlighted_product_handle.images[3] | img_url: 'medium' }}"
+                alt="chairs"
+              >
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 <!-- ========== END FOOTER ========== -->
 {% schema %}
 {
