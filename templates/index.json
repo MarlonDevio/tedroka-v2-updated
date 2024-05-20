@@ -13,6 +13,14 @@
         "title": "Ontdek de C-51 Fly Drone"
       }
     },
+    "section-highlighted-collections": {
+      "type": "section-highlighted-collections",
+      "settings": {
+        "collection_1": "c-fly-drone",
+        "collection_2": "accessoires",
+        "collection_3": "drones"
+      }
+    },
     "section-trusted-by": {
       "type": "section-trusted-by",
       "settings": {
@@ -68,6 +76,7 @@
   "order": [
     "hero",
     "section-new-collection",
+    "section-highlighted-collections",
     "section-testimonials",
     "section-trusted-by",
     "section-product-carousel",
