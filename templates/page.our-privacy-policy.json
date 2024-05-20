@@ -1,8 +1,8 @@
 {
   "sections": {
-    "template": {
+    "template-our-privacy-policy": {
       "type": "template-privacy-policy"
     }
   },
-  "order": ["template"]
+  "order": ["template-our-privacy-policy"]
 }
