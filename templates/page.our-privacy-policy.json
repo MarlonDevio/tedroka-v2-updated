@@ -1,7 +1,7 @@
 {
   "sections": {
     "template-our-privacy-policy": {
-      "type": "template-privacy-policy"
+      "type": "template-our-privacy-policy"
     }
   },
   "order": ["template-our-privacy-policy"]
