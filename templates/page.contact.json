@@ -1,8 +1,8 @@
 {
   "sections": {
-    "contact-us": {
-      "type": "contact-us"
+    "template-contact-us": {
+      "type": "template-contact-us"
     }
   },
-  "order": ["contact-us"]
+  "order": ["template-contact-us"]
 }
