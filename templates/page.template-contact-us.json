@@ -2,11 +2,8 @@
   "sections": {
     "contact-us": {
       "type": "contact-us",
-      "settings": {
-      }
+      "settings": {}
     }
   },
-  "order": [
-    "contact-us"
-  ]
+  "order": ["contact-us"]
 }

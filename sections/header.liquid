@@ -1,12 +1,21 @@
 {% assign main_menu_navigation_links = linklists['main-menu-navigation-links'].links %}
 
-<header class="relative bg-primary px-2 py-4 md:px-5 md:py-3">
-  <div class="mx-auto hidden max-w-7xl items-center justify-between laptop:flex">
-    {% render 'navigation-container', links: main_menu_navigation_links, classes: 'text-white list-none' %}
+<header class="flex px-2 py-4 bg-primary md:px-5 md:py-3">
+  <div class="items-center mx-auto laptop:justify-between flex-nowrap min-w-7xl laptop:flex">
+    {% comment %} horizontal {% endcomment %}
+    {% render 'navigation-container',
+      links: main_menu_navigation_links,
+      classes: 'text-white hidden laptop:flex list-none'
+    %}
+    {% comment %} vertical {% endcomment %}
+    {% render 'navigation-container',
+      links: main_menu_navigation_links,
+      classes: 'text-red-500 left-0 flex flex-col absolute bg-black top-0 flex-col laptop:hidden list-none z-50'
+    %}
 
     {% render 'logo' %}
     {% comment %}Second block{% endcomment %}
-    <ul class="nav-links-container flex gap-2 justify-self-end">
+    <ul class="flex gap-2 nav-links-container justify-self-end">
       <li class="flex items-center px-2">
         <a
           class="main-menu-link flex p-1.5 text-white"
@@ -20,7 +29,7 @@
           class="main-menu-link flex p-1.5 text-white"
           href="{{ routes.search_url }}"
         >
-          {%- render 'icon-search-svg' -%}
+          {%- render 'icon-search' -%}
         </a>
       </li>
       <li class="flex items-center px-2">

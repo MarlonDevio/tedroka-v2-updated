@@ -1310,6 +1310,10 @@ select {
   flex-wrap: wrap;
 }
 
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
 .items-start {
   align-items: flex-start;
 }
@@ -1483,6 +1487,11 @@ select {
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
 .bg-gray-100 {
@@ -1921,6 +1930,11 @@ select {
   letter-spacing: -0.025em;
 }
 
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
 .text-blue-800 {
   --tw-text-opacity: 1;
   color: rgb(30 64 175 / var(--tw-text-opacity));
@@ -1991,6 +2005,11 @@ select {
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+
 .text-red-600 {
   --tw-text-opacity: 1;
   color: rgb(220 38 38 / var(--tw-text-opacity));
@@ -2004,11 +2023,6 @@ select {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-black {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -2608,6 +2622,14 @@ select {
   .tablet\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .tablet\:justify-between {
+    justify-content: space-between;
+  }
+
+  .tablet\:gap-4 {
+    gap: 1rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -2737,8 +2759,21 @@ select {
     display: flex;
   }
 
-  .laptop\:flex-row {
-    flex-direction: row;
+  .laptop\:hidden {
+    display: none;
+  }
+
+  .laptop\:justify-between {
+    justify-content: space-between;
+  }
+
+  .laptop\:gap-4 {
+    gap: 1rem;
+  }
+
+  .laptop\:py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 }
 
