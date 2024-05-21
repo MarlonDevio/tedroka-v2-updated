@@ -2,13 +2,28 @@
 
 {% assign collection_handle = link.url | split: '/' | last %}
 {% assign collection = collections[collection_handle] %}
-<header class="px-2 py-4 laptop:py-6 bg-primary laptop:px-4">
+
+<style>
+  .expand-menu {
+    left: 0;
+  }
+
+  .closed-menu {
+    left: -100%;
+  }
+
+  .hamburger {
+    z-index: 1000000;
+    color: black;
+  }
+</style>
+<header class="relative px-2 py-4 laptop:py-6 bg-primary laptop:px-4">
   {% comment %} Laptop Screen {% endcomment %}
 
-  <nav class="items-center justify-between hidden mx-auto max-w-7xl laptop:flex">
+  <nav class="flex items-center justify-between mx-auto max-w-7xl">
     {% comment %} Left link container {% endcomment %}
 
-    <div class="flex gap-4 font-bold text-white uppercase left-link-container">
+    <div class="hidden gap-4 font-bold text-white uppercase laptop:flex left-link-container">
       <ul class="flex items-center gap-4 list-none">
         {% for link in main_menu_navigation_links %}
           <li class="text-white uppercase">
@@ -25,6 +40,22 @@
         {% endfor %}
       </ul>
       {% render 'logo' %}
+    </div>
+
+    <div class="flex flex-col laptop:hidden">
+      {% render 'hamburger-menu', menu_class: 'hamburger relative z-50' %}
+      <ul class="absolute z-20 flex-col flex min-h-[100vh] min-w-[50vw] navigation-container-mobile bg-white gap-2 px-4 py-2 text-primary rounded-md transition-all duration-500 ease-in-out  closed-menu  top-0 pt-[60px]">
+        {% for link in main_menu_navigation_links %}
+          <li class="inline-block p-2 text-base uppercase rounded-md hover:bg-primary hover:text-white">
+            <a class="flex" href="{{ link.url }}">
+              {{- link.title }}
+              {% if link.type == 'collection_link' %}
+                {% render 'chevron-svg' %}
+              {% endif %}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
     </div>
 
     {% comment %} Right links container {% endcomment %}
@@ -57,21 +88,6 @@
   </nav>
 
   {% comment %} MOBILE {% endcomment %}
-  <nav class="relative flex flex-col mx-auto max-w-7xl laptop:hidden">
-    {% render 'hamburger-menu', menu_class: 'relative z-50' %}
-    <ul class="absolute z-20 flex flex-col min-h-[100vh] gap-2 px-4 py-2 text-white rounded-md bg-secondary top-10">
-      {% for link in main_menu_navigation_links %}
-        <li class="inline-block text-base uppercase rounded-md hover:bg-white hover:text-primary p2">
-          <a class="flex" href="{{ link.url }}">
-            {{- link.title }}
-            {% if link.type == 'collection_link' %}
-              {% render 'chevron-svg' %}
-            {% endif %}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </nav>
 </header>
 
 <script>
@@ -79,13 +95,13 @@
   const hamburger = document.getElementById('check');
   const navContainerMobile = document.querySelector('.navigation-container-mobile');
 
-  const toggleSubMenu = (flagElement, submenuElement) => {
-    if (flagElement) {
-      submenuElement.classList.remove('hidden');
-      submenuElement.style.width = '100%';
+  const toggleSubMenu = (isChecked, submenuElement) => {
+    if (isChecked) {
+      submenuElement.classList.remove('closed-menu');
+      submenuElement.classList.add('expand-menu');
     } else {
-      submenuElement.classList.add('hidden');
-      submenuElement.style.width = '0';
+      submenuElement.classList.add('closed-menu');
+      submenuElement.classList.remove('expand-menu');
     }
   };
   hamburger.addEventListener('click', () => {
