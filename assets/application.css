@@ -2358,6 +2358,12 @@ select {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+@media (min-width: 480px) {
+  .mobile\:justify-center {
+    justify-content: center;
+  }
+}
+
 @media (min-width: 640px) {
   .sm\:left-\[calc\(50\%-40rem\)\] {
     left: calc(50% - 40rem);
@@ -2418,6 +2424,10 @@ select {
 
   .sm\:flex-row {
     flex-direction: row;
+  }
+
+  .sm\:justify-center {
+    justify-content: center;
   }
 
   .sm\:gap-12 {
