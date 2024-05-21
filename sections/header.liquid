@@ -1,82 +1,35 @@
-<style>
-  label {
-    display: flex;
-    flex-direction: column;
-    width: 40px;
-    cursor: pointer;
-  }
-
-  label span {
-    background: #fff;
-    border-radius: 10px;
-    height: 5px;
-    margin: 3px 0;
-    transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-  }
-
-  span:nth-of-type(1) {
-    width: 50%;
-  }
-
-  span:nth-of-type(2) {
-    width: 100%;
-  }
-
-  span:nth-of-type(3) {
-    width: 75%;
-  }
-
-  input[type='checkbox'] {
-    display: none;
-  }
-
-  input[type='checkbox']:checked ~ span:nth-of-type(1) {
-    transform-origin: bottom;
-    transform: rotatez(45deg) translate(4px, -1px);
-  }
-
-  input[type='checkbox']:checked ~ span:nth-of-type(2) {
-    transform-origin: top;
-    transform: rotatez(-45deg);
-  }
-
-  input[type='checkbox']:checked ~ span:nth-of-type(3) {
-    transform-origin: bottom;
-    width: 50%;
-    transform: translate(18px, -5px) rotatez(45deg);
-  }
-</style>
-
 {% assign main_menu_navigation_links = linklists['main-menu-navigation-links'].links %}
 
-<header class="px-2 py-4 bg-primary md:px-8 md:py-3">
-  <div class="relative flex items-center mx-auto flex-nowrap max-w-7xl laptop:flex">
-    {% comment %} horizontal {% endcomment %}
-    {% render 'navigation-container',
-      links: main_menu_navigation_links,
-      classes: 'text-white hidden laptop:flex list-none'
-    %}
-    {% comment %} mobile menu {% endcomment %}
+{% assign collection_handle = link.url | split: '/' | last %}
+{% assign collection = collections[collection_handle] %}
+<header class="px-2 py-4 laptop:py-6 bg-primary laptop:px-4">
+  {% comment %} Laptop Screen {% endcomment %}
 
-    <div class="mobile-menu laptop:hidden">
-      <label for="check">
-        <input type="checkbox" id="check">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-      {% render 'navigation-container',
-        links: main_menu_navigation_links,
-        classes: 'navigation-container-mobile hidden text-primary py-4 px-2 left-0 w-[0] transition-all duration-300 ease-in-out flex flex-col absolute bg-white top-10 flex-col laptop:hidden list-none z-50'
-      %}
-    </div>
+  <nav class="items-center justify-between hidden mx-auto max-w-7xl laptop:flex">
+    {% comment %} Left link container {% endcomment %}
 
-    <div class="hidden laptop:inline-block">
+    <div class="flex gap-4 font-bold text-white uppercase left-link-container">
+      <ul class="flex items-center gap-4 list-none">
+        {% for link in main_menu_navigation_links %}
+          <li class="text-white uppercase">
+            <a
+              href="{{ link.url }}"
+              class="flex p-2 transition-all duration-300 ease-in-out rounded-md hover:bg-white hover:text-primary hover:cursor-pointer"
+            >
+              {{ link.title }}
+              {% if link.type == 'collection_link' %}
+                {% render 'chevron-svg' %}
+              {% endif %}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
       {% render 'logo' %}
     </div>
-    {% comment %}second block{% endcomment %}
+
+    {% comment %} Right links container {% endcomment %}
     <ul class="flex gap-2 ml-auto nav-links-container">
-      <li class="flex items-center px-2">
+      <li class="flex items-center px-2 hover:cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.5]">
         <a
           class="main-menu-link flex p-1.5 text-white"
           href="{{ routes.cart_url }}"
@@ -84,7 +37,7 @@
           {%- render 'cart-svg' -%}
         </a>
       </li>
-      <li class="flex items-center px-2">
+      <li class="flex items-center px-2 hover:cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.5]">
         <a
           class="main-menu-link flex p-1.5 text-white"
           href="{{ routes.search_url }}"
@@ -92,7 +45,7 @@
           {%- render 'icon-search' -%}
         </a>
       </li>
-      <li class="flex items-center px-2">
+      <li class="flex items-center px-2 hover:cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.5]">
         <a
           class="main-menu-link flex p-1.5 text-white"
           href="https://tedroka.nl/apps/parcelpanel"
@@ -101,10 +54,28 @@
         </a>
       </li>
     </ul>
-  </div>
+  </nav>
+
+  {% comment %} MOBILE {% endcomment %}
+  <nav class="relative flex flex-col mx-auto max-w-7xl laptop:hidden">
+    {% render 'hamburger-menu', menu_class: 'relative z-50' %}
+    <ul class="absolute z-20 flex flex-col min-h-[100vh] gap-2 px-4 py-2 text-white rounded-md bg-secondary top-10">
+      {% for link in main_menu_navigation_links %}
+        <li class="inline-block text-base uppercase rounded-md hover:bg-white hover:text-primary p2">
+          <a class="flex" href="{{ link.url }}">
+            {{- link.title }}
+            {% if link.type == 'collection_link' %}
+              {% render 'chevron-svg' %}
+            {% endif %}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
 </header>
 
 <script>
+  // the check id is declared in the hamburger-menu.liquid snippet
   const hamburger = document.getElementById('check');
   const navContainerMobile = document.querySelector('.navigation-container-mobile');
 
@@ -119,5 +90,7 @@
   };
   hamburger.addEventListener('click', () => {
     toggleSubMenu(hamburger.checked, navContainerMobile);
+    console.log(hamburger);
+    console.log(hamburger.checked);
   });
 </script>
