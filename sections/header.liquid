@@ -1,21 +1,35 @@
 {% assign main_menu_navigation_links = linklists['main-menu-navigation-links'].links %}
 
-<header class="flex px-2 py-4 bg-primary md:px-5 md:py-3">
-  <div class="items-center mx-auto laptop:justify-between flex-nowrap min-w-7xl laptop:flex">
+<header class="px-2 py-4 bg-primary md:px-8 md:py-3">
+  <div class="relative flex items-center mx-auto flex-nowrap max-w-7xl laptop:flex">
     {% comment %} horizontal {% endcomment %}
     {% render 'navigation-container',
       links: main_menu_navigation_links,
       classes: 'text-white hidden laptop:flex list-none'
     %}
-    {% comment %} vertical {% endcomment %}
-    {% render 'navigation-container',
-      links: main_menu_navigation_links,
-      classes: 'text-red-500 left-0 flex flex-col absolute bg-black top-0 flex-col laptop:hidden list-none z-50'
-    %}
+    {% comment %} MOBILE MENU {% endcomment %}
+    <button
+      class="flex flex-col items-center justify-center w-12 h-12 text-white border-2 border-white rounded group"
+    >
+      <div class="w-6 h-1 my-[3px] text-white bg-white border-[1px] "></div>
+      <div class="w-6 h-1 my-[3px] text-white bg-white border-[1px]"></div>
+      <div class="w-6 h-1 my-[3px] text-white bg-white border-[1px]"></div>
+    </button>
+    <div class="mobile-menu">
+      <div class="relative inline-block hamburger-menu laptop:hidden hover:cursor-pointer">
+        {% render 'icon-hamburger' %}
+        {% render 'navigation-container',
+          links: main_menu_navigation_links,
+          classes: 'navigation-container-mobile text-red-500 left-0 flex flex-col absolute bg-black top-20 flex-col hidden laptop:hidden list-none z-50'
+        %}
+      </div>
+    </div>
 
-    {% render 'logo' %}
+    <div class="hidden laptop:inline-block">
+      {% render 'logo' %}
+    </div>
     {% comment %}Second block{% endcomment %}
-    <ul class="flex gap-2 nav-links-container justify-self-end">
+    <ul class="flex gap-2 ml-auto nav-links-container">
       <li class="flex items-center px-2">
         <a
           class="main-menu-link flex p-1.5 text-white"
@@ -43,3 +57,9 @@
     </ul>
   </div>
 </header>
+
+<script>
+  document.querySelector('.hamburger-menu').addEventListener('click', function () {
+    document.querySelector('.navigation-container-mobile').classList.toggle('hidden');
+  });
+</script>
