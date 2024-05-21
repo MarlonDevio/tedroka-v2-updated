@@ -1,3 +1,52 @@
+<style>
+  label {
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+    cursor: pointer;
+  }
+
+  label span {
+    background: #fff;
+    border-radius: 10px;
+    height: 5px;
+    margin: 3px 0;
+    transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  }
+
+  span:nth-of-type(1) {
+    width: 50%;
+  }
+
+  span:nth-of-type(2) {
+    width: 100%;
+  }
+
+  span:nth-of-type(3) {
+    width: 75%;
+  }
+
+  input[type='checkbox'] {
+    display: none;
+  }
+
+  input[type='checkbox']:checked ~ span:nth-of-type(1) {
+    transform-origin: bottom;
+    transform: rotatez(45deg) translate(4px, -1px);
+  }
+
+  input[type='checkbox']:checked ~ span:nth-of-type(2) {
+    transform-origin: top;
+    transform: rotatez(-45deg);
+  }
+
+  input[type='checkbox']:checked ~ span:nth-of-type(3) {
+    transform-origin: bottom;
+    width: 50%;
+    transform: translate(18px, -5px) rotatez(45deg);
+  }
+</style>
+
 {% assign main_menu_navigation_links = linklists['main-menu-navigation-links'].links %}
 
 <header class="px-2 py-4 bg-primary md:px-8 md:py-3">
@@ -7,28 +56,25 @@
       links: main_menu_navigation_links,
       classes: 'text-white hidden laptop:flex list-none'
     %}
-    {% comment %} MOBILE MENU {% endcomment %}
-    <button
-      class="flex flex-col items-center justify-center w-12 h-12 text-white border-2 border-white rounded group"
-    >
-      <div class="w-6 h-1 my-[3px] text-white bg-white border-[1px] "></div>
-      <div class="w-6 h-1 my-[3px] text-white bg-white border-[1px]"></div>
-      <div class="w-6 h-1 my-[3px] text-white bg-white border-[1px]"></div>
-    </button>
-    <div class="mobile-menu">
-      <div class="relative inline-block hamburger-menu laptop:hidden hover:cursor-pointer">
-        {% render 'icon-hamburger' %}
-        {% render 'navigation-container',
-          links: main_menu_navigation_links,
-          classes: 'navigation-container-mobile text-red-500 left-0 flex flex-col absolute bg-black top-20 flex-col hidden laptop:hidden list-none z-50'
-        %}
-      </div>
+    {% comment %} mobile menu {% endcomment %}
+
+    <div class="mobile-menu laptop:hidden">
+      <label for="check">
+        <input type="checkbox" id="check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      {% render 'navigation-container',
+        links: main_menu_navigation_links,
+        classes: 'navigation-container-mobile hidden text-primary py-4 px-2 left-0 w-[0] transition-all duration-300 ease-in-out flex flex-col absolute bg-white top-10 flex-col laptop:hidden list-none z-50'
+      %}
     </div>
 
     <div class="hidden laptop:inline-block">
       {% render 'logo' %}
     </div>
-    {% comment %}Second block{% endcomment %}
+    {% comment %}second block{% endcomment %}
     <ul class="flex gap-2 ml-auto nav-links-container">
       <li class="flex items-center px-2">
         <a
@@ -59,7 +105,19 @@
 </header>
 
 <script>
-  document.querySelector('.hamburger-menu').addEventListener('click', function () {
-    document.querySelector('.navigation-container-mobile').classList.toggle('hidden');
+  const hamburger = document.getElementById('check');
+  const navContainerMobile = document.querySelector('.navigation-container-mobile');
+
+  const toggleSubMenu = (flagElement, submenuElement) => {
+    if (flagElement) {
+      submenuElement.classList.remove('hidden');
+      submenuElement.style.width = '100%';
+    } else {
+      submenuElement.classList.add('hidden');
+      submenuElement.style.width = '0';
+    }
+  };
+  hamburger.addEventListener('click', () => {
+    toggleSubMenu(hamburger.checked, navContainerMobile);
   });
 </script>

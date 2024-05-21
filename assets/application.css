@@ -891,6 +891,10 @@ select {
   top: -15rem;
 }
 
+.top-10 {
+  top: 2.5rem;
+}
+
 .isolate {
   isolation: isolate;
 }
@@ -968,11 +972,6 @@ select {
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
-}
-
-.my-\[1px\] {
-  margin-top: 1px;
-  margin-bottom: 1px;
 }
 
 .my-\[3px\] {
@@ -1183,6 +1182,22 @@ select {
 
 .w-full {
   width: 100%;
+}
+
+.w-\[50\%\] {
+  width: 50%;
+}
+
+.w-\[100\%\] {
+  width: 100%;
+}
+
+.w-\[75\%\] {
+  width: 75%;
+}
+
+.w-\[0\] {
+  width: 0;
 }
 
 .max-w-24 {
@@ -1429,8 +1444,16 @@ select {
   border-color: rgb(239 68 68 / var(--tw-divide-opacity));
 }
 
+.self-start {
+  align-self: flex-start;
+}
+
 .self-center {
   align-self: center;
+}
+
+.justify-self-start {
+  justify-self: start;
 }
 
 .overflow-hidden {
@@ -1490,14 +1513,6 @@ select {
 
 .border-2 {
   border-width: 2px;
-}
-
-.border-\[2px\] {
-  border-width: 2px;
-}
-
-.border-\[4px\] {
-  border-width: 4px;
 }
 
 .border-\[1px\] {
