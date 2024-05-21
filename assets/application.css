@@ -879,44 +879,12 @@ select {
   top: 0px;
 }
 
-.top-10 {
-  top: 2.5rem;
-}
-
 .top-5 {
   top: 1.25rem;
 }
 
 .top-\[-15rem\] {
   top: -15rem;
-}
-
-.left-\[-10\] {
-  left: -10;
-}
-
-.left-\[-10\%\] {
-  left: -10%;
-}
-
-.left-\[-20\%\] {
-  left: -20%;
-}
-
-.left-\[-100\%\%\] {
-  left: -100%%;
-}
-
-.left-\[-100\%\] {
-  left: -100%;
-}
-
-.left-\[10\%\] {
-  left: 10%;
-}
-
-.left-\[0\%\] {
-  left: 0%;
 }
 
 .isolate {
@@ -1856,10 +1824,6 @@ select {
   padding-top: 1rem;
 }
 
-.pt-\[30px\] {
-  padding-top: 30px;
-}
-
 .pt-\[60px\] {
   padding-top: 60px;
 }
@@ -2264,6 +2228,11 @@ select {
   border-color: rgb(239 46 48 / var(--tw-border-opacity));
 }
 
+.hover\:bg-primary:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-red-400:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(248 113 113 / var(--tw-bg-opacity));
@@ -2287,11 +2256,6 @@ select {
 .hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-primary:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
 .hover\:text-blue-900:hover {
