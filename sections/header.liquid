@@ -98,17 +98,16 @@
   </nav>
 
   {% comment %} Searchbar {% endcomment %}
-  <div class="absolute top-[100%] h-[0] w-full flex overflow-hidden right-0 mx-auto transition-all duration-300 ease-in-out border bg-white rounded-md max-w-7xl left-0 z-50 search-bar-menu">
-    <div class="h-40 text-primary">
-      <form
-        action="{{ routes.search_url }}"
-        method="get"
-        class="relative flex flex-col justify-center w-full"
-      >
-        <input type="text" name="q" class="w-full" placeholder="Zoeken...">
-        <button class="absolute right-0 top-[25%w]" type="submit">{% render 'icon-search' %}</button>
-      </form>
-    </div>
+  <div class="absolute top-[100%] h-[0] w-full flex flex-col shadow-lg justify-center overflow-hidden rounded-md right-0 mx-auto transition-all duration-300 ease-in-out  bg-white  max-w-7xl left-0 z-50 search-bar-menu">
+    <h3 class="px-1 pt-4 text-lg font-bold text-gray-400 laptop:text-xl">Waar ben je naar op zoek?</h3>
+    <form
+      action="{{ routes.search_url }}"
+      method="get"
+      class="relative flex flex-col justify-center w-full px-2 py-4 "
+    >
+      <input type="text" name="q" class="w-full border-none rounded-md shadow-inner bg-gray-50" placeholder="Zoeken...">
+      <button class="absolute right-[25px] top-[25%w]" type="submit">{% render 'icon-search' %}</button>
+    </form>
   </div>
 </header>
 <script>
