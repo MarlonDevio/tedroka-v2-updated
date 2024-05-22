@@ -3,7 +3,7 @@
 {% assign collection_handle = link.url | split: '/' | last %}
 {% assign collection = collections[collection_handle] %}
 
-<style>
+{% style %}
   .expand-menu {
     left: 0;
   }
@@ -19,12 +19,13 @@
 
   .search-bar-menu-open {
     height: 100%;
+    padding: 2rem 0.5rem;
   }
 
   .search-bar-menu-closed {
     height: 0%;
   }
-</style>
+{% endstyle %}
 <header class="relative px-2 py-4 laptop:py-6 bg-primary laptop:px-4">
   {% comment %} Laptop Screen {% endcomment %}
 
@@ -52,8 +53,8 @@
 
     {% comment %} Mobile menu {% endcomment %}
     <div class="flex flex-col laptop:hidden">
-      {% render 'hamburger-menu', menu_class: 'hamburger relative z-50' %}
-      <ul class="absolute z-20 flex-col flex min-h-[100vh] min-w-[50vw] navigation-container-mobile bg-white gap-2 px-4 py-2 text-primary rounded-md transition-all duration-500 ease-in-out  closed-menu  top-0 pt-[60px]">
+      {% render 'hamburger-menu', menu_class: 'hamburger relative z-[100001]' %}
+      <ul class="absolute z-[10000] flex-col flex min-h-[100vh] min-w-[50vw] navigation-container-mobile bg-white gap-2 px-4 py-2 text-primary rounded-md transition-all duration-500 ease-in-out  closed-menu  top-0 pt-[60px]">
         {% for link in main_menu_navigation_links %}
           <li class="inline-block p-2 text-base uppercase rounded-md hover:bg-primary hover:text-white">
             <a class="flex" href="{{ link.url }}">
@@ -99,18 +100,25 @@
 
   {% comment %} Searchbar {% endcomment %}
   <div class="absolute top-[100%] h-[0] w-full flex flex-col shadow-lg justify-center overflow-hidden rounded-md right-0 mx-auto transition-all duration-300 ease-in-out  bg-white  max-w-7xl left-0 z-50 search-bar-menu">
-    <h3 class="px-1 pt-4 text-lg font-bold text-gray-400 laptop:text-xl">Waar ben je naar op zoek?</h3>
+    <h3 class="px-2 pt-4 text-lg font-bold text-gray-400 laptop:text-xl">Waar ben je naar op zoek?</h3>
     <form
       action="{{ routes.search_url }}"
       method="get"
       class="relative flex flex-col justify-center w-full px-2 py-4 "
     >
-      <input type="text" name="q" class="w-full border-none rounded-md shadow-inner bg-gray-50" placeholder="Zoeken...">
+      <input
+        type="search"
+        name="q"
+        class="w-full pb-4 border-none rounded-md shadow-inner bg-gray-50"
+        placeholder="Zoeken..."
+      >
       <button class="absolute right-[25px] top-[25%w]" type="submit">{% render 'icon-search' %}</button>
     </form>
   </div>
 </header>
+
 <script>
+  // needs to be refactored
   // the check id is declared in the hamburger-menu.liquid snippet
   const hamburger = document.getElementById('check');
   const navContainerMobile = document.querySelector('.navigation-container-mobile');
