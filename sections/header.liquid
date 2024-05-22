@@ -97,15 +97,19 @@
     </ul>
   </nav>
 
-  <div class="absolute top-[100%] h-[0] w-full border bg-white rounded-md max-w-7xl mx-auto translate-x-[30%] z-50 search-bar-menu">
-    <div class="flex items-center justify-center h-40 text-primary">
-      <form action="{{ routes.search_url }}" method="get">
+  {% comment %} Searchbar {% endcomment %}
+  <div class="absolute top-[100%] h-[0] w-full flex overflow-hidden right-0 mx-auto transition-all duration-300 ease-in-out border bg-white rounded-md max-w-7xl left-0 z-50 search-bar-menu">
+    <div class="h-40 text-primary">
+      <form
+        action="{{ routes.search_url }}"
+        method="get"
+        class="relative flex flex-col justify-center w-full"
+      >
         <input type="text" name="q" class="w-full" placeholder="Zoeken...">
-        <button type="submit">{% render 'icon-search' %}</button>
+        <button class="absolute right-0 top-[25%w]" type="submit">{% render 'icon-search' %}</button>
       </form>
     </div>
   </div>
-  {% comment %} Searchbar {% endcomment %}
 </header>
 <script>
   // the check id is declared in the hamburger-menu.liquid snippet
