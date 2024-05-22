@@ -14,7 +14,15 @@
 
   .hamburger {
     z-index: 1000000;
-    color: black;
+    color: red;
+  }
+
+  .search-bar-menu-open {
+    height: 100%;
+  }
+
+  .search-bar-menu-closed {
+    height: 0%;
   }
 </style>
 <header class="relative px-2 py-4 laptop:py-6 bg-primary laptop:px-4">
@@ -42,6 +50,7 @@
       {% render 'logo' %}
     </div>
 
+    {% comment %} Mobile menu {% endcomment %}
     <div class="flex flex-col laptop:hidden">
       {% render 'hamburger-menu', menu_class: 'hamburger relative z-50' %}
       <ul class="absolute z-20 flex-col flex min-h-[100vh] min-w-[50vw] navigation-container-mobile bg-white gap-2 px-4 py-2 text-primary rounded-md transition-all duration-500 ease-in-out  closed-menu  top-0 pt-[60px]">
@@ -69,12 +78,13 @@
         </a>
       </li>
       <li class="flex items-center px-2 hover:cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.5]">
-        <a
-          class="main-menu-link flex p-1.5 text-white"
-          href="{{ routes.search_url }}"
+        <button
+          type="button"
+
+          class="main-menu-link search-button flex p-1.5 text-white"
         >
           {%- render 'icon-search' -%}
-        </a>
+        </button>
       </li>
       <li class="flex items-center px-2 hover:cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.5]">
         <a
@@ -87,13 +97,27 @@
     </ul>
   </nav>
 
-  {% comment %} MOBILE {% endcomment %}
+  <div class="absolute top-[100%] h-[0] w-full border bg-white rounded-md max-w-7xl mx-auto translate-x-[30%] z-50 search-bar-menu">
+    <div class="flex items-center justify-center h-40 text-primary">
+      <form action="{{ routes.search_url }}" method="get">
+        <input type="text" name="q" class="w-full" placeholder="Zoeken...">
+        <button type="submit">{% render 'icon-search' %}</button>
+      </form>
+    </div>
+  </div>
+  {% comment %} Searchbar {% endcomment %}
 </header>
-
 <script>
   // the check id is declared in the hamburger-menu.liquid snippet
   const hamburger = document.getElementById('check');
   const navContainerMobile = document.querySelector('.navigation-container-mobile');
+  const searchBtn = document.querySelector('.search-button');
+  const searchBarMenu = document.querySelector('.search-bar-menu');
+
+  searchBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    searchBarMenu.classList.toggle('search-bar-menu-open');
+  });
 
   const toggleSubMenu = (isChecked, submenuElement) => {
     if (isChecked) {
