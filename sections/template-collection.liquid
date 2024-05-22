@@ -13,7 +13,7 @@
       </div>
     </div>
     <!-- TODO fix pagination -->
-    {% render 'pagination' %}
+    {% render 'pagination', pagination: paginate %}
   {% endpaginate %}
 </section>
 
@@ -25,7 +25,7 @@
       "type": "number",
       "id": "number_of_products_per_page",
       "label": "Number of products per page",
-      "default": 6
+      "default": 2
     }
   ]
 }

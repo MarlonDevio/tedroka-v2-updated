@@ -1,27 +1,27 @@
-<style>
-  label {
+{% style %}
+  .hamburger--label {
     display: flex;
     flex-direction: column;
     width: 40px;
     cursor: pointer;
   }
 
-  label span {
+  .hamburger--label span {
     border-radius: 10px;
     height: 5px;
     margin: 3px 0;
     transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
   }
 
-  span:nth-of-type(1) {
+  .hamburger--upper {
     width: 50%;
   }
 
-  span:nth-of-type(2) {
+  .hamburger--middle {
     width: 100%;
   }
 
-  span:nth-of-type(3) {
+  .hamburger--bottom {
     width: 75%;
   }
 
@@ -29,26 +29,26 @@
     display: none;
   }
 
-  input[type='checkbox']:checked ~ span:nth-of-type(1) {
+  input[type='checkbox']:checked ~ .hamburger--upper {
     transform-origin: bottom;
     transform: rotatez(45deg) translate(4px, -1px);
   }
 
-  input[type='checkbox']:checked ~ span:nth-of-type(2) {
+  input[type='checkbox']:checked ~ .hamburger--middle {
     transform-origin: top;
     transform: rotatez(-45deg);
   }
 
-  input[type='checkbox']:checked ~ span:nth-of-type(3) {
+  input[type='checkbox']:checked ~ .hamburger--bottom {
     transform-origin: bottom;
     width: 50%;
     transform: translate(18px, -5px) rotatez(45deg);
   }
-</style>
+{% endstyle %}
 
-<label for="check" class="relative z-[1000] {{ menu_class }}">
+<label class="hamburger--label" for="check" class="relative z-[1000] {{ menu_class }}">
   <input type="checkbox" id="check">
-  <span class="bg-secondary"></span>
-  <span class="bg-secondary"></span>
-  <span class="bg-secondary"></span>
+  <span class="bg-secondary hamburger--upper"></span>
+  <span class="bg-secondary hamburger--middle"></span>
+  <span class="bg-secondary hamburger--bottom"></span>
 </label>

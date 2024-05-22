@@ -2,13 +2,15 @@
   <div class="relative z-50 max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
       <div>
-        <img src="{{ 'logo.png' | asset_url }}" class="h-6 mr-5 sm:h-9" alt="logo">
+        <a href="/">
+          <img src="{{ 'logo.png' | asset_url }}" class="h-6 mr-5 sm:h-9" alt="logo">
+        </a>
         <p class="max-w-xs mt-4 text-sm text-gray-200">
-          <form action="{{ routes.predictive_search_url }}" method="get" class="flex items-center">
+          <form action="{{ routes.search_url }}" method="get" class="flex items-center">
             <input
-              type="text"
+              type="search"
               name="q"
-              placeholder="Search"
+              placeholder="Zoeken"
               class="px-3 py-1 border border-gray-300 rounded-l search-input focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             >
@@ -51,22 +53,18 @@
           </nav>
         </div>
         <div>
-          <p class="font-medium text-white">Diensten</p>
+          <p class="font-medium text-white">Producten</p>
           <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-300">
-            <a class="hover:opacity-75" href="{{ settings.footer_coaching_url }}"> 1on1 Coaching </a>
-            <a class="hover:opacity-75" href="{{ settings.footer_review_url }}"> Company Review </a>
-            <a class="hover:opacity-75" href="{{ settings.footer_accounts_url }}"> Accounts Review </a>
-            <a class="hover:opacity-75" href="{{ settings.footer_hr_url }}"> HR Consulting </a>
-            <a class="hover:opacity-75" href="{{ settings.footer_seo_url }}"> SEO Optimisation </a>
+            <a class="hover:opacity-75" href="/collections/all-tedroka-products">Alle Producten</a>
+            <a class="hover:opacity-75" href="/collections/c-fly-drone">Tedroka&reg; C-Fly-Drones</a>
+            <a class="hover:opacity-75" href="/collections/drones">Drones</a>
+            <a class="hover:opacity-75" href="/collections/Accessoires">Accessoires</a>
           </nav>
         </div>
         <div>
           <p class="font-medium text-white">Snelle Links</p>
           <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-300">
-            <a class="hover:opacity-75" href="{{ settings.footer_contact_url }}"> Contact </a>
-            <a class="hover:opacity-75" href="/pages/faq"> FAQs </a>
-
-            <a class="hover:opacity-75" href="{{ settings.footer_chat_url }}"> Live Chat </a>
+            <a class="hover:opacity-75" href="/pages/contact"> Contact </a>
           </nav>
         </div>
         <div>
@@ -75,7 +73,8 @@
             <a class="hover:opacity-75" href="/pages/our-privacy-policy">Privacybeleid</a>
             <a class="hover:opacity-75" href="/pages/conditions-policy">Algemene Voorwaarden</a>
             <a class="hover:opacity-75" href="/pages/retour-policy">Retourbeleid</a>
-            <a class="hover:opacity-75" href="/pages/our-shipment-policy">Verzendbeleid</a>
+            <a class="hover:opacity-75" href="/pages/our-shipment-policy">Verzendingsbeleid</a>
+            <a class="hover:opacity-75" href="/pages/faq">Veelgestelde vragen</a>
           </nav>
         </div>
       </div>

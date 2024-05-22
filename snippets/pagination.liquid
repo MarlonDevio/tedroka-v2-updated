@@ -1,39 +1,38 @@
-<ul class="pagination-custom">
-  {% if paginate.previous %}
-    <li>
-      <a href="{{ paginate.previous.url }}" title="{{ paginate.previous.title }}">&larr;</a>
-    </li>
-  {% else %}
-    <li class="disabled">
-      <span>&larr;</span>
-    </li>
-  {% endif %}
-
-  {% for part in paginate.parts %}
-    {% if part.is_link %}
-      <li>
-        <a href="{{ part.url }}" title="">{{ part.title }}</a>
-      </li>
-    {% else %}
-      {% if part.title == paginate.current_page %}
-        <li class="active">
-          <span>{{ part.title }}</span>
-        </li>
-      {% else %}
-        <li>
-          <span>{{ part.title }}</span>
-        </li>
-      {% endif %}
+{% if pagination.pages > 0 %}
+  <nav role="navigation" class="flex items-center justify-center mx-auto my-8 grow-0">
+    {% if pagination.previous %}
+      <a
+        href="{{ pagination.previous.url }}"
+        class="px-4 py-2 mx-1 font-medium text-gray-600 border border-gray-600 rounded-sm hover:bg-gray-600 hover:text-white"
+      >
+        &larr;
+      </a>
     {% endif %}
-  {% endfor %}
 
-  {% if paginate.next %}
-    <li>
-      <a href="{{ paginate.next.url }}" title="{{ paginate.next.title }}">&rarr;</a>
-    </li>
-  {% else %}
-    <li class="disabled">
-      <span>&rarr;</span>
-    </li>
-  {% endif %}
-</ul>
+    {% for part in pagination.parts %}
+      {% if part.is_link %}
+        <a
+          href="{{part.url}}"
+          class="px-4 py-2 mx-1 font-medium text-gray-600 border border-gray-600 rounded-sm hover:bg-gray-600 hover:text-white"
+        >
+          {{ part.title }}
+        </a>
+      {% else %}
+        <span
+          class="px-4 py-2 mx-1 font-medium text-gray-600 bg-gray-200 border border-gray-600 rounded-sm"
+        >
+          {{ part.title }}
+        </span>
+      {% endif %}
+    {% endfor %}
+
+    {% if pagination.next %}
+      <a
+        class="px-4 py-2 mx-1 font-medium text-gray-600 border border-gray-600 rounded-sm hover:bg-gray-600 hover:text-white"
+        href="{{ pagination.next.url }}"
+      >
+        &rarr;
+      </a>
+    {% endif %}
+  </nav>
+{% endif %}

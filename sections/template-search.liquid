@@ -1,0 +1,26 @@
+<div class="container mx-auto">
+  {% paginate search.results by 10 %}
+    <h1 class="my-4 text-xl text-center">Zoekresultaten</h1>
+    <div class="flex items-center justify-center">
+      <form action="{{ routes.search_url }}" class="flex items-stretch gap-2" method="get">
+        <input
+          type="search"
+          name="q"
+          class="border-none rounded-md shadow-inner w-80 bg-gray-50"
+          placeholder="Zoeken..."
+          value="{{ search.terms | escape }}"
+        >
+        <button type="submit" class="px-4 py-2 text-white bg-gray-900 border rounded-md hover:bg-gray-700">Zoek</button>
+      </form>
+    </div>
+    {% for item in search.results %}
+      {% case item.object_type %}
+        {% when 'product' %}
+          {% render 'product-card', product: item %}
+        {% else %}
+
+      {% endcase %}
+    {% endfor %}
+    {% render 'pagination', pagination: paginate %}
+  {% endpaginate %}
+</div>
