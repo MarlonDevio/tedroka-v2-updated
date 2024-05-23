@@ -17,7 +17,7 @@
     class="relative max-w-screen-xl px-4 py-32 mx-auto sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8"
   >
     <div class="grid grid-cols-1 md:grid-cols-2">
-      <div class="max-w-xl text-center sm:text-left">
+      <div class="max-w-xl">
         <h1 class="text-3xl font-extrabold text-white uppercase sm:text-5xl">
           Tedroka &reg;
           <strong class="block font-extrabold text-secondary">C-FLY-DRONE</strong>
@@ -27,20 +27,23 @@
           {{ product.title }}
         </p>
 
-        <figure class="md:hidden">
-          <img
-            src="{{ product.images | last | img_url: 'large'}}"
-            alt=""
-            height="476"
-            width="780"
-            class=""
-          >
-        </figure>
-        <div class="flex flex-wrap gap-4 mt-8 text-center">
-          {% render 'buy-now-read-more-form', product: product %}
+        {% comment %}
+        {% endcomment %}
+        <div class="flex items-center gap-4 mt-8">
+          {% render 'buy-now-read-more-form', product: product, classes: 'flex gap-4 flex-col tablet:flex-row' %}
+
+          <figure class="md:hidden">
+            <img
+              src="{{ product.images | last | image_url: width: '1024px'}}"
+              alt=""
+              height="476"
+              width="780"
+              class=""
+            >
+          </figure>
         </div>
       </div>
-      <figure class="hidden md:block">
+      <figure class="hidden tablet:block">
         <img
           src="{{ product.images | last | img_url: 'large'}}"
           alt=""
@@ -52,6 +55,7 @@
     </div>
   </div>
 </section>
+
 {% schema %}
 {
   "name": "Hero",

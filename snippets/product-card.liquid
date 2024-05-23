@@ -29,11 +29,14 @@
         {{ product.title | remove: 'Tedroka' | remove: '®' }}
       </a>
 
-      <div class="flex items-center justify-between mt-auto">
+      <div class="flex flex-wrap items-start gap-4 mt-auto laptop:justify-between">
+        {% render 'buy-now-read-more-form',
+          product: product,
+          classes: 'flex flex-col md:flex-row flex-wrap laptop:flex-col mt-8 gap-4'
+        %}
         <p class="p-1 mt-auto text-xl font-bold border rounded-full shadow-md border-md border-secondary text-gray-darker">
           {{ product.price | money }}
         </p>
-        {% render 'buy-now-read-more-form', product: product %}
       </div>
     </div>
   </div>

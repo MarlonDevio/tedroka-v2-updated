@@ -13,14 +13,26 @@
         <button type="submit" class="px-4 py-2 text-white bg-gray-900 border rounded-md hover:bg-gray-700">Zoek</button>
       </form>
     </div>
-    {% for item in search.results %}
-      {% case item.object_type %}
-        {% when 'product' %}
-          {% render 'product-card', product: item %}
-        {% else %}
-
-      {% endcase %}
-    {% endfor %}
+    {% if search.performed %}
+      {% if search.results.size > 0 %}
+        <div class="mx-auto max-w-7xl">
+          <p class="my-10 text-center text-gray-500">
+            {{ search.results.size }} resultaten voor de zoekterm {{ search.terms | escape }}
+          </p>
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+            {% for item in search.results %}
+              {% if item.object_type == 'product' %}
+                {% render 'product-card', product: item %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        <div class="my-4 text-center">
+          <p>Geen resultaten voor: {{ search.terms | escape }}. Probeer andere sleutelwoorden te gebruiken.</p>
+        </div>
+      {% endif %}
+    {% endif %}
     {% render 'pagination', pagination: paginate %}
   {% endpaginate %}
 </div>

@@ -27,41 +27,13 @@
           </div>
         </div>
 
-        <div class="flex flex-col items-center space-y-4 sm:flex-row jusitfy-center sm:space-x-5 xl:space-x-8 sm:space-y-0">
-          <div class="">
-            <img
-              class="hidden lg:block"
-              src="{{ highlighted_product_handle.featured_image | img_url: 'large' }}"
-              alt="sofa"
-            >
-          </div>
-          <div class="flex flex-col items-center justify-center space-y-4 sm:space-y-0 lg:space-y-5 xl:space-y-8">
-            <div>
-              <img
-                class="hidden lg:block"
-                src="{{ highlighted_product_handle.images[5] | img_url: 'medium' }}"
-                alt="chairs"
-              >
-              <img
-                class="w-80 sm:w-auto lg:hidden"
-                src="{{ highlighted_product_handle.images[6] | img_url: 'medium' }}"
-                alt="chairs"
-              >
-            </div>
-            <div>
-              <img
-                class="hidden lg:block"
-                src="{{ highlighted_product_handle.images[7] | img_url: 'medium' }}"
-                alt="chairs"
-              >
-              <img
-                class="w-80 sm:w-auto lg:hidden"
-                src="{{ highlighted_product_handle.images[3] | img_url: 'medium' }}"
-                alt="chairs"
-              >
-            </div>
-          </div>
-        </div>
+        <figure>
+          <img
+            class="lg:block"
+            src="{{ highlighted_product_handle.featured_image | img_url: 'large' }}"
+            alt="sofa"
+          >
+        </figure>
       </div>
     </div>
   </div>

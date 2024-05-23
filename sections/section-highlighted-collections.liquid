@@ -21,7 +21,7 @@
 }
 {% endschema %}
 
-{% assign collection_drones = collections.drones %}
+{% assign collection_drones = collections.Drones %}
 {% assign collection_accessoires = collections.accessoires %}
 {% assign collection_c_fly_drones = collections['c-fly-drone'] %}
 {% assign all_tedroka_products = collections['all-tedroka-products'] %}
@@ -49,7 +49,11 @@
                 <figure
                   class=""
                 >
-                  <img class="inline" src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+                  <img
+                    class="inline"
+                    src="{{ product.featured_image | image_url: width: '500px' }}"
+                    alt="{{ product.title }}"
+                  >
                 </figure>
               </a>
               {% render 'read-more-btn-no-bg', item: product %}
@@ -63,18 +67,20 @@
       <div class="w-full mx-auto max-w-7xl">
         <div class="grid items-center gap-10 md:grid-cols-2">
           <div class="w-full h-full">
-            {% assign backpack_img = collection_accessoires.products[4].featured_image | img_url: 'large' %}
+            {% assign backpack_img = collection_accessoires.products[4].featured_image | image_url: width: '502.5px' %}
             <img
-              src="{{ backpack_img }}"
+              src="{{ backpack_img}}"
               alt="Premium Benefits"
               class="object-cover w-full h-full overflow-hidden"
+              width="502.5"
+              height="502.5"
             >
           </div>
           <div class="ml-auto">
             <h2 class="mb-6 text-3xl font-semibold md:text-4xl">Onmisbare Accessoires voor Tedroka&reg; Drones</h2>
             <p>Batterijen, Waterdichte Rugzakken, Zonne-energie Powerbanks en Meer.</p>
 
-            {% render 'read-more-btn', product: collection_accessoires %}
+            {% render 'read-more-btn', item: collection_accessoires %}
           </div>
         </div>
       </div>
@@ -91,13 +97,15 @@
           Vertrouw op Tedroka&reg; om uw avontuur in de lucht te ontketenen en geniet van een ongeëvenaarde
           vliegervaring met onze topkwaliteit drones en accessoires.
         </p>
-        {% render 'dynamic-read-more-btn', text: 'Bekijk al onze producten', item: all_tedroka_products.url %}
+        {% render 'dynamic-read-more-btn', text: 'Bekijk al onze producten', item: all_tedroka_products %}
       </div>
       <div class="w-full h-full">
         <img
-          src="{{ all_tedroka_products.products.first.featured_image | img_url: 'large' }}"
+          src="{{ all_tedroka_products.products.first.featured_image | image_url: width: '502.5px' }}"
           alt="feature"
           class="object-cover w-full h-full"
+          width="502.5"
+          height="502.5"
         >
       </div>
     </div>
@@ -114,7 +122,7 @@
         Your browser does not support the video tag.
       </video>
       {% comment %} TODO fix urls {% endcomment %}
-      {% render 'dynamic-read-more-btn', product: all_tedroka_products %}
+      {% render 'dynamic-read-more-btn', item: all_tedroka_products %}
     </div>
   </div>
 </div>
