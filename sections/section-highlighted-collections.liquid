@@ -1,46 +1,48 @@
-{% schema %}
-{
-  "name": "Highlighted Collections",
-  "settings": [
-    {
-      "type": "collection",
-      "id": "collection_1",
-      "label": "Collection 1"
-    },
-    {
-      "type": "collection",
-      "id": "collection_2",
-      "label": "Collection 2"
-    },
-    {
-      "type": "collection",
-      "id": "collection_3",
-      "label": "Collection 3"
-    }
-  ]
-}
-{% endschema %}
+{% comment %} Collection 1 settings and defaults {% endcomment %}
+{% assign chosen_collection_1 = section.settings.chosen_collection_1 %}
+{% assign default_collection_1 = collections['c-fly-drone'] %}
+{% if section.settings.chosen_collection_1 == null %}
+  {% assign chosen_collection_1 = default_collection_1 %}
+{% endif %}
 
-{% assign collection_drones = collections.Drones %}
-{% assign collection_accessoires = collections.accessoires %}
-{% assign collection_c_fly_drones = collections['c-fly-drone'] %}
-{% assign all_tedroka_products = collections['all-tedroka-products'] %}
+{% comment %} Collection 2 settings and defaults {% endcomment %}
+{% assign chosen_collection_2 = section.settings.chosen_collection_2 %}
+{% assign default_collection_2 = collections.accessoires %}
+{% if section.settings.chosen_collection_2 == null %}
+  {% assign chosen_collection_2 = default_collection_2 %}
+{% endif %}
+
+{% assign image_collection_2 = section.settings.image_collection_2 %}
+{% assign default_image_collection_2 = chosen_collection_2.products[0].featured_image %}
+{% if section.settings.image_collection_2 == null %}
+  {% assign image_collection_2 = default_image_collection_2 %}
+{% endif %}
+
+{% comment %} Collection 3 settings and defaults {% endcomment %}
+{% assign chosen_collection_3 = section.settings.chosen_collection_3 %}
+{% assign default_collection_3 = collections['all-tedroka-products'] %}
+{% if section.settings.chosen_collection_3 == null %}
+  {% assign chosen_collection_3 = default_collection_3 %}
+{% endif %}
+
+{% assign image_collection_3 = section.settings.image_collection_3 %}
+{% assign default_image_collection_3 = chosen_collection_3.products[0].featured_image %}
+{% if section.settings.image_collection_3 == null %}
+  {% assign image_collection_3 = default_image_collection_3 %}
+{% endif %}
 
 <div class="bg-gray-100 py-[50px]">
-  <h2 class="mb-6 text-4xl font-semibold text-center md:text-5xl">Bekijk onze Tedroka&reg; producten en collecties.</h2>
+  <h2 class="mb-6 text-4xl font-semibold text-center md:text-5xl">{{ section.settings.section_title }}</h2>
   <div class="px-4 mt-28 sm:px-10">
     <div class="w-full mx-auto max-w-7xl">
       <div class="grid items-center gap-10 lg:grid-cols-2">
         <div class="">
-          <h2 class="mb-6 text-3xl font-semibold md:text-4xl">Pakketten voor Tedroka&reg; C-Fly Drones</h2>
-          <p>
-            Bij Tedroka bieden we verschillende pakketten voor onze hoogwaardige C-Fly drones, speciaal ontworpen voor
-            zowel hobbyisten als professionals.
-          </p>
-          {% render 'read-more-btn', item: collection_c_fly_drones %}
+          <h3 class="mb-6 text-3xl font-semibold md:text-4xl">{{ section.settings.collection_1_title }}</h3>
+          <p>{{ section.settings.collection_1_description }}</p>
+          {% render 'read-more-btn', item: chosen_collection_1 %}
         </div>
         <div class="grid gap-8 sm:grid-cols-2">
-          {% for product in collection_c_fly_drones.products %}
+          {% for product in chosen_collection_1.products %}
             <div class=" block text-center hover:translate-y-[-10px] hover:shadow-3xl bg-white shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)] transition-all rounded-xl p-6">
               <a
                 class=""
@@ -51,7 +53,7 @@
                 >
                   <img
                     class="inline"
-                    src="{{ product.featured_image | image_url: width: '500px' }}"
+                    src="{{product.featured_image | image_url: width: '500px'}}"
                     alt="{{ product.title }}"
                     width="500"
                     height="500"
@@ -69,9 +71,8 @@
       <div class="w-full mx-auto max-w-7xl">
         <div class="grid items-center gap-10 md:grid-cols-2">
           <div class="w-full h-full">
-            {% assign backpack_img = collection_accessoires.products[4].featured_image | image_url: width: '502.5px' %}
             <img
-              src="{{ backpack_img}}"
+              src="{{ image_collection_2 | image_url: width: '502.5px'}}"
               alt="Premium Benefits"
               class="object-cover w-full h-full overflow-hidden"
               width="502.5"
@@ -79,10 +80,10 @@
             >
           </div>
           <div class="ml-auto">
-            <h2 class="mb-6 text-3xl font-semibold md:text-4xl">Onmisbare Accessoires voor Tedroka&reg; Drones</h2>
-            <p>Batterijen, Waterdichte Rugzakken, Zonne-energie Powerbanks en Meer.</p>
+            <h3 class="mb-6 text-3xl font-semibold md:text-4xl">{{ section.settings.collection_2_title }}</h3>
+            <p>{{ section.settings.collection_2_description }}</p>
 
-            {% render 'read-more-btn', item: collection_accessoires %}
+            {% render 'read-more-btn', item: chosen_collection_2 %}
           </div>
         </div>
       </div>
@@ -92,18 +93,15 @@
   <div class="px-4 sm:px-10 mt-28">
     <div class="grid items-center justify-center w-full gap-10 mx-auto max-w-7xl md:grid-cols-2">
       <div>
-        <h2 class="mb-6 text-3xl font-semibold md:text-4xl">
-          Tedroka&reg; - Uw Betrouwbare Partner voor Hoogwaardige Drones en Accessoires
-        </h2>
+        <h3 class="mb-6 text-3xl font-semibold md:text-4xl">{{ section.settings.collection_3_title }}</h3>
         <p>
-          Vertrouw op Tedroka&reg; om uw avontuur in de lucht te ontketenen en geniet van een ongeëvenaarde
-          vliegervaring met onze topkwaliteit drones en accessoires.
+          {{ section.settings.collection_3_description }}
         </p>
-        {% render 'dynamic-read-more-btn', text: 'Bekijk al onze producten', item: all_tedroka_products %}
+        {% render 'dynamic-read-more-btn', text: 'Bekijk al onze producten', item: chosen_collection_3 %}
       </div>
       <div class="w-full h-full">
         <img
-          src="{{ all_tedroka_products.products.first.featured_image | image_url: width: '502.5px' }}"
+          src="{{ image_collection_3 | image_url: width: '502.5px'}}"
           alt="feature"
           class="object-cover w-full h-full"
           width="502.5"
@@ -124,7 +122,7 @@
         Your browser does not support the video tag.
       </video>
       {% comment %} TODO fix urls {% endcomment %}
-      {% render 'dynamic-read-more-btn', item: all_tedroka_products %}
+      {% render 'dynamic-read-more-btn', item: chosen_collection_3 %}
     </div>
   </div>
 </div>
@@ -145,49 +143,105 @@
   toggleOpen.addEventListener('click', handleClick);
   toggleClose.addEventListener('click', handleClick);
 </script>
-{% comment %}
-  {% assign default_collection = collections['c-fly-drone'] %}
-  {% assign new_collection = '' %}
 
-  {% if section.settings.new_collection == null %}
-    {% assign new_collection = default_collection %}
-  {% else %}
-    {% assign new_collection = section.settings.new_collection %}
-  {% endif %}
-
-  {% assign default_products = new_collection.products %}
-
-  {% assign default_product_1 = default_products[0] %}
-  {% assign default_image_1 = default_product_1.featured_image %}
-
-  {% assign default_product_2 = default_products[1] %}
-  {% assign default_image_2 = default_product_2.featured_image %}
-
-  {% assign default_product_3 = default_products[2] %}
-  {% assign default_image_3 = default_product_3.featured_image %}
-
-  <div>
-    <img
-      src="{{default_image_1 |  image_url: width: '500px' }}"
-      alt="{{default_product_1.title}}"
-      width="500"
-      height="500"
-    >
-  </div>
-  <div>
-    <img
-      src="{{default_image_2 |  image_url: width: '500px' }}"
-      alt="{{default_product_2.title}}"
-      width="500"
-      height="500"
-    >
-  </div>
-  <div>
-    <img
-      src="{{default_image_3 |  image_url: width: '500px' }}"
-      alt="{{default_product_3.title}}"
-      width="500"
-      height="500"
-    >
-  </div>
-{% endcomment %}
+{% schema %}
+{
+  "name": "Highlighted Collections",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Bekijk onze Tedroka&reg; producten en collecties.",
+      "info": "This is the title of the section."
+    },
+    {
+      "type": "text",
+      "id": "collection_1_title",
+      "label": "Collection 1 Title",
+      "default": "Pakketten voor Tedroka&reg; C-Fly Drones",
+      "info": "This is the title of the first collection."
+    },
+    {
+      "type": "text",
+      "id": "collection_1_description",
+      "label": "Collection 1 Description",
+      "default": "Bij Tedroka bieden we verschillende pakketten voor onze hoogwaardige C-Fly drones, speciaal ontworpen voor zowel hobbyisten als professionals.",
+      "info": "This is the description of the first collection."
+    },
+    {
+      "type": "collection",
+      "id": "chosen_collection_1",
+      "label": "Collection 1",
+      "info": "This collection will determine where the read more buttons of collection 1 will be linked to."
+    },
+    {
+      "type": "text",
+      "id": "collection_2_title",
+      "label": "Collection 2 Title",
+      "default": "Onmisbare Accessoires voor Tedroka&reg; Drones",
+      "info": "This is the title of the second collection."
+    },
+    {
+      "type": "text",
+      "id": "collection_2_description",
+      "label": "Collection 2 Description",
+      "default": "Van batterijen tot waterdichte rugzakken, zonne-energie powerbanks en meer, Tedroka&reg; heeft alles wat u nodig heeft om uw drone-ervaring te verbeteren.",
+      "info": "This is the description of the second collection."
+    },
+    {
+      "type": "collection",
+      "id": "chosen_collection_2",
+      "label": "Collection 2",
+      "info": "This collection will determine where the read more buttons of collection 2 will be linked to."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_collection_2",
+      "label": "Image Collection 2 of collection2",
+      "info": "This is the image of the second collection."
+    },
+    {
+      "type": "text",
+      "id": "collection_3_title",
+      "label": "Collection 3 Title",
+      "default": "Tedroka&reg; - Uw Betrouwbare Partner voor Hoogwaardige Drones en Accessoires",
+      "info": "This is the title of the third collection."
+    },
+    {
+      "type": "text",
+      "id": "collection_3_description",
+      "label": "Collection 3 Description",
+      "default": "Vertrouw op Tedroka&reg; om uw avontuur in de lucht te ontketenen en geniet van een ongeëvenaarde vliegervaring met onze topkwaliteit drones en accessoires.",
+      "info": "This is the description of the third collection."
+    },
+    {
+      "type": "collection",
+      "id": "chosen_collection_3",
+      "label": "Collection 3",
+      "info": "This collection will determine where the read more buttons of collection 3 will be linked to."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_collection_3",
+      "label": "Image Collection 3 of collection3",
+      "info": "This is the image of the third collection."
+    },
+    {
+      "type": "collection",
+      "id": "collection_1",
+      "label": "Collection 1"
+    },
+    {
+      "type": "collection",
+      "id": "collection_2",
+      "label": "Collection 2"
+    },
+    {
+      "type": "collection",
+      "id": "collection_3",
+      "label": "Collection 3"
+    }
+  ]
+}
+{% endschema %}
