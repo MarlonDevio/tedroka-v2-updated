@@ -145,3 +145,49 @@
   toggleOpen.addEventListener('click', handleClick);
   toggleClose.addEventListener('click', handleClick);
 </script>
+{% comment %}
+  {% assign default_collection = collections['c-fly-drone'] %}
+  {% assign new_collection = '' %}
+
+  {% if section.settings.new_collection == null %}
+    {% assign new_collection = default_collection %}
+  {% else %}
+    {% assign new_collection = section.settings.new_collection %}
+  {% endif %}
+
+  {% assign default_products = new_collection.products %}
+
+  {% assign default_product_1 = default_products[0] %}
+  {% assign default_image_1 = default_product_1.featured_image %}
+
+  {% assign default_product_2 = default_products[1] %}
+  {% assign default_image_2 = default_product_2.featured_image %}
+
+  {% assign default_product_3 = default_products[2] %}
+  {% assign default_image_3 = default_product_3.featured_image %}
+
+  <div>
+    <img
+      src="{{default_image_1 |  image_url: width: '500px' }}"
+      alt="{{default_product_1.title}}"
+      width="500"
+      height="500"
+    >
+  </div>
+  <div>
+    <img
+      src="{{default_image_2 |  image_url: width: '500px' }}"
+      alt="{{default_product_2.title}}"
+      width="500"
+      height="500"
+    >
+  </div>
+  <div>
+    <img
+      src="{{default_image_3 |  image_url: width: '500px' }}"
+      alt="{{default_product_3.title}}"
+      width="500"
+      height="500"
+    >
+  </div>
+{% endcomment %}
