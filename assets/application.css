@@ -2114,19 +2114,9 @@ select {
   color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 
-.text-secondary {
+.text-red-700 {
   --tw-text-opacity: 1;
-  color: rgb(239 46 48 / var(--tw-text-opacity));
-}
-
-.text-teal-900 {
-  --tw-text-opacity: 1;
-  color: rgb(19 78 74 / var(--tw-text-opacity));
-}
-
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(185 28 28 / var(--tw-text-opacity));
 }
 
 .text-red-900 {
@@ -2134,14 +2124,14 @@ select {
   color: rgb(127 29 29 / var(--tw-text-opacity));
 }
 
-.text-red-700 {
+.text-secondary {
   --tw-text-opacity: 1;
-  color: rgb(185 28 28 / var(--tw-text-opacity));
+  color: rgb(239 46 48 / var(--tw-text-opacity));
 }
 
-.text-red-800 {
+.text-white {
   --tw-text-opacity: 1;
-  color: rgb(153 27 27 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .underline {
