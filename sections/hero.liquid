@@ -24,7 +24,7 @@
 
 <section
   class="relative bg-center bg-no-repeat bg-cover hero-section"
-  style="background-image: url({{bg_img}})"
+  style="background-image: url({{ bg_img }})"
 >
   <div
     class="relative max-w-screen-xl px-4 py-32 mx-auto sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8"
@@ -45,7 +45,7 @@
         <div class="flex items-center gap-4 mt-8">
           {% render 'buy-now-read-more-form', product: product, classes: 'flex gap-4 flex-col tablet:flex-row' %}
 
-          <figure class="md:hidden">
+          <figure class="block tablet:hidden">
             <img
               src="{{ product.images | last | image_url: width: '1024px'}}"
               alt="{{ product.title }}"
