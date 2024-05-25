@@ -1,9 +1,9 @@
 {
   "sections": {
-    "contact-us": {
-      "type": "contact-us",
+    "template-contact-us": {
+      "type": "template-contact-us",
       "settings": {}
     }
   },
-  "order": ["contact-us"]
+  "order": ["template-contact-us"]
 }
