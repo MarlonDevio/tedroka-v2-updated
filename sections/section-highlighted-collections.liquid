@@ -9,6 +9,8 @@
         {% case block.type %}
           {% when 'chosen_collection_1' %}
             {% assign chosen_collection = block.settings.chosen_collection_1 | default: collections['c-fly-drone'] %}
+            {% assign max_items = block.settings.max_number_of_images_shown | default: 3 %}
+            {% assign item_count = 0 %}
             <div class="grid items-center gap-10 lg:grid-cols-2">
               <div class="">
                 <h3 class="mb-6 text-3xl font-semibold md:text-4xl">{{ block.settings.collection_1_title }}</h3>
@@ -17,20 +19,23 @@
               </div>
               <div class="grid gap-8 sm:grid-cols-2">
                 {% for product in chosen_collection.products %}
-                  <div class="block text-center hover:translate-y-[-10px] hover:shadow-3xl bg-white shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)] transition-all rounded-xl p-6">
-                    <a href="{{ product.url }}">
-                      <figure>
-                        <img
-                          class="inline"
-                          src="{{ product.featured_image | image_url: width: '500px' }}"
-                          alt="{{ product.title }}"
-                          width="500"
-                          height="500"
-                        >
-                      </figure>
-                    </a>
-                    {% render 'read-more-btn-no-bg', item: product %}
-                  </div>
+                  {% if item_count < max_items %}
+                    <div class="block text-center hover:translate-y-[-10px] hover:shadow-3xl bg-white shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)] transition-all rounded-xl p-6">
+                      <a href="{{ product.url }}">
+                        <figure>
+                          <img
+                            class="inline"
+                            src="{{ product.featured_image | image_url: width: '500px' }}"
+                            alt="{{ product.title }}"
+                            width="500"
+                            height="500"
+                          >
+                        </figure>
+                      </a>
+                      {% render 'read-more-btn-no-bg', item: product %}
+                    </div>
+                    {% assign item_count = item_count | plus: 1 %}
+                  {% endif %}
                 {% endfor %}
               </div>
             </div>
@@ -157,6 +162,12 @@
           "label": "Collection 1 Description",
           "default": "Bij Tedroka bieden we verschillende pakketten voor onze hoogwaardige C-Fly drones, speciaal ontworpen voor zowel hobbyisten als professionals.",
           "info": "This is the description of the first collection."
+        },
+        {
+          "type": "number",
+          "id": "max_number_of_images_shown",
+          "label": "Number of images shown",
+          "default": 3
         }
       ]
     },
