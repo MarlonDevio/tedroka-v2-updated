@@ -2,8 +2,12 @@
   class="relative  overflow-hidden bg-primary pb-12 pt-20 before:absolute before:inset-0 before:w-full before:bg-black before:opacity-60 lg:pb-[90px] lg:pt-[120px]"
   style="background-image: url(https://readymadeui.com/dark-bg-image.webp); background-size: cover; background-repeat: no-repeat"
 >
-  {% assign highlighted_product_handle = all_products['c-fly-mini-drone-met-gps-4k-camera'] %}
-  {% assign highlighted_product = all_products[highlighted_product_handle] %}
+  {% assign highlighted_product_handle = section.settings.featured_product %}
+
+  {% assign default_highlighted_product_handle = all_products['c-fly-mini-drone-met-gps-4k-camera'] %}
+  {% if section.settings.featured_product == null %}
+    {% assign highlighted_product_handle = default_highlighted_product_handle %}
+  {% endif %}
 
   <div class="mx-auto max-w-7xl">
     <div class="relative z-50 mx-auto ml-4 space-y-6">
@@ -23,7 +27,7 @@
             </p>
           </div>
           <div class="flex items-start w-full mt-16">
-            {% render 'buy-now-btn', product: highlighted_product %}
+            {% render 'buy-now-btn', product: highlighted_product_handle %}
           </div>
         </div>
 
