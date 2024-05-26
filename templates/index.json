@@ -3,47 +3,81 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "product_highlight": "tedroka-c-fly-drone-met-gps-4k-camera-vliegtijd-van-52-minuten-fpv-borstelloze-drone-professionele-drone-4k-uhd-video-inclusief-2-batterijen-powerbank-10-000-mah-draagbaretas-en-64-gb-sd-kaart"
+        "product_highlight": "tedroka-c-fly-drone-met-gps-4k-camera-vliegtijd-van-52-minuten-fpv-borstelloze-drone-professionele-drone-4k-uhd-video-inclusief-2-batterijen-powerbank-10-000-mah-draagbaretas-en-64-gb-sd-kaart",
+        "heading_title": "",
+        "heading_subtitle": ""
       }
     },
     "section-new-collection": {
       "type": "section-new-collection",
       "settings": {
         "product_highlight": "tedroka-c-fly-drone-met-gps-4k-camera-vliegtijd-van-52-minuten-fpv-borstelloze-drone-professionele-drone-4k-uhd-video-inclusief-2-batterijen-powerbank-10-000-mah-draagbaretas-en-64-gb-sd-kaart",
+        "upper_description": "De Tedroka C-Fly Drone biedt een 4K UHD-camera voor haarscherpe video's en foto's en een vliegtijd van 52 minuten. De borstelloze motoren en GPS zorgen voor stabiele en nauwkeurige vluchten.",
+        "lower_description": "Deze set bevat twee batterijen, een 10.000 mAh powerbank, een draagbare tas en een 64 GB SD-kaart, waardoor je volledig uitgerust bent voor elk avontuur.",
         "title": "Ontdek de C-51 Fly Drone"
       }
     },
     "section-highlighted-collections": {
       "type": "section-highlighted-collections",
+      "blocks": {
+        "chosen_collection_1_nXA7Qk": {
+          "type": "chosen_collection_1",
+          "settings": {
+            "chosen_collection_1": "c-fly-drone",
+            "collection_1_title": "Pakketten voor Tedroka® C-Fly Drones",
+            "collection_1_description": "Bij Tedroka bieden we verschillende pakketten voor onze hoogwaardige C-Fly drones, speciaal ontworpen voor zowel hobbyisten als professionals.",
+            "max_number_of_images_shown": 3
+          }
+        },
+        "chosen_collection_2_3etkxM": {
+          "type": "chosen_collection_2",
+          "settings": {
+            "chosen_collection_2": "accessoires",
+            "collection_2_title": "Onmisbare Accessoires voor Tedroka® Drones",
+            "collection_2_description": "Van batterijen tot waterdichte rugzakken, zonne-energie powerbanks en meer, Tedroka® heeft alles wat u nodig heeft om uw drone-ervaring te verbeteren."
+          }
+        },
+        "chosen_collection_3_edGGqa": {
+          "type": "chosen_collection_3",
+          "settings": {
+            "chosen_collection_3": "all-tedroka-products",
+            "collection_3_title": "Tedroka® - Uw Betrouwbare Partner voor Hoogwaardige Drones en Accessoires",
+            "collection_3_description": "Vertrouw op Tedroka® om uw avontuur in de lucht te ontketenen en geniet van een ongeëvenaarde vliegervaring met onze topkwaliteit drones en accessoires."
+          }
+        }
+      },
+      "block_order": [
+        "chosen_collection_1_nXA7Qk",
+        "chosen_collection_2_3etkxM",
+        "chosen_collection_3_edGGqa"
+      ],
       "settings": {
-        "collection_1": "c-fly-drone",
-        "collection_2": "accessoires",
-        "collection_3": "drones"
-      }
-    },
-    "section-trusted-by": {
-      "type": "section-trusted-by",
-      "settings": {
-        "title": "Vertrouwd door"
+        "section_title": "Bekijk onze Tedroka® producten en collecties."
       }
     },
     "section-testimonials": {
       "type": "section-testimonials",
       "settings": {
-        "title": "Wat klanten zeggen"
+      }
+    },
+    "section-trusted-by": {
+      "type": "section-trusted-by",
+      "settings": {
       }
     },
     "section-product-carousel": {
       "type": "section-product-carousel",
       "settings": {
-        "title": "Populaire producten"
       }
     },
     "section-highlight-variant": {
       "type": "section-highlight-variant",
       "settings": {
-        "product_highlight": "tedroka-c-fly-drone-met-gps-4k-camera-vliegtijd-van-52-minuten-fpv-borstelloze-drone-professionele-drone-4k-uhd-video-inclusief-2-batterijen-powerbank-10-000-mah-draagbaretas-en-64-gb-sd-kaart",
-        "title": "Vlieg Erboven en Verder."
+        "featured_product": "",
+        "bullet_point_1": "4k esc dubbele camera",
+        "bullet_point_2": "gps terugkeer",
+        "bullet_point_3": "schoonheidsschot",
+        "bullet_point_4": "eid stabilisatie"
       }
     }
   },
