@@ -1,6 +1,6 @@
 {% comment %} Settings and defaults for collections {% endcomment %}
+{% assign read_more_url_video_default = collections['c-fly-drone'] %}
 {% assign collections = section.blocks %}
-
 <div class="bg-gray-100 py-[50px]">
   <h2 class="mb-6 text-4xl font-semibold text-center md:text-5xl">{{ section.settings.section_title }}</h2>
   <div class="px-4 mt-28 sm:px-10">
@@ -102,7 +102,7 @@
           <video src="https://cdn.shopify.com/videos/c/o/v/d95941b810884f2b86dd7d07b3ab885e.mp4" controls>
             Your browser does not support the video tag.
           </video>
-          {% render 'dynamic-read-more-btn', item: collections.chosen_collection_3 %}
+          {% render 'dynamic-read-more-btn', item: read_more_url_video_default %}
         </div>
       </div>
     </div>
@@ -232,6 +232,18 @@
           "id": "image_collection_3",
           "label": "Image Collection 3 of collection3",
           "info": "This is the image of the third collection."
+        }
+      ]
+    },
+    {
+      "type": "collection_video",
+      "name": "collection video",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection_video",
+          "label": "read more link for the video",
+          "info": "choose the collection where the read more button underneath the video will point to."
         }
       ]
     }
