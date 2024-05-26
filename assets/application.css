@@ -2089,6 +2089,11 @@ select {
   color: rgb(70 72 78 / var(--tw-text-opacity));
 }
 
+.text-gray-darkest {
+  --tw-text-opacity: 1;
+  color: rgb(13 13 13 / var(--tw-text-opacity));
+}
+
 .text-gray-light {
   --tw-text-opacity: 1;
   color: rgb(152 153 158 / var(--tw-text-opacity));

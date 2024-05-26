@@ -30,7 +30,7 @@
         <figure>
           <img
             class="lg:block"
-            src="{{ highlighted_product_handle.featured_image | img_url: 'large' }}"
+            src="{{ highlighted_product_handle.featured_image | image_url: widht:'600px' }}"
             alt="{{ highlighted_product_handle.title }}"
             height="600"
             width="600"
@@ -48,30 +48,6 @@
       "type": "product",
       "id": "featured_product",
       "label": "Featured product"
-    },
-    {
-      "type": "text",
-      "id": "bullet_point_1",
-      "label": "Bullet point 1",
-      "default": "4k esc dubbele camera"
-    },
-    {
-      "type": "text",
-      "id": "bullet_point_2",
-      "label": "Bullet point 2",
-      "default": "gps terugkeer"
-    },
-    {
-      "type": "text",
-      "id": "bullet_point_3",
-      "label": "Bullet point 3",
-      "default": "schoonheidsschot"
-    },
-    {
-      "type": "text",
-      "id": "bullet_point_4",
-      "label": "Bullet point 4",
-      "default": "eid stabilisatie"
     }
   ]
 }
