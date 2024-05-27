@@ -1,6 +1,7 @@
 {% paginate blog.articles by 6 %}
   {% for a in blog.articles %}
     <h1>{{ a.title }}</h1>
+    <img src="{{ a.image |  image_url: width: '500px'  }}" alt="{{ a.image.alt }}" width="500" height="500">
   {% endfor %}
   {% render 'pagination', pagination: paginate %}
 {% endpaginate %}
