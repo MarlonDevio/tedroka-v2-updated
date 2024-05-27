@@ -1,6 +1,6 @@
 {% paginate blog.articles by 6 %}
   {% for a in blog.articles %}
-    <div>{{ a.title }}</div>
+    <h1>{{ a.title }}</h1>
   {% endfor %}
   {% render 'pagination', pagination: paginate %}
 {% endpaginate %}
