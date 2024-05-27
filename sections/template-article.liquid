@@ -1,0 +1,61 @@
+<h1>{{ article.title }}</h1>
+
+{% if section.settings.enable_author %}
+  <small>{{ article.author }}</small>
+{% endif %}
+
+{% if section.settings.enable_date %}
+  <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%Y-%m-%d' }}</time>
+{% endif %}
+
+<img
+  src="{{ article.image |  image_url: width: "500px" }}"
+  width="500"
+  height="500"
+  alt="{{ article.image.alt }}"
+  loading="lazy"
+>
+
+<div class="">{{ article.content }}</div>
+
+{% schema %}
+{
+  "name": "Template Article",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_author",
+      "default": true,
+      "label": "Show author"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_date",
+      "default": true,
+      "label": "Show date"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "article_title",
+      "name": "Title",
+      "limit": 1
+    },
+    {
+      "type": "article_author",
+      "name": "Author",
+      "limit": 1
+    },
+    {
+      "type": "article_date",
+      "name": "Published Date",
+      "limit": 1
+    },
+    {
+      "type": "featured_image",
+      "name": "Thumbnail",
+      "limit": 1
+    }
+  ]
+}
+{% endschema %}
