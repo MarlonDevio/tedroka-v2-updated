@@ -943,6 +943,10 @@ select {
   z-index: 1000;
 }
 
+.m-4 {
+  margin: 1rem;
+}
+
 .-mx-3 {
   margin-left: -0.75rem;
   margin-right: -0.75rem;
