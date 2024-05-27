@@ -1,8 +1,5 @@
 {% assign main_menu_navigation_links = linklists['main-menu-navigation-links'].links %}
 
-{% assign collection_handle = link.url | split: '/' | last %}
-{% assign collection = collections[collection_handle] %}
-
 {% style %}
   .expand-menu {
     left: 0;
@@ -120,7 +117,7 @@
 
 <script>
   // needs to be refactored
-  // the check id is declared in the hamburger-menu.liquid snippet
+  // the check id is  declared in the hamburger-menu.liquid snippet
   const hamburger = document.getElementById('check');
   const navContainerMobile = document.querySelector('.navigation-container-mobile');
   const searchBtn = document.querySelector('.search-button');
