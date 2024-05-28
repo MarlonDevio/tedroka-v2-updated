@@ -1,34 +1,93 @@
-{% for block in section.blocks %}
-  {% case block.type %}
-    {% when 'article_title' %}
-      <h1>{{ article.title }}</h1>
-    {% when 'article_author' %}
-      {% if section.settings.enable_author %}
-        <small>{{ article.author }}</small>
-      {% endif %}
-    {% when 'article_date' %}
-      {% if section.settings.enable_date %}
-        <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
-          {{- article.published_at | date: '%Y-%m-%d' -}}
-        </time>
-      {% endif %}
-    {% when 'featured_image' %}
-      <img
-        src="{{ article.image |  image_url: width: "500px" }}"
-        width="500"
-        height="500"
-        alt="{{ article.image.alt }}"
-        loading="lazy"
-      >
-    {% when 'article_content' %}
-      <div class="">
-        <p>{{ article.content }}</p>
-      </div>
-    {% else %}
+<style>
+  .custom-blog-post {
+    display: flex;
+    flex-direction: column;
 
-  {% endcase %}
-{% endfor %}
+    h1 {
+      font-size: calc(2rem + 1vw);
+      text-transform: uppercase;
+    }
+    h2 {
+      font-size: calc(1.5rem + 0.5vw);
+      margin: 2rem 0;
+      font-weight: 600;
+    }
+    p {
+      margin: 1rem 0;
+      font-size: calc(1rem + 0.25vw);
+      max-width: 70ch;
+    }
 
+    a {
+      text-decoration: underline;
+      color: #ef2e30;
+    }
+
+    ul {
+      list-style: circle;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+</style>
+<article class="px-5 py-8 custom-blog-post">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'article_title' %}
+        <div class="flex items-center justify-center">
+          <div class="text-center max-w7xl">
+            <a href="{{ blog.url }}" class="text-base font-bold text-gray-500 uppercase hover:text-gray-900">
+              {{- blog.title -}}
+            </a>
+            <h1 class="text-4xl font-medium md:text-6xl">{{ article.title }}</h1>
+          </div>
+        </div>
+      {% when 'article_author' %}
+        <div class="flex items-center justify-center">
+          <div class="text-center max-w-7xl">
+            {% if section.settings.enable_author %}
+              <small>{{ article.author }}</small>
+            {% endif %}
+          </div>
+        </div>
+      {% when 'article_date' %}
+        <div class="flex items-center justify-center">
+          <div class="text-center max-w-7xl">
+            {% if section.settings.enable_published_date %}
+              <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+                {{- article.published_at | date: format: 'on_date' -}}
+              </time>
+            {% endif %}
+          </div>
+        </div>
+      {% when 'featured_image' %}
+        <div class="mx-2 my-4 overflow-hidden bg-blue-100 rounded-lg max-w-7xl md:mx-auto">
+          {% if article.image != blank %}
+            <img
+              src="{{ article.image |  image_url: width: "500px" }}"
+              class="object-cover object-center w-full h-80 md:h-96"
+              width="500"
+              height="500"
+              alt="{{ article.image.alt }}"
+              loading="lazy"
+            >
+          {% else %}
+            {% assign placeholder_image = 'lifestyle-1' %}
+            {{ placeholder_image | placeholder_svg_tag: 'w-full h-80 md:h-96 object-cover object-center p-5' }}
+          {% endif %}
+        </div>
+      {% when 'article_content' %}
+        <div class="flex items-center justify-center">
+          <div class="max-w-4xl">
+            {{ article.content }}
+          </div>
+        </div>
+      {% else %}
+
+    {% endcase %}
+  {% endfor %}
+</article>
 {% schema %}
 {
   "name": "Template Article",

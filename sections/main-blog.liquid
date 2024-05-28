@@ -1,11 +1,11 @@
 {% paginate blog.articles by 6 %}
-  {% for a in blog.articles %}
-    <article class="flex flex-col m-4 shadow-sm ">
-      <a href="{{ a.url }}">
-        <h1>{{ a.title }}</h1>
-        <img src="{{ a.image |  image_url: width: '500px'  }}" alt="{{ a.image.alt }}" width="500" height="500">
-      </a>
-    </article>
-  {% endfor %}
-  {% render 'pagination', pagination: paginate %}
+  <section class="py-10">
+    <h1 class="mb-12 font-sans text-5xl font-bold text-center">{{ blog.title }}</h1>
+    <div class="grid justify-center max-w-screen-lg px-4 mx-auto sm:grid-cols-2 sm:gap-4 sm:px-8 md:grid-cols-3">
+      {% for article in blog.articles %}
+        {% render 'component-card-article', article: article %}
+      {% endfor %}
+      {% render 'pagination', pagination: paginate %}
+    </div>
+  </section>
 {% endpaginate %}
