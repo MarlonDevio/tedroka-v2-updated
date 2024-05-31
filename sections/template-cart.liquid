@@ -2,87 +2,88 @@
 {% if cart.item_count > 0 %}
 {% endif %}
 <section class="font-[sans-serif] bg-white h-full">
-  <main class="p-6 mx-auto max-w-7xl max-lg:max-w-3xl">
+  <div class="p-6 mx-auto max-w-7xl max-lg:max-w-3xl">
     <h1 class="text-2xl font-extrabold text-red-700">{{ section.settings.section_title }}</h1>
 
-    <div class="relative grid gap-6 mt-8 lg:grid-cols-3">
-      {% comment %} Rendering cards {% endcomment %}
-      <div class="space-y-6 lg:col-span-2">
-        {% for product in cart.items %}
-          {% render 'component-cart-article-card', product: product %}
-        {% endfor %}
-      </div>
-
-      {% comment %} Summary Component {% endcomment %}
-      <aside class="bg-white h-max rounded-md p-4 shadow-[0_3px_20px_-10px_rgba(237,6,6,0.4)] sticky top-0">
-        <h2 class="text-lg font-bold text-red-700">{{ section.settings.summary_title }}</h2>
-
-        <ul class="mt-3 space-y-3 text-sm text-gray-500">
-          <li class="flex flex-wrap gap-4">Subtotal <span class="ml-auto font-bold">$70.00</span></li>
-          <li class="flex flex-wrap gap-4">Shipping <span class="ml-auto font-bold">Free</span></li>
-          <li class="flex flex-wrap gap-4">Tax <span class="ml-auto font-bold">$4.00</span></li>
-          <li class="flex flex-wrap gap-4 font-bold">Total <span class="ml-auto">$74.00</span></li>
-        </ul>
-
-        <button
-          type="button"
-          class="mt-6 text-sm px-5 py-2.5 w-full bg-red-700 hover:bg-red-800 tracking-wide text-white rounded-md"
-        >
-        Naar Checkout
-        </button>
-
-        <div class="mt-6 space-y-6">
-          <div>
-            <h4 class="mb-3 text-sm font-bold text-red-700">Secure payment</h4>
-            <p class="text-sm text-gray-500">
-              Experience peace of mind with our secure payment options, ensuring your transactions are protected and
-              reliable.
-            </p>
-          </div>
-          <div>
-            <h4 class="mb-3 text-sm font-bold text-red-700">Free delivery</h4>
-            <p class="text-sm text-gray-500">
-              Enjoy the convenience of free delivery on all your orders, providing a cost-effective and seamless
-              shopping experience.
-            </p>
-          </div>
-          <div>
-            <h4 class="mb-3 text-sm font-bold text-red-700">Easy to return</h4>
-            <p class="text-sm text-gray-500">
-              Simplify your shopping experience with hassle-free returns. Our easy return process ensures convenience
-              and customer satisfaction.
-            </p>
-          </div>
+    <form
+      action="{{ routes.cart_url }}"
+      method="POST"
+      novalidate>
+      <div class="relative grid gap-6 mt-8 lg:grid-cols-3">
+        {% comment %} Rendering cards {% endcomment %}
+        <div class="space-y-6 lg:col-span-2">
+          {% for product in cart.items %}
+            {% render 'component-cart-product-card'
+              , product: product %}
+          {% endfor %}
         </div>
-      </aside>
-    </div>
-  </main>
+
+        {% comment %} Summary Component {% endcomment %}
+        <aside class="bg-white h-max rounded-md p-4 shadow-[0_3px_20px_-10px_rgba(237,6,6,0.4)] sticky top-0">
+          <h2 class="text-lg font-bold text-red-700">{{ section.settings.summary_title }}</h2>
+
+          <ul class="mt-3 space-y-3 text-sm text-gray-500">
+            <li class="flex flex-wrap gap-4 font-bold">
+              Subtotal
+              <span class="ml-auto font-bold">{{ cart.total_price | money }}</span>
+            </li>
+          </ul>
+
+          <button type="button" class="mt-6 text-sm px-5 py-2.5 w-full bg-red-700 hover:bg-red-800 tracking-wide text-white rounded-md">
+            Naar Checkout
+          </button>
+
+          <div class="mt-6 space-y-6">
+            <div>
+              <h4 class="mb-3 text-sm font-bold text-red-700">Secure payment</h4>
+              <p class="text-sm text-gray-500">
+                Experience peace of mind with our secure payment options, ensuring your transactions are protected and                
+              reliable.
+              </p>
+            </div>
+            <div>
+              <h4 class="mb-3 text-sm font-bold text-red-700">Free delivery</h4>
+              <p class="text-sm text-gray-500">
+                Enjoy the convenience of free delivery on all your orders, providing a cost-effective and seamless                
+              shopping experience.
+              </p>
+            </div>
+            <div>
+              <h4 class="mb-3 text-sm font-bold text-red-700">Easy to return</h4>
+              <p class="text-sm text-gray-500">
+                Simplify your shopping experience with hassle-free returns. Our easy return process ensures convenience                
+              and customer satisfaction.
+              </p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </form>
+  </div>
 </section>
 
 {% schema %}
-{
-  "name": "Template Cart",
-  "settings": [
-    {
-      "type": "text",
-      "id": "section_title",
-      "label": "Section Title",
-      "default": "Winkelwagen"
-    },
-    {
-      "type": "text",
-      "id": "subtotal_title",
-      "label": "Subtotal Title",
-      "default": "Subtotaal"
-    },
-    {
-      "type": "text",
-      "id": "total_title",
-      "label": "Total Title",
-      "default": "Totaal"
-    }
-  ]
-}
+  {
+    "name": "Template Cart",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Section Title",
+        "default": "Winkelwagen"
+      },
+      {
+        "type": "text",
+        "id": "subtotal_title",
+        "label": "Subtotal Title",
+        "default": "Subtotaal"
+      },
+      {
+        "type": "text",
+        "id": "total_title",
+        "label": "Total Title",
+        "default": "Totaal"
+      }
+    ]
+  }
 {% endschema %}
-<script>
-  

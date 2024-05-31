@@ -1,4 +1,7 @@
 {
   "headwind.runOnSave": true,
-  "files.autoSave": "off"
+"files.autoSave": "off",
+"[liquid]": {
+    "editor.formatOnSave": true
+}
 }

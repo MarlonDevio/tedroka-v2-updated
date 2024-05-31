@@ -1,4 +1,5 @@
 {
   "plugins": ["@shopify/prettier-plugin-liquid", "prettier-plugin-tailwindcss"],
-  "tailwindConfig": "./tailwind.config.js"
+  "tailwindConfig": "./tailwind.config.js",
+  "tailwindPreserveDuplicates": true
 }

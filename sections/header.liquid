@@ -20,10 +20,13 @@
   }
 
   .search-bar-menu-closed {
-    height: 0%;
+    height: 0;
   }
+
 {% endstyle %}
-<header class="relative px-2 py-4 laptop:py-6 bg-primary laptop:px-4">
+
+
+<header id="navigation-header" class="relative px-2 py-4 laptop:py-6 bg-primary laptop:px-4">
   {% comment %} Laptop Screen {% endcomment %}
 
   <nav class="flex items-center justify-between mx-auto max-w-7xl">
@@ -33,10 +36,7 @@
       <ul class="flex items-center gap-4 list-none">
         {% for link in main_menu_navigation_links %}
           <li class="text-white uppercase">
-            <a
-              href="{{ link.url }}"
-              class="flex p-2 transition-all duration-300 ease-in-out rounded-md hover:bg-white hover:text-primary hover:cursor-pointer"
-            >
+            <a href="{{ link.url }}" class="flex p-2 transition-all duration-300 ease-in-out rounded-md hover:bg-white hover:text-primary hover:cursor-pointer">
               {{ link.title }}
               {% if link.type == 'collection_link' %}
                 {% render 'chevron-svg' %}
@@ -50,7 +50,8 @@
 
     {% comment %} Mobile menu {% endcomment %}
     <div class="flex flex-col laptop:hidden">
-      {% render 'hamburger-menu', menu_class: 'hamburger relative z-[100001]' %}
+      {% render 'hamburger-menu'
+        , menu_class: 'hamburger relative z-[100001]' %}
       <ul class="absolute z-[10000] flex-col flex min-h-[100vh] min-w-[50vw] navigation-container-mobile bg-white gap-2 px-4 py-2 text-primary rounded-md transition-all duration-500 ease-in-out  closed-menu  top-0 pt-[60px]">
         {% for link in main_menu_navigation_links %}
           <li class="inline-block p-2 text-base uppercase rounded-md hover:bg-primary hover:text-white">
@@ -62,33 +63,27 @@
             </a>
           </li>
         {% endfor %}
+
+
       </ul>
+
+
     </div>
 
     {% comment %} Right links container {% endcomment %}
     <ul class="flex gap-2 ml-auto nav-links-container">
       <li class="flex items-center px-2 hover:cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.5]">
-        <a
-          class="main-menu-link flex p-1.5 text-white"
-          href="{{ routes.cart_url }}"
-        >
+        <a class="main-menu-link flex p-1.5 text-white" href="{{ routes.cart_url }}">
           {%- render 'cart-svg' -%}
         </a>
       </li>
       <li class="flex items-center px-2 hover:cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.5]">
-        <button
-          type="button"
-
-          class="main-menu-link search-button flex p-1.5 text-white"
-        >
+        <button type="button" class="main-menu-link search-button flex p-1.5 text-white">
           {%- render 'icon-search' -%}
         </button>
       </li>
       <li class="flex items-center px-2 hover:cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.5]">
-        <a
-          class="main-menu-link flex p-1.5 text-white"
-          href="https://tedroka.nl/apps/parcelpanel"
-        >
+        <a class="main-menu-link flex p-1.5 text-white" href="https://tedroka.nl/apps/parcelpanel">
           {% render 'track-order-svg' %}
         </a>
       </li>
@@ -102,14 +97,12 @@
       action="{{ routes.search_url }}"
       method="get"
       class="relative flex flex-col justify-center w-full px-2 py-4 "
-      role="search"
-    >
+      role="search">
       <input
         type="text"
         name="q"
         class="w-full pb-4 border-none rounded-md shadow-inner bg-gray-50"
-        placeholder="Zoeken..."
-      >
+        placeholder="Zoeken...">
       <button class="absolute right-[25px] top-[25%w]" type="submit">{% render 'icon-search' %}</button>
     </form>
   </div>

@@ -1,0 +1,95 @@
+<div class="p-2 component__cart__article__card bg-white shadow-[0_3px_20px_-10px_rgba(237,6,6,0.4)] rounded-md relative">
+  <div class="grid items-center gap-2 sm:grid-cols-5">
+    <figure class="flex items-center justify-center w-full h-full col-span-2 p-1 overflow-hidden text-center rounded-md bg-gradient-to-tr from-gray-400 via-gray-200 to-gray-100 shrink-0 grow-0">
+      {% if product.image %}
+        <img
+          width="250"
+          height="250"
+          src="{{ product.image |  image_url: width: '250px'  }}"
+          alt="{{ product.title |  escape }}"
+          class="object-cover ">
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'w-20 h-20 object-cover border' }}
+      {% endif %}
+    </figure>
+
+    <div class="col-span-3 p-2">
+      <h2 class="font-bold text-red-700 text-md">{{ product.product.title | remove: 'Bekijk' | truncatewords: 5 }}</h2>
+
+      <div class="relative pl-4 mt-3 space-y-2 text-sm text-gray-500 list-disc">
+        <p class="truncated__description">
+          {{ product.product.description | strip_html | truncatewords: 20 }}
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-4 mt-6">
+        <div class="flex items-center gap-3">
+          <p class="text-sm text-gray-500">Aantal:</p>
+          <button
+            id="decrement"
+            type="button"
+            class="flex items-center justify-center w-5 h-5 rounded-full outline-none">
+            {% render 'icon-minus' %}
+          </button>
+          <input
+            type="number"
+            name="updates[]"
+            value="{{ product.quantity }}"
+            min="1"
+            id="updates_{{ forloop.index }}"
+            class="font-bold remove-arrow text-sm outline-none border-none leading-[16px] max-w-[30px]">
+          <button
+            name="update"
+            type="button"
+            id="increment"
+            class="flex items-center justify-center w-5 h-5 rounded-full outline-none">
+            {% render 'icon-plus' %}
+          </button>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold text-red-700">{{ product.final_line_price | money }}</h4>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 mt-6 text-center divide-x border-y">
+
+        {% comment %} Details {% endcomment %}
+        <button
+          data-cart-action="view-details"
+          type="button"
+          class="flex items-center justify-center py-3 text-sm font-semibold text-gray-500 bg-transparent hover:bg-gray-100">
+          {% render 'icon-eye' %}
+          Lees Meer
+        </button>
+        <button
+          data-cart-action="remove-item"
+          type="button"
+          class="flex items-center justify-center py-3 text-sm font-semibold text-gray-500 bg-transparent hover:bg-gray-100">
+          {% render 'icon-trash' %}
+          <a href="{{ product.url_to_remove }}">Verwijder</a>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const incrementButton = document.getElementById('increment');
+  const decrementButton = document.getElementById('decrement');
+  
+  const handleQuantity = (e) => {
+    const click = e.target.closest('button');
+      if (!click) return;
+    let quantity = document.querySelector('.remove-arrow'); 
+      if(click === incrementButton)
+            quantity++;
+        if(click===decrementButton)
+            quantity--;
+      
+
+  }
+  incrementButton.addEventListener('click', handleQuantity)
+  decrementButton.addEventListener('click', handleQuantity)
+
+</script>
