@@ -1,4 +1,3 @@
-<script src="{{ cart.js | asset_url}}" defer="defer"></script>
 {% if cart.item_count > 0 %}
 {% endif %}
 <section class="font-[sans-serif] bg-white h-full">
@@ -14,7 +13,8 @@
         <div class="space-y-6 lg:col-span-2">
           {% for product in cart.items %}
             {% render 'component-cart-product-card'
-              , product: product %}
+              , product: product
+              , index: forloop.index %}
           {% endfor %}
         </div>
 
@@ -37,21 +37,21 @@
             <div>
               <h4 class="mb-3 text-sm font-bold text-red-700">Secure payment</h4>
               <p class="text-sm text-gray-500">
-                Experience peace of mind with our secure payment options, ensuring your transactions are protected and                
+                Experience peace of mind with our secure payment options, ensuring your transactions are protected and                                  
               reliable.
               </p>
             </div>
             <div>
               <h4 class="mb-3 text-sm font-bold text-red-700">Free delivery</h4>
               <p class="text-sm text-gray-500">
-                Enjoy the convenience of free delivery on all your orders, providing a cost-effective and seamless                
+                Enjoy the convenience of free delivery on all your orders, providing a cost-effective and seamless                                  
               shopping experience.
               </p>
             </div>
             <div>
               <h4 class="mb-3 text-sm font-bold text-red-700">Easy to return</h4>
               <p class="text-sm text-gray-500">
-                Simplify your shopping experience with hassle-free returns. Our easy return process ensures convenience                
+                Simplify your shopping experience with hassle-free returns. Our easy return process ensures convenience                                  
               and customer satisfaction.
               </p>
             </div>

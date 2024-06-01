@@ -1,3 +1,5 @@
+<script src="{{ 'Component-cart-product-card.js' |  asset_url }}" defer="defer"></script>
+
 <div class="p-2 component__cart__article__card bg-white shadow-[0_3px_20px_-10px_rgba(237,6,6,0.4)] rounded-md relative">
   <div class="grid items-center gap-2 sm:grid-cols-5">
     <figure class="flex items-center justify-center w-full h-full col-span-2 p-1 overflow-hidden text-center rounded-md bg-gradient-to-tr from-gray-400 via-gray-200 to-gray-100 shrink-0 grow-0">
@@ -25,10 +27,12 @@
       <div class="flex flex-wrap items-center justify-between gap-4 mt-6">
         <div class="flex items-center gap-3">
           <p class="text-sm text-gray-500">Aantal:</p>
+
           <button
-            id="decrement"
-            type="button"
-            class="flex items-center justify-center w-5 h-5 rounded-full outline-none">
+            class="flex items-center justify-center w-5 h-5 rounded-full outline-none operation-button"
+            is="cart-handle-quantity-button"
+            data-action="decrement"
+            data-quantity-id="updates_{{  index }}">
             {% render 'icon-minus' %}
           </button>
           <input
@@ -36,13 +40,14 @@
             name="updates[]"
             value="{{ product.quantity }}"
             min="1"
-            id="updates_{{ forloop.index }}"
-            class="font-bold remove-arrow text-sm outline-none border-none leading-[16px] max-w-[30px]">
+            id="updates_{{ index }}"
+            class="font-bold quantity__input remove-arrow text-sm outline-none border-none leading-[16px] max-w-[3rem] text-center overflow-visible">
+
           <button
-            name="update"
-            type="button"
-            id="increment"
-            class="flex items-center justify-center w-5 h-5 rounded-full outline-none">
+            class="flex items-center justify-center w-5 h-5 rounded-full outline-none operation-button"
+            is="cart-handle-quantity-button"
+            data-action="increment"
+            data-quantity-id="updates_{{ index }}">
             {% render 'icon-plus' %}
           </button>
         </div>
@@ -58,14 +63,14 @@
         <button
           data-cart-action="view-details"
           type="button"
-          class="flex items-center justify-center py-3 text-sm font-semibold text-gray-500 bg-transparent hover:bg-gray-100">
+          class="flex items-center justify-center gap-2 py-3 text-sm font-semibold text-gray-500 bg-transparent hover:bg-gray-100">
           {% render 'icon-eye' %}
           Lees Meer
         </button>
         <button
-          data-cart-action="remove-item"
+          data-action="remove-item"
           type="button"
-          class="flex items-center justify-center py-3 text-sm font-semibold text-gray-500 bg-transparent hover:bg-gray-100">
+          class="flex items-center justify-center gap-2 py-3 text-sm font-semibold text-gray-500 bg-transparent hover:bg-gray-100">
           {% render 'icon-trash' %}
           <a href="{{ product.url_to_remove }}">Verwijder</a>
         </button>
@@ -73,23 +78,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  const incrementButton = document.getElementById('increment');
-  const decrementButton = document.getElementById('decrement');
-  
-  const handleQuantity = (e) => {
-    const click = e.target.closest('button');
-      if (!click) return;
-    let quantity = document.querySelector('.remove-arrow'); 
-      if(click === incrementButton)
-            quantity++;
-        if(click===decrementButton)
-            quantity--;
-      
-
-  }
-  incrementButton.addEventListener('click', handleQuantity)
-  decrementButton.addEventListener('click', handleQuantity)
-
-</script>

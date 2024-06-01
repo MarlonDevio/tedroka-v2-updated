@@ -827,6 +827,10 @@ select {
   pointer-events: none;
 }
 
+.static {
+  position: static;
+}
+
 .absolute {
   position: absolute;
 }
@@ -1331,8 +1335,8 @@ select {
   max-width: 80rem;
 }
 
-.max-w-\[30px\] {
-  max-width: 30px;
+.max-w-\[3rem\] {
+  max-width: 3rem;
 }
 
 .max-w-lg {
@@ -1626,6 +1630,10 @@ select {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-visible {
+  overflow: visible;
 }
 
 .truncate {
