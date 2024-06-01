@@ -1,3 +1,4 @@
+<script src="{{ 'CartNotificationButton.js' |  asset_url }}" defer="defer"></script>
 {% assign main_menu_navigation_links = linklists['main-menu-navigation-links'].links %}
 
 {% style %}
@@ -72,8 +73,9 @@
     {% comment %} Right links container {% endcomment %}
     <ul class="flex gap-2 ml-auto nav-links-container">
       <li class="flex items-center px-2 hover:cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.5]">
-        <a class="main-menu-link flex p-1.5 text-white" href="{{ routes.cart_url }}">
+        <a class="relative main-menu-link flex p-1.5 text-white" href="{{ routes.cart_url }}">
           {%- render 'cart-svg' -%}
+          <cart-notification-button></cart-notification-button>
         </a>
       </li>
       <li class="flex items-center px-2 hover:cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.5]">
