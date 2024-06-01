@@ -50,11 +50,10 @@
 
     {% comment %} Mobile menu {% endcomment %}
     <div class="flex flex-col laptop:hidden">
-      {% render 'hamburger-menu'
-        , menu_class: 'hamburger relative z-[100001]' %}
-      <ul class="absolute z-[10000] flex-col flex min-h-[100vh] min-w-[50vw] navigation-container-mobile bg-white gap-2 px-4 py-2 text-primary rounded-md transition-all duration-500 ease-in-out  closed-menu  top-0 pt-[60px]">
+      {% render 'animated-menu-icon' %}
+      <ul class="absolute z-[10000] flex-col flex min-h-[100vh] min-w-[40vw] navigation-container-mobile bg-gray-950 gap-2 px-4 py-2 text-secondary rounded-md transition-all duration-500 ease-in-out  closed-menu  top-0 pt-[90px]">
         {% for link in main_menu_navigation_links %}
-          <li class="inline-block p-2 text-base uppercase rounded-md hover:bg-primary hover:text-white">
+          <li class="inline-block p-2 text-xl font-bold uppercase rounded-md sm:text-2xl hover:bg-secondary hover:text-white">
             <a class="flex" href="{{ link.url }}">
               {{- link.title }}
               {% if link.type == 'collection_link' %}
@@ -111,28 +110,30 @@
 <script>
   // needs to be refactored
   // the check id is  declared in the hamburger-menu.liquid snippet
-  const hamburger = document.getElementById('check');
+  const hamburger = document.getElementById('animated-menu-icon');
+  const checkbox = hamburger.querySelector('.check');
   const navContainerMobile = document.querySelector('.navigation-container-mobile');
   const searchBtn = document.querySelector('.search-button');
   const searchBarMenu = document.querySelector('.search-bar-menu');
+  const expandMenuClass = 'expand-menu'
 
   searchBtn.addEventListener('click', (e) => {
     e.preventDefault();
     searchBarMenu.classList.toggle('search-bar-menu-open');
   });
 
-  const toggleSubMenu = (isChecked, submenuElement) => {
-    if (isChecked) {
-      submenuElement.classList.remove('closed-menu');
-      submenuElement.classList.add('expand-menu');
+
+  hamburger.addEventListener('click', (e) => {
+      handleChecked(checkbox.checked)
+  })
+
+  function handleChecked(isChecked) {
+    if (isChecked){
+        navContainerMobile.classList.remove('closed-menu');
+        navContainerMobile.classList.add('expand-menu');
     } else {
-      submenuElement.classList.add('closed-menu');
-      submenuElement.classList.remove('expand-menu');
-    }
-  };
-  hamburger.addEventListener('click', () => {
-    toggleSubMenu(hamburger.checked, navContainerMobile);
-    console.log(hamburger);
-    console.log(hamburger.checked);
-  });
+      navContainerMobile.classList.remove('expand-menu')
+      navContainerMobile.classList.add('closed-menu')
+  }
+  }
 </script>
