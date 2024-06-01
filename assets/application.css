@@ -973,6 +973,10 @@ select {
   grid-column: span 3 / span 3;
 }
 
+.col-span-full {
+  grid-column: 1 / -1;
+}
+
 .-mx-3 {
   margin-left: -0.75rem;
   margin-right: -0.75rem;
@@ -2780,6 +2784,11 @@ select {
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
+.active\:bg-secondary:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 46 48 / var(--tw-bg-opacity));
+}
+
 .active\:text-red-500:active {
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity));
@@ -3073,6 +3082,10 @@ select {
   .md\:px-7 {
     padding-left: 1.75rem;
     padding-right: 1.75rem;
+  }
+
+  .md\:text-left {
+    text-align: left;
   }
 
   .md\:text-4xl {

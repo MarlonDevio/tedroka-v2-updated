@@ -1,4 +1,4 @@
-/**
+/** 
  * Custom HTMLButtonElement that handles incrementing and decrementing quantity values.
  * 
  * This custom element extends HTMLButtonElement to provide specialized functionality
