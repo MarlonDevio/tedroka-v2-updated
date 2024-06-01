@@ -1,8 +1,12 @@
 {
   "sections": {
     "template-cart": {
-      "type": "template-cart"
+      "type": "template-cart",
+      "settings": {
+      }
     }
   },
-  "order": ["template-cart"]
+  "order": [
+    "template-cart"
+  ]
 }
