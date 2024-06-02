@@ -11,10 +11,14 @@ class CartNotificationButton extends HTMLElement {
     }
 
     async getAmount() {
-        const response = await fetch(window.Shopify.routes.root + 'cart.js');
-        const data = await response.json();
-        this.amountInCart = await data.item_count;
-        console.log(this.amountInCart);
+        try {
+            const response = await fetch(window.Shopify.routes.root + 'cart.js');
+            const data = await response.json();
+            this.amountInCart = await data.item_count;
+        }
+        catch (error) {
+            console.error(e.message)
+        }
     }
 
     displayAmount() {
