@@ -16,7 +16,7 @@ class CartNotificationButton extends HTMLElement {
             const data = await response.json();
             this.amountInCart = await data.item_count;
         }
-        catch (error) {
+        catch (e) {
             console.error(e.message)
         }
     }
@@ -26,7 +26,6 @@ class CartNotificationButton extends HTMLElement {
         this.className = 'font-bold absolute bg-white rounded-full text-[13px] left-[70%] top-[-20%] px-[5px] pt-[1px] text-secondary'
     }
 
-
 }
-
 customElements.define('cart-notification-button', CartNotificationButton);
+

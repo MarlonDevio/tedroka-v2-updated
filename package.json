@@ -6,9 +6,12 @@
   "author": "Marlon Hamaekers",
   "license": "ISC",
   "devDependencies": {
+    "@eslint/js": "^9.4.0",
     "@shopify/prettier-plugin-liquid": "^1.4.4",
     "@tailwindcss/forms": "^0.5.7",
     "autoprefixer": "^10.4.19",
+    "eslint": "^9.4.0",
+    "globals": "^15.3.0",
     "postcss": "^8.4.38",
     "prettier-plugin-tailwindcss": "^0.5.14",
     "tailwindcss": "^3.4.3"
