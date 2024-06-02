@@ -1,0 +1,16 @@
+.scroll-trigger.animate--fade-in {
+    animation: slideIn 1s;
+}
+
+/* ANIMATIONS*/
+@keyframes slideIn {
+    from {
+        transform: translateY(2rem);
+        opacity: 0.01;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
