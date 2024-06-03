@@ -37,46 +37,46 @@
     }
   }
 </style>
-<article class="px-5 py-8 custom-blog-post">
+<article class='custom-blog-post px-5 py-8'>
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'article_title' %}
-        <div class="flex items-center justify-center">
-          <div class="text-center max-w7xl">
-            <a href="{{ blog.url }}" class="text-base font-bold text-gray-500 uppercase hover:text-gray-900">
+        <div class='flex items-center justify-center'>
+          <div class='max-w7xl text-center'>
+            <a href='{{ blog.url }}' class='text-base font-bold uppercase text-gray-500 hover:text-gray-900'>
               {{- blog.title -}}
             </a>
-            <h1 class="text-4xl font-medium md:text-6xl">{{ article.title }}</h1>
+            <h1 class='text-4xl font-medium md:text-6xl'>{{ article.title }}</h1>
           </div>
         </div>
       {% when 'article_author' %}
-        <div class="flex items-center justify-center">
-          <div class="text-center max-w-7xl">
+        <div class='flex items-center justify-center'>
+          <div class='max-w-7xl text-center'>
             {% if section.settings.enable_author %}
               <small>{{ article.author }}</small>
             {% endif %}
           </div>
         </div>
       {% when 'article_date' %}
-        <div class="flex items-center justify-center">
-          <div class="text-center max-w-7xl">
+        <div class='flex items-center justify-center'>
+          <div class='max-w-7xl text-center'>
             {% if section.settings.enable_published_date %}
-              <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+              <time datetime='{{ article.published_at | date: '%Y-%m-%d' }}'>
                 {{- article.published_at | date: format: 'on_date' -}}
               </time>
             {% endif %}
           </div>
         </div>
       {% when 'featured_image' %}
-        <div class="mx-2 my-4 overflow-hidden bg-blue-100 rounded-lg max-w-7xl md:mx-auto">
+        <div class='mx-2 my-4 max-w-7xl overflow-hidden rounded-lg bg-blue-100 md:mx-auto'>
           {% if article.image != blank %}
             <img
-              src="{{ article.image |  image_url: width: "500px" }}"
-              class="object-cover object-center w-full h-80 md:h-96"
-              width="500"
-              height="500"
-              alt="{{ article.image.alt }}"
-              loading="lazy"
+              src='{{ article.image |  image_url: width: "500px" }}'
+              class='h-80 md:h-96 w-full object-cover object-center'
+              width='500'
+              height='500'
+              alt='{{ article.image.alt }}'
+              loading='lazy'
             >
           {% else %}
             {% assign placeholder_image = 'lifestyle-1' %}
@@ -84,8 +84,8 @@
           {% endif %}
         </div>
       {% when 'article_content' %}
-        <div class="flex items-center justify-center">
-          <div class="max-w-4xl">
+        <div class='flex items-center justify-center'>
+          <div class='max-w-4xl'>
             {{ article.content }}
           </div>
         </div>

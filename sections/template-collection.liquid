@@ -1,11 +1,11 @@
-<section class="py-[50px]">
+<section class='py-[50px]'>
   {% paginate collection.products by section.settings.number_of_products_per_page %}
-    <h1 class="text-3xl text-center md:text-4xl lg:text-5xl">{{ collection.title }}</h1>
+    <h1 class='text-center text-3xl md:text-4xl lg:text-5xl'>{{ collection.title }}</h1>
 
     <div>{{ collection.description }}</div>
-    <div class="mx-auto max-w-7xl">
+    <div class='mx-auto max-w-7xl'>
       {% comment %} Grid container {% endcomment %}
-      <div class="grid grid-cols-1 gap-4 tablet:grid-cols-2 laptop:grid-cols-3 ">
+      <div class='grid grid-cols-1 gap-4 tablet:grid-cols-2 laptop:grid-cols-3 '>
         {% for product in collection.products %}
           {% render 'product-card', product: product %}
         {% else %}

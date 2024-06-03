@@ -1,58 +1,68 @@
 {% if cart.item_count > 0 %}
-  <div class="p-4">
-    <div class="flex flex-col max-w-6xl mx-auto my-10">
-      <div class="flex items-end justify-between my-5">
-        <h1 class="text-3xl">Je winkelwagen</h1>
-        <a href="{{ routes.all_products_collection_url }}" class="w-full px-12 py-3 text-sm font-medium text-center text-white bg-red-600 rounded-md shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto">
+  <div class='p-4'>
+    <div class='mx-auto my-10 flex max-w-6xl flex-col'>
+      <div class='my-5 flex items-end justify-between'>
+        <h1 class='text-3xl'>Je winkelwagen</h1>
+        <a
+          href='{{ routes.all_products_collection_url }}'
+          class='w-full rounded-md bg-red-600 px-12 py-3 text-center text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto'
+        >
           Winkel Verder
         </a>
       </div>
     </div>
-    <div class="flex flex-col max-w-6xl mx-auto my-10">
+    <div class='mx-auto my-10 flex max-w-6xl flex-col'>
       <form
-        action="{{ routes.cart_url }}"
-        method="POST"
-        novalidate>
-        <table class="w-full my-4 divide-y divide-red-500 table-auto">
+        action='{{ routes.cart_url }}'
+        method='POST'
+        novalidate
+      >
+        <table class='my-4 w-full table-auto divide-y divide-red-500'>
           <thead>
-            <th class="px-6 py-3 text-sm font-medium text-left text-gray-500">Product</th>
-            <th class="px-6 py-3 text-sm font-medium text-left text-gray-500">Aantal</th>
-            <th class="px-6 py-3 text-sm font-medium text-left text-gray-500">Totaal</th>
+            <th class='px-6 py-3 text-left text-sm font-medium text-gray-500'>Product</th>
+            <th class='px-6 py-3 text-left text-sm font-medium text-gray-500'>Aantal</th>
+            <th class='px-6 py-3 text-left text-sm font-medium text-gray-500'>Totaal</th>
           </thead>
           <tbody>
             {% for item in cart.items %}
-              <tr class="table-row">
-                <td class="flex flex-col justify-center px-2 py-4">
-                  <a href="{{ item.url }}">
+              <tr class='table-row'>
+                <td class='flex flex-col justify-center px-2 py-4'>
+                  <a href='{{ item.url }}'>
                     {% if item.image %}
                       <img
-                        src="{{ item.image | image_url: '300px' }}"
-                        alt="{{ item.title | escape}}"
-                        class="object-cover w-20 h-20 border"
-                        width="300"
-                        height="300">
+                        src='{{ item.image | image_url: '300px' }}'
+                        alt='{{ item.title | escape}}'
+                        class='h-20 w-20 border object-cover'
+                        width='300'
+                        height='300'
+                      >
                     {% else %}
                       {{ 'product-1' | placeholder_svg_tag: 'w-20 h-20 object-cover border' }}
                     {% endif %}
                   </a>
                 </td>
-                <td class="flex flex-col justify-center px-2 py-4">
+                <td class='flex flex-col justify-center px-2 py-4'>
                   <!-- TODO when hover : remove truncatewords -->
-                  <a href="{{ item.url }}" class="my-1">{{ item.product.title | truncatewords: 5 }}</a>
-                  <span class="my-1 text-sm text-gray-500">{{ item.variant.title }}</span>
-                  <a href="{{  routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="my-1 text-sm font-medium text-secondary">remove</a>
+                  <a href='{{ item.url }}' class='my-1'>{{ item.product.title | truncatewords: 5 }}</a>
+                  <span class='my-1 text-sm text-gray-500'>{{ item.variant.title }}</span>
+                  <a
+                    href='{{  routes.cart_change_url }}?line={{ forloop.index }}&quantity=0'
+                    class='my-1 text-sm font-medium text-secondary'
+                    >remove</a
+                  >
                 </td>
-                <td class="px-2 py-4">
+                <td class='px-2 py-4'>
                   <input
-                    type="number"
-                    name="updates[]"
-                    value="{{ item.quantity }}"
-                    min="1"
-                    id="updates_{{ forloop.index }}"
-                    class="w-20 p-2 border">
+                    type='number'
+                    name='updates[]'
+                    value='{{ item.quantity }}'
+                    min='1'
+                    id='updates_{{ forloop.index }}'
+                    class='w-20 border p-2'
+                  >
                 </td>
                 <!-- TODO update price when quantity changes -->
-                <td class="px-2 py-4">
+                <td class='px-2 py-4'>
                   {{ item.final_line_price | money }}
                 </td>
               </tr>
@@ -60,71 +70,74 @@
           </tbody>
         </table>
 
-
-        <div class="flex flex-col items-center justify-between md:flex-row">
-          <div class="w-full my-4">
-            <div class="flex flex-col items-start">
-              <label for="cart_notes" class="my-1">Winkelwagen notities</label>
+        <div class='flex flex-col items-center justify-between md:flex-row'>
+          <div class='my-4 w-full'>
+            <div class='flex flex-col items-start'>
+              <label for='cart_notes' class='my-1'>Winkelwagen notities</label>
               <textarea
-                name="note"
-                id="cart_notes"
-                class="w-full h-20 border resize-none md:max-w-lg"></textarea>
+                name='note'
+                id='cart_notes'
+                class='h-20 w-full resize-none border md:max-w-lg'
+              ></textarea>
             </div>
           </div>
-          <div class="w-full my-4 md:w-80">
+          <div class='my-4 w-full md:w-80'>
             {% for block in section.blocks %}
               {% case block.type %}
                 {% when 'subtotal' %}
-                  <h3 class="text-xl">Subtotaal: {{ cart.total_price | money }}</h3>
+                  <h3 class='text-xl'>Subtotaal: {{ cart.total_price | money }}</h3>
                 {% when 'update_button' %}
-                  <div class="my-2">
+                  <div class='my-2'>
                     <button
-                      name="update"
-                      type="submit"
-                      class="w-full p-3 font-medium text-gray-600 transition-all duration-300 ease-in-out border rounded-md shadow-sm border-secondary hover:bg-secondary hover:text-white">
+                      name='update'
+                      type='submit'
+                      class='w-full rounded-md border border-secondary p-3 font-medium text-gray-600 shadow-sm transition-all duration-300 ease-in-out hover:bg-secondary hover:text-white'
+                    >
                       Update
                     </button>
                   </div>
                 {% when 'checkout_button' %}
-                  <div class="my-2">
+                  <div class='my-2'>
                     <button
-                      name="checkout"
-                      type="submit"
-                      class="w-full p-3 font-medium text-white transition-all duration-300 ease-in-out border border-white rounded-md shadow-md bg-secondary hover:bg-white hover:border-secondary hover:text-gray-600">
+                      name='checkout'
+                      type='submit'
+                      class='w-full rounded-md border border-white bg-secondary p-3 font-medium text-white shadow-md transition-all duration-300 ease-in-out hover:border-secondary hover:bg-white hover:text-gray-600'
+                    >
                       Checkout
                     </button>
                   </div>
-              {% else %}
+                {% else %}
 
-                {% endcase %}
-              {% endfor %}
-            </div>
+              {% endcase %}
+            {% endfor %}
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
-  {% else %}
-  {% endif %}
+  </div>
+{% else %}
 
-  {% schema %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Template Cart",
+  "blocks": [
     {
-      "name": "Template Cart",
-      "blocks": [
-        {
-          "type": "subtotal",
-          "name": "Subtotal",
-          "limit": 1
-        },
-        {
-          "type": "update_button",
-          "name": "Update Button",
-          "limit": 1
-        },
-        {
-          "type": "checkout_button",
-          "name": "Checkout Button",
-          "limit": 1
-        }
-      ]
+      "type": "subtotal",
+      "name": "Subtotal",
+      "limit": 1
+    },
+    {
+      "type": "update_button",
+      "name": "Update Button",
+      "limit": 1
+    },
+    {
+      "type": "checkout_button",
+      "name": "Checkout Button",
+      "limit": 1
     }
-  {% endschema %}
+  ]
+}
+{% endschema %}

@@ -1,86 +1,86 @@
-<footer id="footer" class="relative mt-auto bg-primary">
-  <div class="relative z-50 max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+<footer id='footer' class='relative mt-auto bg-primary'>
+  <div class='relative z-50 mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8'>
+    <div class='grid grid-cols-1 gap-8 lg:grid-cols-3'>
       <div>
-        <a href="/">
-          <img src="{{ 'logo.png' | asset_url }}" class="h-6 mr-5 sm:h-9" alt="logo">
+        <a href='/'>
+          <img src='{{ 'logo.png' | asset_url }}' class='h-6 sm:h-9 mr-5' alt='logo'>
         </a>
-        <p class="max-w-xs mt-4 text-sm text-gray-200">
-          <form action="{{ routes.search_url }}" method="get" class="flex items-center">
+        <p class='mt-4 max-w-xs text-sm text-gray-200'>
+          <form action='{{ routes.search_url }}' method='get' class='flex items-center'>
             <input
-              type="search"
-              name="q"
-              placeholder="Zoeken"
-              class="px-3 py-1 border border-gray-300 rounded-l search-input focus:outline-none focus:ring-2 focus:ring-blue-500"
+              type='search'
+              name='q'
+              placeholder='Zoeken'
+              class='search-input rounded-l border border-gray-300 px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500'
               required
             >
-            <button type="submit" class="px-3 py-1 bg-gray-200 border border-gray-300 rounded-r search-button">
+            <button type='submit' class='search-button rounded-r border border-gray-300 bg-gray-200 px-3 py-1'>
               <svg
-                class="w-6 h-6 text-gray-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+                class='h-6 w-6 text-gray-500'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+                xmlns='http://www.w3.org/2000/svg'
               >
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M16.65 10.8A5.65 5.65 0 1010.8 16.65 5.65 5.65 0 0016.65 10.8z"></path>
               </svg>
             </button>
           </form>
         </p>
-        <div class="flex mt-8 space-x-6 text-gray-200">
-          <a class="hover:opacity-75" href="{{ settings.footer_facebook_url }}" target="_blank" rel="noreferrer">
-            <span class="sr-only"> Facebook </span>
+        <div class='mt-8 flex space-x-6 text-gray-200'>
+          <a class='hover:opacity-75' href='{{ settings.footer_facebook_url }}' target='_blank' rel='noreferrer'>
+            <span class='sr-only'> Facebook </span>
             {% render 'icon-facebook' %}
           </a>
-          <a class="hover:opacity-75" href="{{ settings.footer_instagram_url }}" target="_blank" rel="noreferrer">
-            <span class="sr-only"> Instagram </span>
+          <a class='hover:opacity-75' href='{{ settings.footer_instagram_url }}' target='_blank' rel='noreferrer'>
+            <span class='sr-only'> Instagram </span>
             {% render 'icon-instagram' %}
           </a>
-          <a class="hover:opacity-75" href="{{ settings.footer_twitter_url }}" target="_blank" rel="noreferrer">
-            <span class="sr-only"> Twitter </span>
+          <a class='hover:opacity-75' href='{{ settings.footer_twitter_url }}' target='_blank' rel='noreferrer'>
+            <span class='sr-only'> Twitter </span>
             {% render 'icon-twitter' %}
           </a>
         </div>
       </div>
-      <div class="grid grid-cols-1 gap-8 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-4">
+      <div class='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4'>
         <div>
-          <p class="font-medium text-white">Tedroka</p>
-          <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-300">
-            <a class="hover:opacity-75" href="{{ settings.footer_about_url }}"> About </a>
-            <a class="hover:opacity-75" href="{{ settings.footer_team_url }}"> Meet the Team </a>
-            <a class="hover:opacity-75" href="{{ settings.footer_history_url }}"> History </a>
-            <a class="hover:opacity-75" href="{{ settings.footer_careers_url }}"> Careers </a>
+          <p class='font-medium text-white'>Tedroka</p>
+          <nav class='mt-4 flex flex-col space-y-2 text-sm text-gray-300'>
+            <a class='hover:opacity-75' href='{{ settings.footer_about_url }}'> About </a>
+            <a class='hover:opacity-75' href='{{ settings.footer_team_url }}'> Meet the Team </a>
+            <a class='hover:opacity-75' href='{{ settings.footer_history_url }}'> History </a>
+            <a class='hover:opacity-75' href='{{ settings.footer_careers_url }}'> Careers </a>
           </nav>
         </div>
         <div>
-          <p class="font-medium text-white">Producten</p>
-          <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-300">
-            <a class="hover:opacity-75" href="/collections/all-tedroka-products">Alle Producten</a>
-            <a class="hover:opacity-75" href="/collections/c-fly-drone">Tedroka&reg; C-Fly-Drones</a>
-            <a class="hover:opacity-75" href="/collections/drones">Drones</a>
-            <a class="hover:opacity-75" href="/collections/Accessoires">Accessoires</a>
+          <p class='font-medium text-white'>Producten</p>
+          <nav class='mt-4 flex flex-col space-y-2 text-sm text-gray-300'>
+            <a class='hover:opacity-75' href='/collections/all-tedroka-products'>Alle Producten</a>
+            <a class='hover:opacity-75' href='/collections/c-fly-drone'>Tedroka&reg; C-Fly-Drones</a>
+            <a class='hover:opacity-75' href='/collections/drones'>Drones</a>
+            <a class='hover:opacity-75' href='/collections/Accessoires'>Accessoires</a>
           </nav>
         </div>
         <div>
-          <p class="font-medium text-white">Snelle Links</p>
-          <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-300">
-            <a class="hover:opacity-75" href="/pages/contact"> Contact </a>
+          <p class='font-medium text-white'>Snelle Links</p>
+          <nav class='mt-4 flex flex-col space-y-2 text-sm text-gray-300'>
+            <a class='hover:opacity-75' href='/pages/contact'> Contact </a>
           </nav>
         </div>
         <div>
-          <p class="font-medium text-white">Ons Beleid</p>
-          <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-300">
-            <a class="hover:opacity-75" href="/pages/our-privacy-policy">Privacybeleid</a>
-            <a class="hover:opacity-75" href="/pages/conditions-policy">Algemene Voorwaarden</a>
-            <a class="hover:opacity-75" href="/pages/retour-policy">Retourbeleid</a>
-            <a class="hover:opacity-75" href="/pages/our-shipment-policy">Verzendingsbeleid</a>
-            <a class="hover:opacity-75" href="/pages/faq">Veelgestelde vragen</a>
+          <p class='font-medium text-white'>Ons Beleid</p>
+          <nav class='mt-4 flex flex-col space-y-2 text-sm text-gray-300'>
+            <a class='hover:opacity-75' href='/pages/our-privacy-policy'>Privacybeleid</a>
+            <a class='hover:opacity-75' href='/pages/conditions-policy'>Algemene Voorwaarden</a>
+            <a class='hover:opacity-75' href='/pages/retour-policy'>Retourbeleid</a>
+            <a class='hover:opacity-75' href='/pages/our-shipment-policy'>Verzendingsbeleid</a>
+            <a class='hover:opacity-75' href='/pages/faq'>Veelgestelde vragen</a>
           </nav>
         </div>
       </div>
     </div>
-    <p class="mt-8 text-xs text-gray-200">
-      © 2024 {{ shop.name }}, built by <a href="https://www.marlondev.io" class="underline">MarlonDev.io</a>
+    <p class='mt-8 text-xs text-gray-200'>
+      © 2024 {{ shop.name }}, built by <a href='https://www.marlondev.io' class='underline'>MarlonDev.io</a>
     </p>
   </div>
 </footer>

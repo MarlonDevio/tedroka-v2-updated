@@ -57,18 +57,15 @@
     },
     "section-testimonials": {
       "type": "section-testimonials",
-      "settings": {
-      }
+      "settings": {}
     },
     "section-trusted-by": {
       "type": "section-trusted-by",
-      "settings": {
-      }
+      "settings": {}
     },
     "section-product-carousel": {
       "type": "section-product-carousel",
-      "settings": {
-      }
+      "settings": {}
     },
     "section-highlight-variant": {
       "type": "section-highlight-variant",

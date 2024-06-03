@@ -1,6 +1,6 @@
 <section
-  class="relative  overflow-hidden bg-primary pb-12 pt-20 before:absolute before:inset-0 before:w-full before:bg-black before:opacity-60 lg:pb-[90px] lg:pt-[120px]"
-  style="background-image: url(https://readymadeui.com/dark-bg-image.webp); background-size: cover; background-repeat: no-repeat"
+  class='relative  overflow-hidden bg-primary pb-12 pt-20 before:absolute before:inset-0 before:w-full before:bg-black before:opacity-60 lg:pb-[90px] lg:pt-[120px]'
+  style='background-image: url(https://readymadeui.com/dark-bg-image.webp); background-size: cover; background-repeat: no-repeat'
 >
   {% assign highlighted_product_handle = section.settings.featured_product %}
 
@@ -9,35 +9,35 @@
     {% assign highlighted_product_handle = default_highlighted_product_handle %}
   {% endif %}
 
-  <div class="mx-auto max-w-7xl">
-    <div class="relative z-50 mx-auto ml-4 space-y-6">
+  <div class='mx-auto max-w-7xl'>
+    <div class='relative z-50 mx-auto ml-4 space-y-6'>
       {% render 'logo' %}
     </div>
-    <div class="container relative z-50 flex items-center justify-center px-4 py-12 mx-auto sm:px-6 2xl:px-0">
-      <div class="flex flex-col items-center justify-center space-y-6 lg:flex-row lg:space-y-0">
-        <div class="flex flex-col items-start justify-start w-80 sm:w-auto">
+    <div class='container relative z-50 mx-auto flex items-center justify-center px-4 py-12 sm:px-6 2xl:px-0'>
+      <div class='flex flex-col items-center justify-center space-y-6 lg:flex-row lg:space-y-0'>
+        <div class='flex w-80 flex-col items-start justify-start sm:w-auto'>
           <div>
-            <p class="text-3xl font-semibold leading-9 text-white xl:text-4xl dark:text-white">
-              Vlieg Erboven. En <span class="text-secondary">Erover.</span>
+            <p class='text-3xl font-semibold leading-9 text-white xl:text-4xl dark:text-white'>
+              Vlieg Erboven. En <span class='text-secondary'>Erover.</span>
             </p>
           </div>
-          <div class="mt-4 lg:w-4/5 xl:w-3/5">
-            <p class="text-base leading-6 text-white dark:text-white">
+          <div class='mt-4 lg:w-4/5 xl:w-3/5'>
+            <p class='text-base leading-6 text-white dark:text-white'>
               De Drone van de toekomst. Met 4k esc dubbele camera, gps terugkeer, schoonheidsschot en eid stabilisatie.
             </p>
           </div>
-          <div class="flex items-start w-full mt-16">
+          <div class='mt-16 flex w-full items-start'>
             {% render 'buy-now-btn', product: highlighted_product_handle %}
           </div>
         </div>
 
         <figure>
           <img
-            class="lg:block"
-            src="{{ highlighted_product_handle.featured_image | image_url: width:'600px' }}"
-            alt="{{ highlighted_product_handle.title }}"
-            height="600"
-            width="600"
+            class='lg:block'
+            src='{{ highlighted_product_handle.featured_image | image_url: width:'600px' }}'
+            alt='{{ highlighted_product_handle.title }}'
+            height='600'
+            width='600'
           >
         </figure>
       </div>

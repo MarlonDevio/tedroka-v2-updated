@@ -1,4 +1,4 @@
-<script src="{{ 'CartNotificationButton.js' |  asset_url }}" defer="defer"></script>
+<script src='{{ 'CartNotificationButton.js' |  asset_url }}' defer='defer'></script>
 {% assign main_menu_navigation_links = linklists['main-menu-navigation-links'].links %}
 
 {% style %}
@@ -23,21 +23,22 @@
   .search-bar-menu-closed {
     height: 0;
   }
-
 {% endstyle %}
 
-
-<header id="navigation-header" class="relative px-2 py-4 laptop:py-6 bg-primary laptop:px-4">
+<header id='navigation-header' class='relative bg-primary px-2 py-4 laptop:px-4 laptop:py-6'>
   {% comment %} Laptop Screen {% endcomment %}
 
-  <nav class="flex items-center justify-between mx-auto max-w-7xl">
+  <nav class='mx-auto flex max-w-7xl items-center justify-between'>
     {% comment %} Left link container {% endcomment %}
 
-    <div class="hidden gap-4 font-bold text-white uppercase laptop:flex left-link-container">
-      <ul class="flex items-center gap-4 list-none">
+    <div class='left-link-container hidden gap-4 font-bold uppercase text-white laptop:flex'>
+      <ul class='flex list-none items-center gap-4'>
         {% for link in main_menu_navigation_links %}
-          <li class="text-white uppercase">
-            <a href="{{ link.url }}" class="flex p-2 transition-all duration-300 ease-in-out rounded-md hover:bg-white hover:text-primary hover:cursor-pointer">
+          <li class='uppercase text-white'>
+            <a
+              href='{{ link.url }}'
+              class='flex rounded-md p-2 transition-all duration-300 ease-in-out hover:cursor-pointer hover:bg-white hover:text-primary'
+            >
               {{ link.title }}
               {% if link.type == 'collection_link' %}
                 {% render 'chevron-svg' %}
@@ -50,12 +51,12 @@
     </div>
 
     {% comment %} Mobile menu {% endcomment %}
-    <div class="flex flex-col laptop:hidden">
+    <div class='flex flex-col laptop:hidden'>
       {% render 'animated-menu-icon' %}
-      <ul class="absolute z-[10000] flex-col flex min-h-[100vh] min-w-[40vw] navigation-container-mobile bg-gray-950 gap-2 px-4 py-2 text-secondary rounded-md transition-all duration-500 ease-in-out  closed-menu  top-0 pt-[90px]">
+      <ul class='navigation-container-mobile closed-menu absolute top-0 z-[10000] flex min-h-[100vh] min-w-[40vw] flex-col gap-2 rounded-md bg-gray-950 px-4 py-2 pt-[90px] text-secondary  transition-all  duration-500 ease-in-out'>
         {% for link in main_menu_navigation_links %}
-          <li class="inline-block p-2 text-xl font-bold uppercase rounded-md sm:text-2xl hover:bg-secondary hover:text-white">
-            <a class="flex" href="{{ link.url }}">
+          <li class='inline-block rounded-md p-2 text-xl font-bold uppercase hover:bg-secondary hover:text-white sm:text-2xl'>
+            <a class='flex' href='{{ link.url }}'>
               {{- link.title }}
               {% if link.type == 'collection_link' %}
                 {% render 'chevron-svg' %}
@@ -63,28 +64,24 @@
             </a>
           </li>
         {% endfor %}
-
-
       </ul>
-
-
     </div>
 
     {% comment %} Right links container {% endcomment %}
-    <ul class="flex gap-2 ml-auto nav-links-container">
-      <li class="flex items-center px-2 hover:cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.5]">
-        <a class="relative main-menu-link flex p-1.5 text-white" href="{{ routes.cart_url }}">
+    <ul class='nav-links-container ml-auto flex gap-2'>
+      <li class='flex items-center px-2 transition-all duration-300 ease-in-out hover:scale-[1.5] hover:cursor-pointer'>
+        <a class='main-menu-link relative flex p-1.5 text-white' href='{{ routes.cart_url }}'>
           {%- render 'cart-svg' -%}
           <cart-notification-button></cart-notification-button>
         </a>
       </li>
-      <li class="flex items-center px-2 hover:cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.5]">
-        <button type="button" class="main-menu-link search-button flex p-1.5 text-white">
+      <li class='flex items-center px-2 transition-all duration-300 ease-in-out hover:scale-[1.5] hover:cursor-pointer'>
+        <button type='button' class='main-menu-link search-button flex p-1.5 text-white'>
           {%- render 'icon-search' -%}
         </button>
       </li>
-      <li class="flex items-center px-2 hover:cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.5]">
-        <a class="main-menu-link flex p-1.5 text-white" href="https://tedroka.nl/apps/parcelpanel">
+      <li class='flex items-center px-2 transition-all duration-300 ease-in-out hover:scale-[1.5] hover:cursor-pointer'>
+        <a class='main-menu-link flex p-1.5 text-white' href='https://tedroka.nl/apps/parcelpanel'>
           {% render 'track-order-svg' %}
         </a>
       </li>
@@ -92,19 +89,21 @@
   </nav>
 
   {% comment %} Searchbar {% endcomment %}
-  <div class="absolute top-[100%] h-[0] w-full flex flex-col shadow-lg justify-center overflow-hidden rounded-md right-0 mx-auto transition-all duration-300 ease-in-out  bg-white  max-w-7xl left-0 z-50 search-bar-menu">
-    <h3 class="px-2 pt-4 text-lg font-bold text-gray-400 laptop:text-xl">Waar ben je naar op zoek?</h3>
+  <div class='search-bar-menu absolute left-0 right-0 top-[100%] z-50 mx-auto flex h-[0] w-full max-w-7xl flex-col justify-center overflow-hidden rounded-md  bg-white  shadow-lg transition-all duration-300 ease-in-out'>
+    <h3 class='px-2 pt-4 text-lg font-bold text-gray-400 laptop:text-xl'>Waar ben je naar op zoek?</h3>
     <form
-      action="{{ routes.search_url }}"
-      method="get"
-      class="relative flex flex-col justify-center w-full px-2 py-4 "
-      role="search">
+      action='{{ routes.search_url }}'
+      method='get'
+      class='relative flex w-full flex-col justify-center px-2 py-4 '
+      role='search'
+    >
       <input
-        type="text"
-        name="q"
-        class="w-full pb-4 border-none rounded-md shadow-inner bg-gray-50"
-        placeholder="Zoeken...">
-      <button class="absolute right-[25px] top-[25%w]" type="submit">{% render 'icon-search' %}</button>
+        type='text'
+        name='q'
+        class='w-full rounded-md border-none bg-gray-50 pb-4 shadow-inner'
+        placeholder='Zoeken...'
+      >
+      <button class='absolute right-[25px] top-[25%w]' type='submit'>{% render 'icon-search' %}</button>
     </form>
   </div>
 </header>
@@ -117,25 +116,24 @@
   const navContainerMobile = document.querySelector('.navigation-container-mobile');
   const searchBtn = document.querySelector('.search-button');
   const searchBarMenu = document.querySelector('.search-bar-menu');
-  const expandMenuClass = 'expand-menu'
+  const expandMenuClass = 'expand-menu';
 
   searchBtn.addEventListener('click', (e) => {
     e.preventDefault();
     searchBarMenu.classList.toggle('search-bar-menu-open');
   });
 
-
   hamburger.addEventListener('click', (e) => {
-      handleChecked(checkbox.checked)
-  })
+    handleChecked(checkbox.checked);
+  });
 
   function handleChecked(isChecked) {
-    if (isChecked){
-        navContainerMobile.classList.remove('closed-menu');
-        navContainerMobile.classList.add('expand-menu');
+    if (isChecked) {
+      navContainerMobile.classList.remove('closed-menu');
+      navContainerMobile.classList.add('expand-menu');
     } else {
-      navContainerMobile.classList.remove('expand-menu')
-      navContainerMobile.classList.add('closed-menu')
-  }
+      navContainerMobile.classList.remove('expand-menu');
+      navContainerMobile.classList.add('closed-menu');
+    }
   }
 </script>

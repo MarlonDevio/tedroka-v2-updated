@@ -1,5 +1,14 @@
 .scroll-trigger.animate--fade-in {
-    animation: slideIn 1s;
+    animation: slideIn 0.8s ease-in-out;
+}
+
+.scroll-trigger--offscreen {
+    transform: translateY(2rem);
+    opacity: 0.01;
+}
+
+.scroll-trigger {
+    transition: all 0.8s ease-in-out;
 }
 
 /* ANIMATIONS*/

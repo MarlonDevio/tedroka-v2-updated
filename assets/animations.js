@@ -1,46 +1,62 @@
 const SCROLL_ANIMATION_TRIGGER_CLASSNAME = 'scroll-trigger';
 const SCROLL_ANIMATION_OFFSCREEN_CLASSNAME = 'scroll-trigger--offscreen';
-const SCROLL_ANIMATION_FADE_IN_CLASSNAME = "animate--fade-in";
+const SCROLL_ANIMATION_FADE_IN_CLASSNAME = 'animate--fade-in';
+const SCROLL_ANIMATION_CANCEL_CLASSNAME = 'scroll-trigger--cancel';
+
+const onIntersection = (elements, observer) => {
+  elements.forEach((element) => {
+    if (element.isIntersecting) {
+      const elementTarget = element.target;
+      if (
+        elementTarget.classList.contains(SCROLL_ANIMATION_OFFSCREEN_CLASSNAME)
+      ) {
+        elementTarget.classList.remove(SCROLL_ANIMATION_OFFSCREEN_CLASSNAME);
+        elementTarget.classList.add(SCROLL_ANIMATION_FADE_IN_CLASSNAME);
+      }
+      observer.unobserve(elementTarget);
+    } else {
+      element.target.classList.add(SCROLL_ANIMATION_OFFSCREEN_CLASSNAME);
+      element.target.classList.remove(SCROLL_ANIMATION_CANCEL_CLASSNAME);
+      element.target.classList.remove(SCROLL_ANIMATION_FADE_IN_CLASSNAME);
+    }
+  });
+};
 
 function initializeScrollAnimationTrigger(rootEl = document) {
-    const animationScrollTriggerElements = Array.from(rootEl.getElementsByClassName(SCROLL_ANIMATION_TRIGGER_CLASSNAME))
-    if (animationScrollTriggerElements.length === 0) return;
+  const animationScrollTriggerElements = Array.from(
+    rootEl.getElementsByClassName(SCROLL_ANIMATION_TRIGGER_CLASSNAME),
+  );
+  if (animationScrollTriggerElements.length === 0) return;
 
-    const observer = new IntersectionObserver(onIntersection, {
-        rootMargin: '0px 0px -50px 0px',
-    });
-
-    animationScrollTriggerElements.forEach(element => observer.observe(element))
+  const observer = new IntersectionObserver(onIntersection, {
+    rootMargin: '0px 0px -50px 0px',
+    // write a function
+  });
+  animationScrollTriggerElements.forEach((element) =>
+    observer.observe(element),
+  );
 }
 
+// function percentageSeen(element) {
+//   const viewportHeight = window.innerHeight;
+//   const scrollY = window.scrollY;
+//   const elementPositionY = element.getBoundingClientRect().top + scrollY;
+//   const elementHeight = element.offsetHeight;
+
+//   if (elementPositionY > scrollY + viewportHeight) {
+//     // If we haven't reached the image yet
+//     return 0;
+//   } else if (elementPositionY + elementHeight < scrollY) {
+//     // If we've completely scrolled past the image
+//     return 100;
+//   }
+
+//   // When the image is in the viewport
+//   const distance = scrollY + viewportHeight - elementPositionY;
+//   let percentage = distance / ((viewportHeight + elementHeight) / 100);
+//   return Math.round(percentage);
+// }
+
 window.addEventListener('DOMContentLoaded', () => {
-    initializeScrollAnimationTrigger();
-})
-
-/**
- * graph TD;
-    DOMContentLoaded -->|Event Trigger| initializeScrollAnimationTrigger;
-    DOMContentLoaded -->|Event Trigger| initializeScrollZoomAnimationTrigger;
-
-    initializeScrollAnimationTrigger -->|Find elements| SCROLL_ANIMATION_TRIGGER_CLASSNAME;
-    initializeScrollAnimationTrigger -->|Check Design Mode| addDesignModeClass;
-    initializeScrollAnimationTrigger -->|Create Observer| IntersectionObserver(onIntersection);
-
-    IntersectionObserver(onIntersection) --> onIntersection;
-
-    onIntersection -->|If Intersecting| remove(SCROLL_ANIMATION_OFFSCREEN_CLASSNAME);
-    onIntersection -->|If Intersecting| setAnimationOrder;
-    onIntersection -->|If Intersecting| unobserveElement;
-    onIntersection -->|If Not Intersecting| add(SCROLL_ANIMATION_OFFSCREEN_CLASSNAME);
-    onIntersection -->|If Not Intersecting| remove(SCROLL_ANIMATION_CANCEL_CLASSNAME);
-
-    initializeScrollZoomAnimationTrigger -->|Check Motion Preference| reducedMotionCheck;
-    initializeScrollZoomAnimationTrigger -->|Find elements| SCROLL_ZOOM_IN_TRIGGER_CLASSNAME;
-    initializeScrollZoomAnimationTrigger -->|Create Observer| IntersectionObserver(zoomObserver);
-
-    IntersectionObserver(zoomObserver) -->|Observe Element| setZoomRatio;
-    setZoomRatio -->|Calculate| percentageSeen;
-    setZoomRatio -->|Add Scroll Event| updateZoomRatio;
-
-    ShopifyDesignModeEvents -->|Event Trigger| initializeScrollAnimationTrigger;
- */
+  initializeScrollAnimationTrigger();
+});

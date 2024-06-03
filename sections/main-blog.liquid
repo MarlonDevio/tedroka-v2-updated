@@ -1,7 +1,7 @@
 {% paginate blog.articles by 6 %}
-  <section class="py-10">
-    <h1 class="mb-12 font-sans text-5xl font-bold text-center">{{ blog.title }}</h1>
-    <div class="grid justify-center max-w-screen-lg px-4 mx-auto sm:grid-cols-2 sm:gap-4 sm:px-8 md:grid-cols-3">
+  <section class='py-10'>
+    <h1 class='mb-12 text-center font-sans text-5xl font-bold'>{{ blog.title }}</h1>
+    <div class='mx-auto grid max-w-screen-lg justify-center px-4 sm:grid-cols-2 sm:gap-4 sm:px-8 md:grid-cols-3'>
       {% for article in blog.articles %}
         {% render 'component-card-article', article: article %}
       {% endfor %}

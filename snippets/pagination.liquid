@@ -1,9 +1,9 @@
 {% if pagination.pages > 0 %}
-  <nav role="navigation" class="flex items-center justify-center mx-auto my-8 grow-0">
+  <nav role='navigation' class='mx-auto my-8 flex grow-0 items-center justify-center'>
     {% if pagination.previous %}
       <a
-        href="{{ pagination.previous.url }}"
-        class="px-4 py-2 mx-1 font-medium text-gray-600 border border-gray-600 rounded-sm hover:bg-gray-600 hover:text-white"
+        href='{{ pagination.previous.url }}'
+        class='mx-1 rounded-sm border border-gray-600 px-4 py-2 font-medium text-gray-600 hover:bg-gray-600 hover:text-white'
       >
         &larr;
       </a>
@@ -12,14 +12,14 @@
     {% for part in pagination.parts %}
       {% if part.is_link %}
         <a
-          href="{{part.url}}"
-          class="px-4 py-2 mx-1 font-medium text-gray-600 border border-gray-600 rounded-sm hover:bg-gray-600 hover:text-white"
+          href='{{part.url}}'
+          class='mx-1 rounded-sm border border-gray-600 px-4 py-2 font-medium text-gray-600 hover:bg-gray-600 hover:text-white'
         >
           {{ part.title }}
         </a>
       {% else %}
         <span
-          class="px-4 py-2 mx-1 font-medium text-gray-600 bg-gray-200 border border-gray-600 rounded-sm"
+          class='mx-1 rounded-sm border border-gray-600 bg-gray-200 px-4 py-2 font-medium text-gray-600'
         >
           {{ part.title }}
         </span>
@@ -28,8 +28,8 @@
 
     {% if pagination.next %}
       <a
-        class="px-4 py-2 mx-1 font-medium text-gray-600 border border-gray-600 rounded-sm hover:bg-gray-600 hover:text-white"
-        href="{{ pagination.next.url }}"
+        class='mx-1 rounded-sm border border-gray-600 px-4 py-2 font-medium text-gray-600 hover:bg-gray-600 hover:text-white'
+        href='{{ pagination.next.url }}'
       >
         &rarr;
       </a>

@@ -1,38 +1,39 @@
 {% comment %} Settings and defaults for collections {% endcomment %}
 {% assign read_more_url_video_default = collections['c-fly-drone'] %}
 {% assign collections = section.blocks %}
-<div class="bg-gray-100 py-[50px]">
-  <h2 class="mb-6 text-4xl font-semibold text-center md:text-5xl">{{ section.settings.section_title }}</h2>
-  <div class="px-4 mt-28 sm:px-10">
-    <div class="w-full mx-auto max-w-7xl">
+<div class='bg-gray-100 py-[50px]'>
+  <h2 class='mb-6 text-center text-4xl font-semibold md:text-5xl'>{{ section.settings.section_title }}</h2>
+  <div class='mt-28 px-4 sm:px-10'>
+    <div class='mx-auto w-full max-w-7xl'>
       {% for block in collections %}
         {% case block.type %}
           {% when 'chosen_collection_1' %}
             {% assign chosen_collection = block.settings.chosen_collection_1 | default: collections['c-fly-drone'] %}
             {% assign max_items = block.settings.max_number_of_images_shown | default: 3 %}
             {% assign item_count = 0 %}
-            <div class="grid items-center gap-10 lg:grid-cols-2">
-              <div class="">
-                <h3 class="mb-6 text-3xl font-semibold md:text-4xl">{{ block.settings.collection_1_title }}</h3>
-                <p>{{ block.settings.collection_1_description }}</p>
-                {% render 'read-more-btn', item: chosen_collection %}
+            <div class='grid items-center gap-10 lg:grid-cols-2'>
+              <div class=''>
+                <h3 class='scroll-trigger mb-6 text-3xl font-semibold md:text-4xl'>{{ block.settings.collection_1_title }}</h3>
+                <p class="scroll-trigger">{{ block.settings.collection_1_description }}</p>
+                {% render 'read-more-btn'
+                  , item: chosen_collection %}
               </div>
-              <div class="grid gap-8 sm:grid-cols-2">
+              <div class='grid gap-8 sm:grid-cols-2'>
                 {% for product in chosen_collection.products %}
                   {% if item_count < max_items %}
-                    <div class="block text-center hover:translate-y-[-10px] hover:shadow-3xl bg-white shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)] transition-all rounded-xl p-6">
-                      <a href="{{ product.url }}">
+                    <div class='hover:shadow-3xl block rounded-xl bg-white p-6 text-center shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)] transition-all hover:translate-y-[-10px]'>
+                      <a href='{{ product.url }}'>
                         <figure>
                           <img
-                            class="inline"
-                            src="{{ product.featured_image | image_url: width: '500px' }}"
-                            alt="{{ product.title }}"
-                            width="500"
-                            height="500"
-                          >
+                            class='inline scroll-trigger'
+                            src='{{ product.featured_image | image_url: width: '500px' }}'
+                            alt='{{ product.title }}'
+                            width='500'
+                            height='500'>
                         </figure>
                       </a>
-                      {% render 'read-more-btn-no-bg', item: product %}
+                      {% render 'read-more-btn-no-bg'
+                        , item: product %}
                     </div>
                     {% assign item_count = item_count | plus: 1 %}
                   {% endif %}
@@ -42,67 +43,67 @@
 
           {% when 'chosen_collection_2' %}
             {% assign chosen_collection = block.settings.chosen_collection_2 | default: collections.accessoires %}
-            {% assign image = block.settings.image_collection_2
-              | default: chosen_collection.products[0].featured_image
+            {% assign image = block.settings.image_collection_2 | default: chosen_collection.products[0].featured_image
             %}
-            <div class="px-4 sm:px-10 mt-28">
-              <div class="w-full mx-auto max-w-7xl">
-                <div class="grid items-center gap-10 md:grid-cols-2">
-                  <div class="w-full h-full">
+            <div class='mt-28 px-4 sm:px-10'>
+              <div class='mx-auto w-full max-w-7xl'>
+                <div class='grid items-center gap-10 md:grid-cols-2'>
+                  <div class='h-full w-full'>
                     <img
-                      src="{{ image | image_url: width: '502.5px' }}"
-                      alt="Premium Benefits"
-                      class="object-cover w-full h-full overflow-hidden"
-                      width="502.5"
-                      height="502.5"
-                    >
+                      src='{{ image | image_url: width: '502.5px' }}'
+                      alt='Premium Benefits'
+                      class='h-full scroll-trigger w-full overflow-hidden object-cover'
+                      width='502.5'
+                      height='502.5'>
                   </div>
-                  <div class="ml-auto">
-                    <h3 class="mb-6 text-3xl font-semibold md:text-4xl">{{ block.settings.collection_2_title }}</h3>
-                    <p>{{ block.settings.collection_2_description }}</p>
-                    {% render 'read-more-btn', item: chosen_collection %}
+                  <div class='ml-auto'>
+                    <h3 class='scroll-trigger mb-6 text-3xl font-semibold md:text-4xl'>{{ block.settings.collection_2_title }}</h3>
+                    <p class="scroll-trigger">{{ block.settings.collection_2_description }}</p>
+                    {% render 'read-more-btn'
+                      , item: chosen_collection %}
                   </div>
                 </div>
               </div>
             </div>
 
           {% when 'chosen_collection_3' %}
-            {% assign chosen_collection = block.settings.chosen_collection_3
-              | default: collections['all-tedroka-products']
+            {% assign chosen_collection = block.settings.chosen_collection_3 | default: collections['all-tedroka-products']
             %}
-            {% assign image = block.settings.image_collection_3
-              | default: chosen_collection.products[0].featured_image
+            {% assign image = block.settings.image_collection_3 | default: chosen_collection.products[0].featured_image
             %}
-            <div class="px-4 sm:px-10 mt-28">
-              <div class="grid items-center justify-center w-full gap-10 mx-auto max-w-7xl md:grid-cols-2">
+            <div class='mt-28 px-4 sm:px-10'>
+              <div class='mx-auto grid w-full max-w-7xl items-center justify-center gap-10 md:grid-cols-2'>
                 <div>
-                  <h3 class="mb-6 text-3xl font-semibold md:text-4xl">{{ block.settings.collection_3_title }}</h3>
-                  <p>{{ block.settings.collection_3_description }}</p>
-                  {% render 'dynamic-read-more-btn', text: 'Bekijk al onze producten', item: chosen_collection %}
+                  <h3 class='scroll-trigger mb-6 text-3xl font-semibold md:text-4xl'>{{ block.settings.collection_3_title }}</h3>
+                  <p class="scroll-trigger">{{ block.settings.collection_3_description }}</p>
+                  {% render 'dynamic-read-more-btn'
+                    , text: 'Bekijk al onze producten'
+                    , item: chosen_collection %}
                 </div>
-                <div class="w-full h-full">
+                <div class='h-full w-full'>
                   <img
-                    src="{{ image | image_url: width: '502.5px' }}"
-                    alt="feature"
-                    class="object-cover w-full h-full"
-                    width="502.5"
-                    height="502.5"
-                  >
+                    src='{{ image | image_url: width: '502.5px' }}'
+                    alt='feature'
+                    class='h-full scroll-trigger w-full object-cover'
+                    width='502.5'
+                    height='502.5'>
                 </div>
               </div>
             </div>
         {% endcase %}
       {% endfor %}
 
-      <div class="relative pt-4 bg-white mt-28 sm:px-10">
-        <div class="min-h-[400px] relative h-full max-w-7xl mx-auto flex flex-col justify-center items-center text-center px-6 py-16">
-          <h2 class="mb-6 text-3xl font-semibold text-black md:text-4xl">
-            Vlieg Erboven. En <span class="text-secondary">Erover.</span>
+      <div class='relative mt-28 bg-white pt-4 sm:px-10'>
+        <div class='h-full relative mx-auto flex min-h-[400px] max-w-7xl flex-col items-center justify-center px-6 py-16 text-center'>
+          <h2 class='mb-6 text-3xl font-semibold text-black md:text-4xl'>
+            Vlieg Erboven. En
+            <span class='text-secondary'>Erover.</span>
           </h2>
-          <video src="https://cdn.shopify.com/videos/c/o/v/d95941b810884f2b86dd7d07b3ab885e.mp4" controls>
+          <video src='https://cdn.shopify.com/videos/c/o/v/d95941b810884f2b86dd7d07b3ab885e.mp4' controls>
             Your browser does not support the video tag.
           </video>
-          {% render 'dynamic-read-more-btn', item: read_more_url_video_default %}
+          {% render 'dynamic-read-more-btn'
+            , item: read_more_url_video_default %}
         </div>
       </div>
     </div>
@@ -127,126 +128,126 @@
 </script>
 
 {% schema %}
-{
-  "name": "Highlighted Collections",
-  "settings": [
-    {
-      "type": "text",
-      "id": "section_title",
-      "label": "Section Title",
-      "default": "Bekijk onze Tedroka&reg; producten en collecties.",
-      "info": "This is the title of the section."
-    }
-  ],
-  "blocks": [
-    {
-      "type": "chosen_collection_1",
-      "name": "Collection 1",
-      "settings": [
-        {
-          "type": "collection",
-          "id": "chosen_collection_1",
-          "label": "Collection 1",
-          "info": "This collection will determine where the read more buttons of collection 1 will be linked to."
-        },
-        {
-          "type": "text",
-          "id": "collection_1_title",
-          "label": "Collection 1 Title",
-          "default": "Pakketten voor Tedroka&reg; C-Fly Drones",
-          "info": "This is the title of the first collection."
-        },
-        {
-          "type": "text",
-          "id": "collection_1_description",
-          "label": "Collection 1 Description",
-          "default": "Bij Tedroka bieden we verschillende pakketten voor onze hoogwaardige C-Fly drones, speciaal ontworpen voor zowel hobbyisten als professionals.",
-          "info": "This is the description of the first collection."
-        },
-        {
-          "type": "number",
-          "id": "max_number_of_images_shown",
-          "label": "Number of images shown",
-          "default": 3
-        }
-      ]
-    },
-    {
-      "type": "chosen_collection_2",
-      "name": "Collection 2",
-      "settings": [
-        {
-          "type": "collection",
-          "id": "chosen_collection_2",
-          "label": "Collection 2",
-          "info": "This collection will determine where the read more buttons of collection 2 will be linked to."
-        },
-        {
-          "type": "text",
-          "id": "collection_2_title",
-          "label": "Collection 2 Title",
-          "default": "Onmisbare Accessoires voor Tedroka&reg; Drones",
-          "info": "This is the title of the second collection."
-        },
-        {
-          "type": "text",
-          "id": "collection_2_description",
-          "label": "Collection 2 Description",
-          "default": "Van batterijen tot waterdichte rugzakken, zonne-energie powerbanks en meer, Tedroka&reg; heeft alles wat u nodig heeft om uw drone-ervaring te verbeteren.",
-          "info": "This is the description of the second collection."
-        },
-        {
-          "type": "image_picker",
-          "id": "image_collection_2",
-          "label": "Image Collection 2 of collection2",
-          "info": "This is the image of the second collection."
-        }
-      ]
-    },
-    {
-      "type": "chosen_collection_3",
-      "name": "Collection 3",
-      "settings": [
-        {
-          "type": "collection",
-          "id": "chosen_collection_3",
-          "label": "Collection 3",
-          "info": "This collection will determine where the read more buttons of collection 3 will be linked to."
-        },
-        {
-          "type": "text",
-          "id": "collection_3_title",
-          "label": "Collection 3 Title",
-          "default": "Tedroka&reg; - Uw Betrouwbare Partner voor Hoogwaardige Drones en Accessoires",
-          "info": "This is the title of the third collection."
-        },
-        {
-          "type": "text",
-          "id": "collection_3_description",
-          "label": "Collection 3 Description",
-          "default": "Vertrouw op Tedroka&reg; om uw avontuur in de lucht te ontketenen en geniet van een ongeëvenaarde vliegervaring met onze topkwaliteit drones en accessoires.",
-          "info": "This is the description of the third collection."
-        },
-        {
-          "type": "image_picker",
-          "id": "image_collection_3",
-          "label": "Image Collection 3 of collection3",
-          "info": "This is the image of the third collection."
-        }
-      ]
-    },
-    {
-      "type": "collection_video",
-      "name": "collection video",
-      "settings": [
-        {
-          "type": "collection",
-          "id": "collection_video",
-          "label": "read more link for the video",
-          "info": "choose the collection where the read more button underneath the video will point to."
-        }
-      ]
-    }
-  ]
-}
+  {
+    "name": "Highlighted Collections",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Section Title",
+        "default": "Bekijk onze Tedroka&reg; producten en collecties.",
+        "info": "This is the title of the section."
+      }
+    ],
+    "blocks": [
+      {
+        "type": "chosen_collection_1",
+        "name": "Collection 1",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "chosen_collection_1",
+            "label": "Collection 1",
+            "info": "This collection will determine where the read more buttons of collection 1 will be linked to."
+          },
+          {
+            "type": "text",
+            "id": "collection_1_title",
+            "label": "Collection 1 Title",
+            "default": "Pakketten voor Tedroka&reg; C-Fly Drones",
+            "info": "This is the title of the first collection."
+          },
+          {
+            "type": "text",
+            "id": "collection_1_description",
+            "label": "Collection 1 Description",
+            "default": "Bij Tedroka bieden we verschillende pakketten voor onze hoogwaardige C-Fly drones, speciaal ontworpen voor zowel hobbyisten als professionals.",
+            "info": "This is the description of the first collection."
+          },
+          {
+            "type": "number",
+            "id": "max_number_of_images_shown",
+            "label": "Number of images shown",
+            "default": 3
+          }
+        ]
+      },
+      {
+        "type": "chosen_collection_2",
+        "name": "Collection 2",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "chosen_collection_2",
+            "label": "Collection 2",
+            "info": "This collection will determine where the read more buttons of collection 2 will be linked to."
+          },
+          {
+            "type": "text",
+            "id": "collection_2_title",
+            "label": "Collection 2 Title",
+            "default": "Onmisbare Accessoires voor Tedroka&reg; Drones",
+            "info": "This is the title of the second collection."
+          },
+          {
+            "type": "text",
+            "id": "collection_2_description",
+            "label": "Collection 2 Description",
+            "default": "Van batterijen tot waterdichte rugzakken, zonne-energie powerbanks en meer, Tedroka&reg; heeft alles wat u nodig heeft om uw drone-ervaring te verbeteren.",
+            "info": "This is the description of the second collection."
+          },
+          {
+            "type": "image_picker",
+            "id": "image_collection_2",
+            "label": "Image Collection 2 of collection2",
+            "info": "This is the image of the second collection."
+          }
+        ]
+      },
+      {
+        "type": "chosen_collection_3",
+        "name": "Collection 3",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "chosen_collection_3",
+            "label": "Collection 3",
+            "info": "This collection will determine where the read more buttons of collection 3 will be linked to."
+          },
+          {
+            "type": "text",
+            "id": "collection_3_title",
+            "label": "Collection 3 Title",
+            "default": "Tedroka&reg; - Uw Betrouwbare Partner voor Hoogwaardige Drones en Accessoires",
+            "info": "This is the title of the third collection."
+          },
+          {
+            "type": "text",
+            "id": "collection_3_description",
+            "label": "Collection 3 Description",
+            "default": "Vertrouw op Tedroka&reg; om uw avontuur in de lucht te ontketenen en geniet van een ongeëvenaarde vliegervaring met onze topkwaliteit drones en accessoires.",
+            "info": "This is the description of the third collection."
+          },
+          {
+            "type": "image_picker",
+            "id": "image_collection_3",
+            "label": "Image Collection 3 of collection3",
+            "info": "This is the image of the third collection."
+          }
+        ]
+      },
+      {
+        "type": "collection_video",
+        "name": "collection video",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection_video",
+            "label": "read more link for the video",
+            "info": "choose the collection where the read more button underneath the video will point to."
+          }
+        ]
+      }
+    ]
+  }
 {% endschema %}

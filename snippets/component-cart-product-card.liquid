@@ -1,80 +1,84 @@
-<script src="{{ 'CartHandleQuantityButton.js' |  asset_url }}" defer="defer"></script>
+<script src='{{ 'CartHandleQuantityButton.js' |  asset_url }}' defer='defer'></script>
 
-<div class="p-2 component__cart__article__card bg-white shadow-[0_3px_20px_-10px_rgba(237,6,6,0.4)] rounded-md relative">
-  <div class="grid items-center gap-2 sm:grid-cols-5">
-    <figure class="flex items-center self-center justify-center w-full h-full p-1 overflow-hidden text-center rounded-md col-span-full sm:col-span-2 bg-gradient-to-tr from-gray-400 via-gray-200 to-gray-100 shrink-0 grow-0">
-
+<div class='component__cart__article__card relative rounded-md bg-white p-2 shadow-[0_3px_20px_-10px_rgba(237,6,6,0.4)]'>
+  <div class='grid items-center gap-2 sm:grid-cols-5'>
+    <figure class='h-full col-span-full flex w-full shrink-0 grow-0 items-center justify-center self-center overflow-hidden rounded-md bg-gradient-to-tr from-gray-400 via-gray-200 to-gray-100 p-1 text-center sm:col-span-2'>
       {% if product.image %}
         <img
-          width="250"
-          height="250"
-          src="{{ product.image |  image_url: width: '250px'  }}"
-          alt="{{ product.title |  escape }}"
-          class="object-cover ">
+          width='250'
+          height='250'
+          src='{{ product.image |  image_url: width: '250px'  }}'
+          alt='{{ product.title |  escape }}'
+          class='object-cover '
+        >
       {% else %}
         {{ 'product-1' | placeholder_svg_tag: 'w-20 h-20 object-cover border' }}
       {% endif %}
     </figure>
 
-    <div class="flex flex-col col-span-3 p-4">
-      <h2 class="font-bold text-red-700 text-md">{{ product.product.title | remove: 'Bekijk' | truncatewords: 5 }}</h2>
+    <div class='col-span-3 flex flex-col p-4'>
+      <h2 class='text-md font-bold text-red-700'>{{ product.product.title | remove: 'Bekijk' | truncatewords: 5 }}</h2>
 
-      <div class="relative mt-3 space-y-2 text-sm text-gray-500 list-disc">
-        <p class="truncated__description">
+      <div class='relative mt-3 list-disc space-y-2 text-sm text-gray-500'>
+        <p class='truncated__description'>
           {{ product.product.description | strip_html | truncatewords: 20 | rstrip | lstrip }}
         </p>
       </div>
 
-      <div class="flex flex-wrap items-center justify-between gap-4 mt-6">
-        <div class="flex items-center gap-3">
-          <p class="text-sm text-gray-500">Aantal:</p>
+      <div class='mt-6 flex flex-wrap items-center justify-between gap-4'>
+        <div class='flex items-center gap-3'>
+          <p class='text-sm text-gray-500'>Aantal:</p>
 
           <button
-            class="flex items-center justify-center w-5 h-5 rounded-full outline-none operation-button"
-            is="cart-handle-quantity-button"
-            data-action="decrement"
-            data-quantity-id="updates_{{  index }}">
+            class='h-5 operation-button flex w-5 items-center justify-center rounded-full outline-none'
+            is='cart-handle-quantity-button'
+            data-action='decrement'
+            data-quantity-id='updates_{{  index }}'
+          >
             {% render 'icon-minus' %}
           </button>
           <input
-            type="number"
-            name="updates[]"
-            value="{{ product.quantity }}"
-            min="1"
-            id="updates_{{ index }}"
-            class="font-bold quantity__input remove-arrow text-sm outline-none border-none leading-[16px] max-w-[3rem] text-center overflow-visible">
+            type='number'
+            name='updates[]'
+            value='{{ product.quantity }}'
+            min='1'
+            id='updates_{{ index }}'
+            class='quantity__input remove-arrow max-w-[3rem] overflow-visible border-none text-center text-sm font-bold leading-[16px] outline-none'
+          >
 
           <button
-            class="flex items-center justify-center w-5 h-5 rounded-full outline-none operation-button"
-            is="cart-handle-quantity-button"
-            data-action="increment"
-            data-quantity-id="updates_{{ index }}">
+            class='h-5 operation-button flex w-5 items-center justify-center rounded-full outline-none'
+            is='cart-handle-quantity-button'
+            data-action='increment'
+            data-quantity-id='updates_{{ index }}'
+          >
             {% render 'icon-plus' %}
           </button>
         </div>
 
-        <div class="flex items-center gap-2">
-          <span class="text-sm text-gray-500">Subtotaal:</span>
-          <h4 class="text-sm font-bold text-red-700">{{ product.final_line_price | money }}</h4>
+        <div class='flex items-center gap-2'>
+          <span class='text-sm text-gray-500'>Subtotaal:</span>
+          <h4 class='text-sm font-bold text-red-700'>{{ product.final_line_price | money }}</h4>
         </div>
       </div>
 
-      <div class="grid grid-cols-2 mt-6 text-center divide-x border-y">
-
+      <div class='mt-6 grid grid-cols-2 divide-x border-y text-center'>
         {% comment %} Details {% endcomment %}
         <button
-          data-cart-action="view-details"
-          type="button"
-          class="flex items-center justify-center gap-2 py-3 text-sm font-semibold text-gray-500 bg-transparent hover:bg-gray-100">
+          data-cart-action='view-details'
+          type='button'
+          class='flex items-center justify-center gap-2 bg-transparent py-3 text-sm font-semibold text-gray-500 hover:bg-gray-100'
+        >
           {% render 'icon-eye' %}
           Lees Meer
         </button>
         <button
-          data-action="remove-item"
-          type="button"
-          class="flex items-center justify-center gap-2 py-3 text-sm font-semibold text-gray-500 bg-transparent hover:bg-gray-100">
+          data-action='remove-item'
+          type='button'
+          class='flex items-center justify-center gap-2 bg-transparent py-3 text-sm font-semibold text-gray-500 hover:bg-gray-100'
+        >
           {% render 'icon-trash' %}
-          <a href="{{ product.url_to_remove }}">Verwijder</a>
+          <a href='{{ product.url_to_remove }}'>Verwijder</a>
         </button>
       </div>
     </div>

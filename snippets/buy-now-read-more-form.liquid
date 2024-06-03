@@ -1,19 +1,19 @@
-<form action="/cart/add" method="post" class="{{ classes }}">
+<form action='/cart/add' method='post' class='{{ classes }}'>
   <input
-    type="hidden"
-    name="id"
-    value="{{ product.selected_or_first_available_variant.id }}"
+    type='hidden'
+    name='id'
+    value='{{ product.selected_or_first_available_variant.id }}'
   >
   <button
-    type="submit"
-    class="block w-full px-12 py-3 text-sm font-medium text-white uppercase bg-red-600 rounded-md shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
-    href="{{ product.url }}"
+    type='submit'
+    class='block w-full rounded-md bg-red-600 px-12 py-3 text-sm font-medium uppercase text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto'
+    href='{{ product.url }}'
   >
     Koop Nu
   </button>
   <a
-    class="block w-full px-12 py-3 text-sm font-medium text-red-600 uppercase bg-white rounded-md shadow hover:text-red-700 focus:outline-none focus:ring active:text-red-500 sm:w-auto"
-    href="{{product.url}}"
+    class='block w-full rounded-md bg-white px-12 py-3 text-sm font-medium uppercase text-red-600 shadow hover:text-red-700 focus:outline-none focus:ring active:text-red-500 sm:w-auto'
+    href='{{product.url}}'
   >
     Ontdek Meer
   </a>

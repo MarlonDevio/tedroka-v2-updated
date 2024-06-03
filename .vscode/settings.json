@@ -1,8 +1,8 @@
 {
   "headwind.runOnSave": true,
-"files.autoSave": "off",
-"[liquid]": {
+  "files.autoSave": "off",
+  "[liquid]": {
     "editor.formatOnSave": true
-},
-"liveServer.settings.port": 5501
+  },
+  "liveServer.settings.port": 5501
 }
