@@ -63,8 +63,8 @@
       "type": "section-trusted-by",
       "settings": {}
     },
-    "section-product-carousel": {
-      "type": "section-product-carousel",
+    "section-highlights": {
+      "type": "section-highlights",
       "settings": {}
     },
     "section-highlight-variant": {
@@ -77,10 +77,10 @@
   "order": [
     "hero",
     "section-new-collection",
+    "section-highlights",
     "section-highlighted-collections",
     "section-testimonials",
     "section-trusted-by",
-    "section-product-carousel",
     "section-highlight-variant"
   ]
 }

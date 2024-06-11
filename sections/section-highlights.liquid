@@ -1,0 +1,81 @@
+<div class='max-w-7xl'>
+  {% for block in section.blocks %}
+    {% assign collection = collections[block.settings.collection] %}
+    {% assign default_image = collection.products.first.featured_image %}
+    {% assign image_src = block.settings.image | default: default_image %}
+    {% assign text_content = block.settings.text %}
+
+    <div class='highlighted_container'>
+      <h3 class='font-semibold uppercase text-primary'>{{ collection.title }}</h3>
+      <article class='flex shrink-0 flex-wrap items-center  gap-10 mobile:flex-nowrap {{ block.settings.image_position }}'>
+        <figure class='container-image basis-1/3 '>
+          <img
+            class='h-full w-full object-cover'
+            src='{{ image_src |  image_url: width: "500px" }}'
+            width='500'
+            height='500'
+            alt='{{ collection.title }}'
+          >
+        </figure>
+        <p class='description basis-2/3'>
+          {{ text_content | default: collection.description | strip_html }}
+        </p>
+      </article>
+    </div>
+    {% if forloop.index >= section.settings.rows %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+</div>
+{% schema %}
+{
+  "name": "highlights",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Choose collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "Image Position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "row-reverse",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        }
+      ],
+      "limit": 3
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collections",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

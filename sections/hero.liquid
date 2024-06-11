@@ -22,11 +22,14 @@
   {% assign bg_img = default_bg_img %}
 {% endif %}
 
-<section class='hero-section relative bg-cover bg-center bg-no-repeat' style='background-image: url({{ bg_img }})'>
+<section
+  class='hero-section relative bg-cover bg-center bg-no-repeat'
+  style='background-image: url({{ bg_img }})'
+>
   <div class='lg:h-screen relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:items-center lg:px-8'>
     <div class='grid grid-cols-1 md:grid-cols-2'>
       <div class='max-w-xl'>
-        <h1 class='text-3xl font-extrabold uppercase text-white sm:text-5xl'>
+        <h1 class='text-3xl  font-extrabold uppercase text-white sm:text-5xl'>
           {{ heading_title }}
           <strong class='block font-extrabold text-secondary'>{{ heading_subtitle }}</strong>
         </h1>
@@ -42,7 +45,7 @@
 
           <figure class='block tablet:hidden'>
             <img
-              src='{{ product.images | last | image_url: width: '1024px'}}'
+              src='{{ product.images | last | image_url: width: '1024px' }}'
               alt='{{ product.title }}'
               height='476'
               width='780'
