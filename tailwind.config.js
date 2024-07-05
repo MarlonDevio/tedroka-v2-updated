@@ -59,6 +59,9 @@ module.exports = {
       backgroundImage: {
         'hero-pattern': 'url("/assets/header-background.png")',
       },
+      padding: {
+        'padding-responsive': 'calc(8px + 1.5626vw)',
+      },
     },
     height: {
       94: '22rem',
