@@ -27,11 +27,13 @@
         "row_b9jicP": {
           "type": "row",
           "settings": {
-            "items_count": 1,
+            "items_count": 3,
             "media_image_1": "shopify:\/\/shop_images\/drone-image-1.jpg",
             "description_1": "Shot 4",
-            "description_2": "",
-            "description_3": ""
+            "media_image_2": "shopify:\/\/shop_images\/robin-trochsler-BDNXIMEZK5o-unsplash.jpg",
+            "description_2": "Shot 5",
+            "media_image_3": "shopify:\/\/shop_images\/denys-nevozhai-7nrsVjvALnA-unsplash.jpg",
+            "description_3": "Shot 6"
           }
         },
         "row_ezqYKG": {
@@ -39,7 +41,7 @@
           "settings": {
             "items_count": 1,
             "media_image_1": "shopify:\/\/shop_images\/ruben-hanssen-s4ywsTO55hU-unsplash.jpg",
-            "description_1": "Shot 5",
+            "description_1": "shot 7",
             "description_2": "",
             "description_3": ""
           }
