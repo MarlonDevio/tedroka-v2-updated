@@ -1,3 +1,147 @@
-<section>
-  <h1 class="text-heading-1">Hello</h1>
+<section class="max-w-7xl mx-auto px-4 py-8">
+  <h1 class="text-center text-3xl md:text-4xl lg:text-5xl mb-8">Live Video Footage of our Drones</h1>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for block in section.blocks %}
+      <div class="bg-white shadow-md rounded-lg overflow-hidden" {{ block.shopify_attributes }}>
+        {% if block.type == 'row' %}
+          {% for i in (1..block.settings.items_count) %}
+            <div class="mb-4">
+              {% assign media_image_key = "media_image_" | append: i %}
+              {% assign media_image = block.settings[media_image_key] %}
+              {% assign description_key = "description_" | append: i %}
+              {% assign description = block.settings[description_key] %}
+
+              {% if media_image %}
+                <img
+                  src="{{ media_image | image_url: width: 600 }}"
+                  class="w-full h-auto object-cover"
+                  alt="Media image {{ i }}">
+              {% endif %}
+
+              {% if description != blank %}
+                <p class="text-center text-sm mt-2 px-4">{{ description }}</p>
+              {% endif %}
+            </div>
+          {% endfor %}
+        {% elsif block.type == 'video_row' %}
+          {% for i in (1..block.settings.videos_count) %}
+            <div class="mb-4">
+              {% assign media_video_key = "media_video_" | append: i %}
+              {% assign media_video = block.settings[media_video_key] %}
+
+              {% if media_video %}
+                <div class="relative pb-9/16">
+                  <video controls class="w-full">
+                    <source src="{{ media_video | file_url }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
 </section>
+
+{% schema %}
+{
+  "name": "Image/Video Grid",
+  "tag": "section",
+  "class": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Image Row",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "range",
+          "id": "items_count",
+          "label": "Number of images in this row",
+          "min": 1,
+          "max": 3,
+          "default": 1
+        },
+        {
+          "type": "image_picker",
+          "id": "media_image_1",
+          "label": "Image 1"
+        },
+        {
+          "type": "text",
+          "id": "description_1",
+          "label": "Description for Image 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "media_image_2",
+          "label": "Image 2"
+        },
+        {
+          "type": "text",
+          "id": "description_2",
+          "label": "Description for Image 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "media_image_3",
+          "label": "Image 3"
+        },
+        {
+          "type": "text",
+          "id": "description_3",
+          "label": "Description for Image 3"
+        }
+      ]
+    },
+    {
+      "type": "video_row",
+      "name": "Video Row",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "range",
+          "id": "videos_count",
+          "label": "Number of videos in this row",
+          "min": 1,
+          "max": 3,
+          "default": 1
+        },
+        {
+          "type": "video",
+          "id": "media_video_1",
+          "label": "Video 1",
+          "info": "Upload a video from your computer"
+        },
+        {
+          "type": "video",
+          "id": "media_video_2",
+          "label": "Video 2",
+          "info": "Upload a video from your computer"
+        },
+        {
+          "type": "video",
+          "id": "media_video_3",
+          "label": "Video 3",
+          "info": "Upload a video from your computer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image/Video Grid",
+      "category": "Media",
+      "blocks": [
+        {
+          "type": "row"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,8 +1,8 @@
 {
   "sections": {
-    "template-video-page": {
+    "main": {
       "type": "template-video-page"
     }
   },
-  "order": ["template-video-page"]
+  "order": ["main"]
 }
