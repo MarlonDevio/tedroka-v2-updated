@@ -1,8 +1,38 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "main": {
-      "type": "template-video-page"
+      "type": "template-video-page",
+      "blocks": {
+        "row_eCqM6K": {
+          "type": "row",
+          "settings": {
+            "items_count": 3,
+            "media_image_1": "shopify:\/\/shop_images\/drone-image-4.jpg",
+            "description_1": "Shot 1",
+            "media_image_2": "shopify:\/\/shop_images\/drone-image-2.jpg",
+            "description_2": "Shot 2",
+            "media_image_3": "shopify:\/\/shop_images\/drone-image-3.jpg",
+            "description_3": "Shot 3"
+          }
+        }
+      },
+      "block_order": [
+        "row_eCqM6K"
+      ],
+      "settings": {
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
