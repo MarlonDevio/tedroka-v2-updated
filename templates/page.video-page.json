@@ -23,10 +23,31 @@
             "media_image_3": "shopify:\/\/shop_images\/drone-image-3.jpg",
             "description_3": "Shot 3"
           }
+        },
+        "row_b9jicP": {
+          "type": "row",
+          "settings": {
+            "items_count": 1,
+            "media_image_1": "shopify:\/\/shop_images\/drone-image-1.jpg",
+            "description_1": "Shot 4",
+            "description_2": "",
+            "description_3": ""
+          }
+        },
+        "row_ezqYKG": {
+          "type": "row",
+          "settings": {
+            "items_count": 1,
+            "description_1": "",
+            "description_2": "",
+            "description_3": ""
+          }
         }
       },
       "block_order": [
-        "row_eCqM6K"
+        "row_eCqM6K",
+        "row_b9jicP",
+        "row_ezqYKG"
       ],
       "settings": {
       }
