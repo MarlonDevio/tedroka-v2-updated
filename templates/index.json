@@ -1,11 +1,21 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "hero": {
       "type": "hero",
       "settings": {
-        "product_highlight": "tedroka®-1-inch-drone-met-gps-4k-1-inch-camera-vliegtijd-van-105-minuten-4k-uhd-video-inclusief-3-batterijen-ingebouwde-obstakelvermijding-draagbare-tas-en-64-gb-sd-kaart",
-        "heading_title": "Tedroka® 1 inch drone",
-        "heading_subtitle": "16 km bereik 35 minuten vliegtijd per accu"
+        "bg_image": "shopify:\/\/shop_images\/8_NL_EXTENDEDCONTROLRANGE_CFLY_MINI2.png",
+        "product_highlight": "tedroka®-cfly-mini-2-drone-4k-uhd-camera-66-minuten-vliegtijd-5000m-bereik-gps-glonass-3-assige-gimbal-128gb-opslag-20mp-foto-onder-249g-intelligente-vluchtmodi-visuele-tracking-4k-30fps-quickshots-max-5km-transmissie",
+        "heading_title": "Tedroka® c fly 2 drone",
+        "heading_subtitle": "5km bereik 33 minuten vliegtijd per accu inclusief 128 GB sd kaart"
       }
     },
     "section-new-collection": {
@@ -57,15 +67,18 @@
     },
     "section-testimonials": {
       "type": "section-testimonials",
-      "settings": {}
+      "settings": {
+      }
     },
     "section-trusted-by": {
       "type": "section-trusted-by",
-      "settings": {}
+      "settings": {
+      }
     },
     "section-product-carousel": {
       "type": "section-product-carousel",
-      "settings": {}
+      "settings": {
+      }
     },
     "section-highlight-variant": {
       "type": "section-highlight-variant",
