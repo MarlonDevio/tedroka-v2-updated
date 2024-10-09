@@ -1,7 +1,6 @@
 <!doctype html>
 <html>
-  <head>
- {%- render 'ecom_header' -%}{% render 'yoast-seo' %}
+  <head>{% render 'yoast-seo' %}
     
     {%- comment -%}Auto-disabled. Yoast plugin is taking care of SEO output.{%- endcomment -%}
     {%- if disabled_by_yoast_seo -%}
@@ -57,9 +56,5 @@
     <footer>
       {% section 'section-footer' %}
     </footer>
-  {%- render "ecom_footer"-%}</body>
-.giraffly-right-Bar-Preview-width {
-    display: none !important;
-}
-
+  </body>
 </html>
