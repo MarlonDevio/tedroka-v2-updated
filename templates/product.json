@@ -12,6 +12,9 @@
   "sections": {
     "ecom-jee-product": {
       "type": "ecom-jee-product",
+      "custom_css": [
+        ".giraffly-right-Bar-Preview-width {display: none !important;}"
+      ],
       "settings": {
       }
     }
