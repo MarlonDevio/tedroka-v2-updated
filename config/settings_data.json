@@ -18,27 +18,6 @@
       "section-footer": {
         "type": "section-footer",
         "settings": {
-          "footer_facebook_url": "",
-          "footer_instagram_url": "",
-          "footer_twitter_url": "",
-          "footer_github_url": "",
-          "footer_dribbble_url": "",
-          "footer_about_url": "",
-          "footer_team_url": "",
-          "footer_history_url": "",
-          "footer_careers_url": "",
-          "footer_coaching_url": "",
-          "footer_review_url": "",
-          "footer_accounts_url": "",
-          "footer_hr_url": "",
-          "footer_seo_url": "",
-          "footer_contact_url": "",
-          "footer_faq_url": "",
-          "footer_chat_url": "",
-          "footer_privacy_url": "",
-          "footer_terms_url": "",
-          "footer_returns_url": "",
-          "footer_accessibility_url": ""
         }
       }
     },
@@ -47,13 +26,19 @@
     ],
     "blocks": {
       "11532412952436166569": {
-        "type": "shopify:\/\/apps\/loox-reviews\/blocks\/loox-inject\/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+        "type": "shopify://apps/loox-reviews/blocks/loox-inject/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
         "disabled": false,
         "settings": {
         }
       },
       "yoast-seo-metatags": {
-        "type": "shopify:\/\/apps\/yoast-seo-seo-for-everyone\/blocks\/metatags\/7c777011-bc88-4743-a24e-64336e1e5b46",
+        "type": "shopify://apps/yoast-seo-seo-for-everyone/blocks/metatags/7c777011-bc88-4743-a24e-64336e1e5b46",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "21474836472147483647": {
+        "type": "shopify://apps/ecomposer-landing-page-builder/blocks/app-embed/a0fc26e1-7741-4773-8b27-39389b4fb4a0",
         "disabled": false,
         "settings": {
         }
