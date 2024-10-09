@@ -9,10 +9,10 @@
       "default": "Your Heading Here"
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "body_text",
       "label": "Body Text",
-      "default": "Enter your content here."
+      "default": "<p>Enter your content here.</p>"
     }
   ],
   "presets": [
@@ -25,5 +25,5 @@
 
 <div class="custom-text-section">
   <h2>{{ section.settings.heading }}</h2>
-  <p>{{ section.settings.body_text }}</p>
+  <div>{{ section.settings.body_text }}</div>
 </div>
