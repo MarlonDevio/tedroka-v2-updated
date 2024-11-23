@@ -106,20 +106,20 @@
       "settings": {
         "enable_section": true,
         "whatsapp_number": "+31850606374",
-        "primary_color": "#5DF878",
-        "primary_color2": "#0ABB29",
+        "primary_color": "#5df878",
+        "primary_color2": "#0abb29",
         "secondary_color": "#095e54",
         "icon_size": 60,
         "button_text_size": 14,
         "btn_position": "ss-whatsapp-button-right",
-        "btn_text": "Need help?",
+        "btn_text": "Hulp nodig?",
         "show_btn_text": true,
         "show_dialog": true,
-        "dialog_name": "Kathrine",
-        "dialog_subtitle": "Usually replies within 10 minutes.",
+        "dialog_name": "Joost",
+        "dialog_subtitle": "Antwoord meestal binnen 10 minuten.....",
         "dialog_bg_color": "#ece5dd",
-        "dialog_msg": "Hi 👋 What can I help you with?",
-        "placeholder_text": "Type a message..."
+        "dialog_msg": "Hallo, Waar kan ik uw mee helpen?",
+        "placeholder_text": "Schrijf een bericht....."
       }
     }
   },
