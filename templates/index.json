@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -66,18 +66,15 @@
     },
     "section-testimonials": {
       "type": "section-testimonials",
-      "settings": {
-      }
+      "settings": {}
     },
     "section-trusted-by": {
       "type": "section-trusted-by",
-      "settings": {
-      }
+      "settings": {}
     },
     "section-product-carousel": {
       "type": "section-product-carousel",
-      "settings": {
-      }
+      "settings": {}
     },
     "section-highlight-variant": {
       "type": "section-highlight-variant",
@@ -89,7 +86,7 @@
       "type": "apps",
       "blocks": {
         "instafeed_app_block_WbP3AE": {
-          "type": "shopify:\/\/apps\/instafeed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
           "settings": {
             "title": "",
             "title_color": "",
@@ -102,7 +99,27 @@
       "block_order": [
         "instafeed_app_block_WbP3AE"
       ],
+      "settings": {}
+    },
+    "ss_whatsapp_button_WdJpR6": {
+      "type": "ss-whatsapp-button",
       "settings": {
+        "enable_section": true,
+        "whatsapp_number": "+31850606374",
+        "primary_color": "#5DF878",
+        "primary_color2": "#0ABB29",
+        "secondary_color": "#095e54",
+        "icon_size": 60,
+        "button_text_size": 14,
+        "btn_position": "ss-whatsapp-button-right",
+        "btn_text": "Need help?",
+        "show_btn_text": true,
+        "show_dialog": true,
+        "dialog_name": "Kathrine",
+        "dialog_subtitle": "Usually replies within 10 minutes.",
+        "dialog_bg_color": "#ece5dd",
+        "dialog_msg": "Hi 👋 What can I help you with?",
+        "placeholder_text": "Type a message..."
       }
     }
   },
@@ -114,6 +131,7 @@
     "section-trusted-by",
     "section-product-carousel",
     "section-highlight-variant",
-    "17237980250e149801"
+    "17237980250e149801",
+    "ss_whatsapp_button_WdJpR6"
   ]
 }
