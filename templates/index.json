@@ -115,6 +115,7 @@
         "btn_text": "Hulp nodig?",
         "show_btn_text": true,
         "show_dialog": true,
+        "dialog_header_img": "shopify://shop_images/sample_3_18eb0b64-291a-40c1-9e40-198563eedf62.png",
         "dialog_name": "Joost",
         "dialog_subtitle": "Antwoord meestal binnen 10 minuten.....",
         "dialog_bg_color": "#ece5dd",
