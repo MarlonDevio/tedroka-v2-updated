@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -70,7 +79,7 @@
     "section-highlight-variant": {
       "type": "section-highlight-variant",
       "settings": {
-        "featured_product": "c-fly-mini-drone-met-gps-4k-camera"
+        "featured_product": "tedroka-b5-mini-drone-met-gps-4k-camera-vliegtijd-van-26-minuten-wifi-fpv-borstelloze-drone-professionele-mini-drone-4k-uhd-video-in-een-inklapbaar-lichtgewicht-ontwerp"
       }
     }
   },
