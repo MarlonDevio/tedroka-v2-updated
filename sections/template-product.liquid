@@ -33,9 +33,20 @@
 
   .product--description {
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.8;
     color: #333;
     margin-top: 1rem;
+    max-width: 800px; /* Zorgt dat de tekst niet te breed is */
+  }
+
+  .product--description h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #111;
+  }
+
+  .product--description div {
+    margin-bottom: 1rem;
   }
 
   .product--description p {
@@ -45,13 +56,13 @@
   .product--description ul {
     margin-left: 1.5rem;
     list-style-type: disc;
+    margin-bottom: 1rem;
   }
 
-  .product--description h2 {
-    font-size: 1.25rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: #555;
+  .product--description img {
+    display: block;
+    margin: 1rem auto;
+    max-width: 100%;
   }
 </style>
 
@@ -142,11 +153,9 @@
         </div>
 
         {% comment %} AMOUNT {% endcomment %}
-
         <div class="flex items-center gap-4">
           <div class="my-3">
             <label for="Quantity--{{ section.id }}" class="font-bold uppercase">Aantal</label>
-
             <div class="my-3">
               <input
                 class="w-full p-2 border"
@@ -177,15 +186,16 @@
             </button>
           </div>
         </div>
-        
+
         {% comment %} DESCRIPTION {% endcomment %}
         <div class="product--description">
-          <h2>Beschrijving</h2>
-          <p>{{ product.description }}</p>
+          <h2>Productbeschrijving</h2>
+          <div>
+            {{ product.description | escape | newline_to_br }}
+          </div>
         </div>
 
         {% comment %} ADD TO CART {% endcomment %}
-        {% assign selected_product = product.selected_or_first_available_variant %}
         <div class="my-3">
           <button
             type="submit"
@@ -210,11 +220,9 @@
 <script>
   const swiper = new Swiper('.swiper', {
     direction: 'horizontal',
-
     pagination: {
       el: '.swiper-pagination',
     },
-
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
