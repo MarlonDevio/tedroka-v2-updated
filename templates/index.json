@@ -178,10 +178,18 @@
       "blocks": {
         "instafeed_app_block_WbP3AE": {
           "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "disabled": true,
           "settings": {
             "title": "",
             "title_color": "",
+            "title_size": 0,
             "alignment": "center",
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
             "background_color": "",
             "feed_id": "",
             "html_area": ""
@@ -195,6 +203,7 @@
     },
     "ss_whatsapp_button_WdJpR6": {
       "type": "ss-whatsapp-button",
+      "disabled": true,
       "settings": {
         "enable_section": true,
         "whatsapp_number": "+31850606374",
